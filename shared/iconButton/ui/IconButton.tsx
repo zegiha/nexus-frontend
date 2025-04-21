@@ -1,0 +1,17 @@
+import {IBaseIconButton} from '@/shared/iconButton/const/type'
+import BaseIconButton from '@/shared/iconButton/ui/BaseIconButton'
+
+function createIconButton(type: IBaseIconButton['type']) {
+  return (props: Omit<IBaseIconButton, 'type'>) =>
+    <BaseIconButton
+      type={type}
+      {...props}
+    />
+}
+
+const IconButton = {
+  transparent: createIconButton('transparent'),
+  outlined: createIconButton('outlined'),
+}
+
+export default IconButton

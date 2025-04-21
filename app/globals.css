@@ -1,30 +1,196 @@
+@import '@material-symbols/font-300';
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Base Colors */
+  --white: #ffffff;
+  --black: #0a0a0a;
+
+  --gray-00: #ffffff;
+  --gray-10: #f7f7f7;
+  --gray-20: #ededed;
+  --gray-30: #d1d1d1;
+  --gray-40: #a3a3a3;
+  --gray-50: #858585;
+  --gray-60: #1a1a1a;
+  --gray-70: #141414;
+  --gray-100: #0a0a0a;
+
+  --tint-red: #f53134;
+  --tint-green: #29c257;
+  --tint-yellow: #ffaa00;
+  --tint-blue: #2e86f5;
+  --tint-brand: #2f89fa;
+
+  /* RGB values for alpha blending */
+  --gray-00-rgb: 255, 255, 255;
+  --gray-10-rgb: 247, 247, 247;
+  --gray-20-rgb: 237, 237, 237;
+  --gray-30-rgb: 209, 209, 209;
+  --gray-40-rgb: 163, 163, 163;
+  --gray-50-rgb: 133, 133, 133;
+  --gray-60-rgb: 26, 26, 26;
+  --gray-70-rgb: 20, 20, 20;
+  --gray-100-rgb: 10, 10, 10;
+
+  --tint-red-rgb: 245, 49, 52;
+  --tint-green-rgb: 41, 194, 87;
+  --tint-yellow-rgb: 255, 170, 0;
+  --tint-blue-rgb: 46, 134, 245;
+  --tint-brand-rgb: 47, 137, 250;
+
+  /* Background */
+  --background-normal-light: var(--gray-00);
+  --background-normal-dark: var(--gray-100);
+  --background-alternative-light: var(--gray-10);
+  --background-alternative-dark: var(--gray-70);
+  --background-elevated-light: var(--gray-00);
+  --background-elevated-dark: var(--gray-70);
+  --background-depressed-light: rgba(var(--gray-100-rgb), 0.32);
+  --background-depressed-dark: rgba(var(--gray-100-rgb), 0.72);
+
+  /* Container */
+  --container-strong-light: var(--gray-20);
+  --container-strong-dark: var(--gray-60);
+  --container-normal-light: var(--gray-10);
+  --container-normal-dark: var(--gray-70);
+  --container-alternative-light: var(--gray-00);
+  --container-alternative-dark: var(--gray-100);
+
+  /* Component - Fill */
+  --component-fill-strong-light: rgba(var(--gray-100-rgb), 0.12);
+  --component-fill-strong-dark: rgba(var(--gray-00-rgb), 0.12);
+  --component-fill-normal-light: rgba(var(--gray-100-rgb), 0.07);
+  --component-fill-normal-dark: rgba(var(--gray-00-rgb), 0.07);
+  --component-fill-alternative-light: rgba(var(--gray-100-rgb), 0.02);
+  --component-fill-alternative-dark: rgba(var(--gray-00-rgb), 0.02);
+
+  /* Component - Material */
+  --component-material-strong-light: rgba(var(--gray-00-rgb), 0.84);
+  --component-material-strong-dark: rgba(var(--gray-100-rgb), 0.84);
+  --component-material-normal-light: rgba(var(--gray-00-rgb), 0.16);
+  --component-material-normal-dark: rgba(var(--gray-100-rgb), 0.16);
+  --component-material-alternative-light: rgba(var(--gray-00-rgb), 0.04);
+  --component-material-alternative-dark: rgba(var(--gray-100-rgb), 0.02);
+
+  /* Label */
+  --label-strong-light: var(--gray-100);
+  --label-strong-dark: var(--gray-00);
+  --label-normal-light: var(--gray-60);
+  --label-normal-dark: var(--gray-20);
+  --label-alternative-light: var(--gray-50);
+  --label-alternative-dark: var(--gray-40);
+  --label-link-light: var(--tint-blue);
+  --label-link-dark: var(--tint-blue);
+
+  /* Line */
+  --line-border-light: rgba(var(--gray-100-rgb), 0.12);
+  --line-border-dark: rgba(var(--gray-00-rgb), 0.05);
+  --line-normal-light: rgba(var(--gray-100-rgb), 0.16);
+  --line-normal-dark: rgba(var(--gray-00-rgb), 0.11);
+  --line-alternative-light: rgba(var(--gray-100-rgb), 0.06);
+  --line-alternative-dark: rgba(var(--gray-00-rgb), 0.07);
+
+  /* Brand */
+  --brand-normal-light: var(--tint-brand);
+  --brand-normal-dark: var(--tint-brand);
+  --brand-translucent-light: rgba(var(--tint-brand-rgb), 0.18);
+  --brand-translucent-dark: rgba(var(--tint-brand-rgb), 0.18);
+
+  /* Static */
+  --static-white-light: var(--white);
+  --static-white-dark: var(--white);
+  --static-black-light: var(--black);
+  --static-black-dark: var(--black);
+
+  /* Reverse */
+  --reverse-white-light: var(--white);
+  --reverse-white-dark: var(--black);
+  --reverse-black-light: var(--black);
+  --reverse-black-dark: var(--white);
+
+  /* Status */
+  --status-positive-light: var(--tint-green);
+  --status-positive-dark: var(--tint-green);
+  --status-negative-light: var(--tint-red);
+  --status-negative-dark: var(--tint-red);
+  --status-cautionary-light: var(--tint-yellow);
+  --status-cautionary-dark: var(--tint-yellow);
+
+  --status-translucent-positive-light: rgba(var(--tint-green-rgb), 0.18);
+  --status-translucent-positive-dark: rgba(var(--tint-green-rgb), 0.18);
+  --status-translucent-negative-light: rgba(var(--tint-red-rgb), 0.18);
+  --status-translucent-negative-dark: rgba(var(--tint-red-rgb), 0.18);
+  --status-translucent-cautionary-light: rgba(var(--tint-yellow-rgb), 0.18);
+  --status-translucent-cautionary-dark: rgba(var(--tint-yellow-rgb), 0.18);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
+:root {
+  /* 기본 폰트 설정 */
+  --default-font: 'Pretendard', sans-serif;
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Accent 폰트 웨이트 설정 */
+  --accent-weight: 600;
+  --normal-weight: 400;
+
+  /* xxxlarge-accent */
+  --xxxlarge-accent-font-size: 32px;
+  --xxxlarge-accent-line-height: 40px;
+  --xxxlarge-accent-font-weight: var(--accent-weight);
+
+  /* xxlarge-accent */
+  --xxlarge-accent-font-size: 24px;
+  --xxlarge-accent-line-height: 32px;
+  --xxlarge-accent-font-weight: var(--accent-weight);
+
+  /* xlarge-accent */
+  --xlarge-accent-font-size: 20px;
+  --xlarge-accent-line-height: 28px;
+  --xlarge-accent-font-weight: var(--accent-weight);
+
+  /* xlarge */
+  --xlarge-font-size: 20px;
+  --xlarge-line-height: 28px;
+  --xlarge-font-weight: var(--normal-weight);
+
+  /* large-accent */
+  --large-accent-font-size: 18px;
+  --large-accent-line-height: 28px;
+  --large-accent-font-weight: var(--accent-weight);
+
+  /* large */
+  --large-font-size: 18px;
+  --large-line-height: 28px;
+  --large-font-weight: var(--normal-weight);
+
+  /* medium-accent */
+  --medium-accent-font-size: 16px;
+  --medium-accent-line-height: 21px;
+  --medium-accent-font-weight: var(--accent-weight);
+
+  /* medium */
+  --medium-font-size: 16px;
+  --medium-line-height: 20px;
+  --medium-font-weight: var(--normal-weight);
+
+  /* small-accent */
+  --small-accent-font-size: 14px;
+  --small-accent-line-height: 18px;
+  --small-accent-font-weight: var(--accent-weight);
+
+  /* small */
+  --small-font-size: 14px;
+  --small-line-height: 18px;
+  --small-font-weight: var(--normal-weight);
+
+  /* xsmall */
+  --xsmall-font-size: 12px;
+  --xsmall-line-height: 16px;
+  --xsmall-font-weight: var(--normal-weight);
 }
 
 * {
+  font-family: var(--default-font), sans-serif;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -35,8 +201,12 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+small {
+  display: block;
+}
+
+button {
+  flex: 0;
+  outline: none;
+  border: none;
 }
