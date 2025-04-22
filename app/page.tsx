@@ -19,7 +19,7 @@ export default function Home() {
           onChange={e => {sv(e.target.value); st(['haah', 'ahads', 'asd', 'hoh', 'haho', 'hoho', 'haha'])}}
           searchResult={t ? t.map(v => <div style={{height: 400}}>{v}</div>) : null}
         />
-        <Button.solid size={'medium'} onClick={() => {}}>hha</Button.solid>
+        <Button.solid color={'white'} size={'medium'} onClick={() => {}} rounded>hha</Button.solid>
         <TextInput name={'asd'} value={''} onChange={e => sv(e.target.value)} labelContents={'asd'}/>
       </Col>
     </Col>

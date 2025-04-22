@@ -12,6 +12,7 @@ export default function BaseButton({
   width='hug',
   accent,
   disabled,
+  rounded,
   onClick,
   children,
 }: IBaseButton) {
@@ -24,10 +25,11 @@ export default function BaseButton({
       }}
       className={classNames(
         [
-        type !== 'translucent' ?
-          style[color] :
-          style[`${color}Translucent`],
-        style[size]
+          type !== 'translucent' ?
+            style[color] :
+            style[`${color}Translucent`],
+          style[size],
+          rounded && style.rounded,
         ]
       )}
       disabled={disabled}

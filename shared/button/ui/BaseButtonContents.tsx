@@ -14,9 +14,11 @@ export default function BaseButtonContents({
       switch(type) {
         case 'solid':
           if(color === 'gray') return 'reverse-white'
+          else if(color === 'white') return 'static-black'
           else return 'static-white'
         default:
           if(color === 'gray') return 'normal'
+          else if(color === 'white') return 'static-black'
           else return color
       }
   }
