@@ -1,4 +1,4 @@
-import {getTextColor, TTextColor} from '@/shared/design'
+import {getTextColor, transition, TTextColor} from '@/shared/design'
 import iconCode from '@/shared/icon/const/iconCode'
 import TIconKey from '@/shared/icon/const/TIconKey'
 
@@ -19,7 +19,8 @@ export default function Icon({
       fontVariationSettings: `'FILL' ${fill ? 1 : 0}`,
       fontSize: `${size}px`,
       color: getTextColor(color),
-      transitionDuration: '0.16s',
+      transitionDuration: `var(--transition-duration-fast)`,
+      transitionTimingFunction: `var(--transition-cubic-bezier)`,
       userSelect: 'none'
     }}
   >

@@ -3,7 +3,7 @@ import {TWidth} from '@/shared/width'
 export interface IBaseButtonContents {
   size: 'medium' | 'large'
   type: 'solid' | 'translucent' | 'outlined'
-  color: 'gray' | 'positive' | 'cautionary' | 'negative'
+  color: 'gray' | 'positive' | 'cautionary' | 'negative' | 'brand'
   accent?: boolean
   children: string
 }

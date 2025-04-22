@@ -7,8 +7,9 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  transition: all 0.14s ease-in-out;
+  transition: all var(--transition-duration-fast) var(--transition-cubic-bezier);
   content: "";
+  z-index: 1;
 }
 
 .interaction:hover:before {

@@ -20,9 +20,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${Pretendard.className}`}>
-        {children}
-      </body>
+    <body className={`${Pretendard.className}`}>
+    {children}
+    <div id={''}/>
+    </body>
     </html>
   )
 }

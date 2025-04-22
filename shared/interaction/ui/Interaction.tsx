@@ -1,9 +1,9 @@
 import BaseInteraction from '@/shared/interaction/ui/BaseInteraction'
-import {ICreateInteraction} from '@/shared/interaction/const/type'
-import {HTMLElementType} from 'react'
+import {ICreateInteraction, IntrinsicTags} from '@/shared/interaction/const/type'
+import {ButtonHTMLAttributes, HTMLAttributes, InputHTMLAttributes} from 'react'
 
-function createInteraction(tag: HTMLElementType) {
-  return (props: ICreateInteraction['props']) => (
+function createInteraction<Attributes extends HTMLAttributes<Element>, Element>(tag: IntrinsicTags) {
+  return (props: ICreateInteraction<Attributes, Element>['props']) => (
     <BaseInteraction
       tag={tag}
       props={props}
@@ -12,7 +12,9 @@ function createInteraction(tag: HTMLElementType) {
 }
 
 const Interaction = {
-  button: createInteraction('button')
+  button: createInteraction<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>('button'),
+  input: createInteraction<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>('input'),
+  div: createInteraction<HTMLAttributes<HTMLDivElement>, HTMLDivElement>('div')
 }
 
 export default Interaction

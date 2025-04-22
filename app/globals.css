@@ -189,6 +189,13 @@
   --xsmall-font-weight: var(--normal-weight);
 }
 
+:root {
+  --transition-cubic-bezier: cubic-bezier(.16,0,.36,1);
+  --transition-duration-fast: .2s;
+  --transition-duration-normal: .32s;
+  --transition-duration-slow: .52s;
+}
+
 * {
   font-family: var(--default-font), sans-serif;
   box-sizing: border-box;
@@ -209,4 +216,15 @@ button {
   flex: 0;
   outline: none;
   border: none;
+}
+
+input::-ms-clear,
+input::-ms-reveal{
+  display:none;width:0;height:0;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration{
+  display:none;
 }

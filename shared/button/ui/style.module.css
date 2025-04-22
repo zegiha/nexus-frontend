@@ -18,6 +18,11 @@
   box-shadow: inset 0 0 0 1px var(--status-negative-light);
 }
 
+.brand {
+  background-color: var(--brand-normal-light);
+  box-shadow: inset 0 0 0 1px var(--brand-normal-light);
+}
+
 .grayTranslucent {
   background-color: var(--component-fill-normal-light);
 }
@@ -32,6 +37,10 @@
 
 .negativeTranslucent {
   background-color: var(--status-translucent-negative-light);
+}
+
+.brandTranslucent {
+  background-color: var(--brand-translucent-light);
 }
 
 .medium {
