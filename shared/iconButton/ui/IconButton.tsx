@@ -12,6 +12,7 @@ function createIconButton(type: IBaseIconButton['type']) {
 const IconButton = {
   transparent: createIconButton('transparent'),
   outlined: createIconButton('outlined'),
+  elevate: createIconButton('elevate'),
 }
 
 export default IconButton
