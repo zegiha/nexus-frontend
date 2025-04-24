@@ -14,6 +14,6 @@ export interface IBaseButton
   color?: IBaseButtonContents['color']
   width?: TWidth
   disabled?: boolean
-  rounded?: boolean
+  round?: boolean
   onClick: () => void
 }
