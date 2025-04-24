@@ -22,6 +22,9 @@ export default function Home() {
         <Button.solid color={'white'} size={'medium'} onClick={() => {}}>
           ha
         </Button.solid>
+        <RoundButton.solid color={'brand'} size={'small'} onClick={() => {}}>
+          haha
+        </RoundButton.solid>
         <RoundButton.solid color={'brand'} size={'medium'} onClick={() => {}}>
           haha
         </RoundButton.solid>

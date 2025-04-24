@@ -3,7 +3,6 @@ import {IBaseButtonContents} from '@/shared/button/const/type'
 import {Typo} from '@/shared/typo'
 
 export default function BaseButtonContents({
-  size,
   type,
   color,
   accent,
@@ -29,6 +28,5 @@ export default function BaseButtonContents({
     children,
   }
 
-  if(size === 'medium' || size === 'large')
-    return <Typo.medium {...typoProps}></Typo.medium>
+  return <Typo.medium {...typoProps}></Typo.medium>
 }

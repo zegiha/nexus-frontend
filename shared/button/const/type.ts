@@ -1,7 +1,6 @@
 import {TWidth} from '@/shared/width'
 
 export interface IBaseButtonContents {
-  size: 'medium' | 'large'
   type: 'solid' | 'translucent' | 'outlined'
   color: 'gray' | 'positive' | 'cautionary' | 'negative' | 'brand' | 'white'
   accent?: boolean
@@ -10,6 +9,7 @@ export interface IBaseButtonContents {
 
 export interface IBaseButton
   extends Omit<IBaseButtonContents, 'type' | 'color'> {
+  size: 'medium' | 'large' | 'small'
   type?: IBaseButtonContents['type']
   color?: IBaseButtonContents['color']
   width?: TWidth
