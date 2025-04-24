@@ -1,0 +1,9 @@
+.container {
+  padding: 6px 12px;
+  border-radius: 100px;
+}
+
+.gray {
+  background-color: var(--component-fill-alternative-light);
+  box-shadow: inset 0 0 0 1px var(--line-border-light);
+}

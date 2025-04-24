@@ -1,4 +1,5 @@
 type TWidth =
+  'auto' |
   'fill' |
   'hug' |
   {

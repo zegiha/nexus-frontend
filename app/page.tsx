@@ -1,6 +1,7 @@
 'use client'
 
 import {Button, RoundButton} from '@/shared/button'
+import {Chip} from '@/shared/chip'
 import {Col} from '@/shared/flex'
 import Search from '@/shared/searchBar/ui/Search'
 import {TextInput} from '@/shared/textInput'
@@ -29,6 +30,9 @@ export default function Home() {
           haha
         </RoundButton.solid>
         <TextInput name={'asd'} value={''} onChange={e => sv(e.target.value)} labelContents={'asd'}/>
+        <Chip color={'gray'}>
+          hoho
+        </Chip>
       </Col>
     </Col>
   )
