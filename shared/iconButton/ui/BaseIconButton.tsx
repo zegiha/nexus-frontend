@@ -9,7 +9,9 @@ export default function BaseIconButton({
   iconKey,
   type='transparent',
   size='medium',
+  color='normal',
   active,
+  className,
   onClick
 }: IBaseIconButton) {
 
@@ -18,6 +20,7 @@ export default function BaseIconButton({
       [
         style[type],
         style[size],
+        className,
       ]
     )}
     onClick={onClick}
@@ -25,6 +28,7 @@ export default function BaseIconButton({
     <Icon
       iconKey={iconKey}
       size={getSize(size)}
+      color={color}
       fill={active}
     />
   </Interaction.button>

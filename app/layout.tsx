@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "swiper/css"
 import localFont from 'next/font/local'
 import {ReactNode} from 'react'
 

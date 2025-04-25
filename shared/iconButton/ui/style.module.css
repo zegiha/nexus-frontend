@@ -12,7 +12,6 @@
 }
 
 .elevate {
-  position: absolute;
   background-color: var(--background-elevated-light);
 }
 
