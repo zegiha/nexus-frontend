@@ -2,6 +2,7 @@ import {ReactNode} from 'react'
 
 export interface ISwiperNavigation {
   position: 'bottom' | 'elevatedCenter'
+  hovered: boolean
   nextFunc: () => void
   prevFunc: () => void
 }
