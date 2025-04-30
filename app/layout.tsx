@@ -3,6 +3,7 @@ import "./globals.css";
 import "swiper/css"
 import localFont from 'next/font/local'
 import {ReactNode} from 'react'
+import { Header } from "@/shared/layout";
 
 const Pretendard = localFont({
   src: '../public/font/PretendardVariable.woff2',
@@ -20,9 +21,10 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ko">
     <body className={`${Pretendard.className}`}>
-    {children}
+      <Header></Header>
+      {children}
     <div id={''}/>
     </body>
     </html>
