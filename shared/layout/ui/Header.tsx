@@ -19,6 +19,7 @@ export default function Header() {
             className={style.container}
             justifyContent={'space-between'}
             alignItems={'center'}
+            
             >
                 <Logo/>
                 <Row className={style.searchWrapper}>

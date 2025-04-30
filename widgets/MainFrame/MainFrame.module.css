@@ -1,9 +1,9 @@
-.div {
+.categoryTitle {
   position: relative;
   line-height: 28px;
   font-weight: 600;
 }
-.wrapper {
+.categoryTag {
   border-radius: 100px;
   background-color: rgba(10, 10, 10, 0.02);
   border: 1px solid rgba(10, 10, 10, 0.12);
@@ -13,7 +13,7 @@
   justify-content: center;
   padding: 6px 14px;
 }
-.div2 {
+.newsHeadline {
   align-self: stretch;
   position: relative;
   line-height: 32px;
@@ -22,14 +22,14 @@
 .p {
   margin: 0;
 }
-.div3 {
+.newsContent {
   align-self: stretch;
   position: relative;
   font-size: 16px;
   line-height: 20px;
   color: #1a1a1a;
 }
-.group {
+.headlineContainer {
   align-self: stretch;
   overflow: hidden;
   display: flex;
@@ -41,7 +41,7 @@
   font-size: 24px;
   color: #0a0a0a;
 }
-.frameChild {
+.sourceIcon {
   width: 32px;
   position: relative;
   border-radius: 32px;
@@ -50,11 +50,11 @@
   flex-shrink: 0;
   object-fit: cover;
 }
-.sbs {
+.sourceName {
   position: relative;
   line-height: 20px;
 }
-.frameDiv {
+.sourceContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -62,7 +62,7 @@
   padding: 0px 12px;
   gap: 8px;
 }
-.frameItem {
+.mainNewsImage {
   align-self: stretch;
   position: relative;
   border-radius: 12px;
@@ -72,11 +72,11 @@
   flex-shrink: 0;
   object-fit: cover;
 }
-.sbs1 {
+.imageCaption {
   position: relative;
   line-height: 16px;
 }
-.sbsWrapper {
+.captionWrapper {
   align-self: stretch;
   display: flex;
   flex-direction: row;
@@ -84,7 +84,7 @@
   justify-content: flex-start;
   padding: 0px 8px;
 }
-.frameParent1 {
+.imageContainer {
   align-self: stretch;
   display: flex;
   flex-direction: column;
@@ -93,7 +93,7 @@
   gap: 8px;
   font-size: 12px;
 }
-.frameContainer {
+.mainNewsCard {
   align-self: stretch;
   border-radius: 16px;
   background-color: rgba(10, 10, 10, 0.02);
@@ -105,7 +105,7 @@
   padding: 12px;
   gap: 8px;
 }
-.frameInner {
+.navButtonPrev {
   width: 32px;
   border-radius: 16px;
   max-height: 100%;
@@ -113,7 +113,7 @@
   flex-shrink: 0;
   object-fit: contain;
 }
-.frameIcon {
+.navButtonNext {
   width: 32px;
   border-radius: 32px;
   max-height: 100%;
@@ -121,16 +121,18 @@
   flex-shrink: 0;
   object-fit: cover;
 }
-.frameParent2 {
+.navigationButtons {
   align-self: stretch;
   overflow: hidden;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 8px;
+  margin: 0 auto;
+  width: fit-content;
 }
-.frameGroup {
+.mainNewsSection {
   align-self: stretch;
   display: flex;
   flex-direction: column;
@@ -140,7 +142,7 @@
   font-size: 16px;
   color: #858585;
 }
-.parent {
+.leftColumn {
   width: 802px;
   overflow: hidden;
   flex-shrink: 0;
@@ -150,13 +152,13 @@
   justify-content: flex-start;
   gap: 24px;
 }
-.div5 {
+.newsCardTitle {
   align-self: stretch;
   position: relative;
   line-height: 20px;
   color: #1a1a1a;
 }
-.div6 {
+.newsCardContent {
   align-self: stretch;
   position: relative;
   line-height: 20px;
@@ -164,7 +166,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.frameChild1 {
+.newsCardSourceIcon {
   width: 24px;
   position: relative;
   border-radius: 32px;
@@ -173,11 +175,11 @@
   flex-shrink: 0;
   object-fit: cover;
 }
-.sbs2 {
+.newsCardSourceName {
   position: relative;
   line-height: 18px;
 }
-.frameParent5 {
+.newsCardSourceContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -185,7 +187,7 @@
   gap: 4px;
   font-size: 14px;
 }
-.parent1 {
+.newsCardTextContent {
   flex: 1;
   overflow: hidden;
   display: flex;
@@ -194,7 +196,7 @@
   justify-content: flex-start;
   gap: 4px;
 }
-.frameChild2 {
+.newsCardThumbnail {
   width: 150px;
   position: relative;
   border-radius: 4px;
@@ -203,7 +205,7 @@
   flex-shrink: 0;
   object-fit: cover;
 }
-.frameParent4 {
+.popularNewsCard {
   align-self: stretch;
   border-radius: 8px;
   background-color: rgba(133, 133, 133, 0.1);
@@ -214,7 +216,7 @@
   padding: 8px;
   gap: 12px;
 }
-.frameParent6 {
+.popularNewsCardFeatured {
   align-self: stretch;
   border-radius: 8px;
   background-color: rgba(133, 133, 133, 0.2);
@@ -225,7 +227,7 @@
   padding: 8px;
   gap: 12px;
 }
-.frameParent8 {
+.popularNewsCardRegular {
   align-self: stretch;
   border-radius: 8px;
   display: flex;
@@ -235,7 +237,7 @@
   padding: 8px;
   gap: 12px;
 }
-.frameParent3 {
+.popularNewsContainer {
   align-self: stretch;
   overflow: hidden;
   display: flex;
@@ -246,7 +248,7 @@
   font-size: 16px;
   color: #858585;
 }
-.container {
+.rightColumn {
   flex: 1;
   overflow: hidden;
   display: flex;
@@ -255,14 +257,14 @@
   justify-content: flex-start;
   gap: 24px;
 }
-.frameParent {
+.mainContainer {
   width: 100%;
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: center;
   padding: 24px;
   box-sizing: border-box;
   gap: 24px;
@@ -270,4 +272,5 @@
   text-align: left;
   font-size: 20px;
   color: #0a0a0a;
+  margin: 0 auto; 
 }
