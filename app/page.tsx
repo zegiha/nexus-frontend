@@ -1,6 +1,6 @@
 'use client'
 
-import { Col } from "@/shared/flex";
+import { Col } from "@/shared/components/atom/flex";
 
 export default function Page() {
   return (
