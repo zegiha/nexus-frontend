@@ -32,7 +32,7 @@ export default function Swiper({
   }, [])
 
   return (
-    <Col ref={ref} className={style.swiperContainer}>
+    <Col ref={ref} className={style.swiperContainer} gap={4}>
       <RawSwiper
         onSwiper={newSwiper => {
           swiper.current = newSwiper
