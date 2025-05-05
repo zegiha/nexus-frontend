@@ -4,6 +4,7 @@ import {TWidth} from '@/shared/design/width'
 
 export default interface IBaseTypo {
   children: string
+  className?: string
   size: keyof typeof typoType
   width?: TWidth
   color?: TTextColor

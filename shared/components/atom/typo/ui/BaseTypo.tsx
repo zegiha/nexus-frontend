@@ -8,6 +8,7 @@ import style from './style.module.css'
 
 export default function BaseTypo({
   children,
+  className: classNameProps,
   size,
   width,
   color='normal',
@@ -24,6 +25,7 @@ export default function BaseTypo({
         accent && style.accent,
         textOverflowLine ? style.overflowLine : undefined,
         style[color],
+        classNameProps,
       ]),
       style: {
         ...getWidth(width),
