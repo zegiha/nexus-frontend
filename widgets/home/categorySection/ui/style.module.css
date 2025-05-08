@@ -1,0 +1,38 @@
+.headlineSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 24px;
+  padding: 24px;
+}
+
+.smallHeadlineSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 24px;
+}
+
+.headlineContainer {
+  gap: 16px;
+  @media(max-width: 400px) {
+    gap: 8px;
+  }
+}
+
+.headlineContents {
+  gap: 8px;
+  @media(max-width: 400px) {
+    gap: 4px;
+  }
+}
+
+.headlineMediaWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 12px;
+  overflow: hidden;
+  @media(max-width: 400px) {
+    aspect-ratio: 3/2;
+    border-radius: 8px;
+  }
+}

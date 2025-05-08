@@ -26,6 +26,9 @@ export default function Avatar({
           src={imageUrl}
           alt={'프로필 이미지'}
           fill
+          sizes={'256px'}
+          priority={true}
+          fetchPriority={'low'}
         />
       </div>
       {name && (

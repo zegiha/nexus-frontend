@@ -8,7 +8,9 @@ import style from './style.module.css'
 
 export default function Swiper({
   children,
+  loop,
   navigationPosition,
+  gap,
 }: ISwiper) {
   const swiper = useRef<TSwiper | null>(null)
   const ref = useRef<HTMLDivElement | null>(null)
@@ -37,7 +39,9 @@ export default function Swiper({
         onSwiper={newSwiper => {
           swiper.current = newSwiper
         }}
+        loop={loop}
         className={style.swiper}
+        spaceBetween={gap}
       >
         {Array.isArray(children) ? (
           children.map((v, i) => (

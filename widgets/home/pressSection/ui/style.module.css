@@ -1,0 +1,25 @@
+.container {
+  column-count: 3;
+  column-gap: 16px;
+  padding: 24px;
+}
+
+.boxContainer {
+  break-inside: avoid;
+  padding: 24px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  background-color: var(--container-alternative-light);
+}
+
+.articleContainer{
+  cursor: pointer;
+}
+.articleContainer:hover,
+.articleContainer:active {
+  text-decoration: underline;
+}
+
+.articleContainer {
+  padding: 8px;
+}

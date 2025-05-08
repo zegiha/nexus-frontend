@@ -1,3 +1,4 @@
+import {TanstackQueryProvider} from '@/shared/components/atom/TanstackQueryProvider'
 import type { Metadata } from "next";
 import "./globals.css";
 import "swiper/css"
@@ -23,9 +24,11 @@ export default function RootLayout({
   return (
     <html lang="ko">
     <body className={`${Pretendard.className}`}>
-      <Header></Header>
+    <TanstackQueryProvider>
+      <Header/>
       {children}
-    <div id={''}/>
+      <div id={''}/>
+    </TanstackQueryProvider>
     </body>
     </html>
   )

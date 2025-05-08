@@ -122,6 +122,9 @@
   --status-translucent-negative-dark: rgba(var(--tint-red-rgb), 0.18);
   --status-translucent-cautionary-light: rgba(var(--tint-yellow-rgb), 0.18);
   --status-translucent-cautionary-dark: rgba(var(--tint-yellow-rgb), 0.18);
+
+  --interaction-hover: rgba(var(--gray-50-rgb), 0.16);
+  --interaction-active: rgba(var(--gray-50-rgb), 0.32);
 }
 
 
@@ -227,4 +230,8 @@ input::-webkit-search-cancel-button,
 input::-webkit-search-results-button,
 input::-webkit-search-results-decoration{
   display:none;
+}
+
+img {
+  object-fit: cover;
 }

@@ -1,9 +1,11 @@
-.overflowLine {
+.overflowLine1, .overflowLine2 {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.overflowLine1 {-webkit-line-clamp: 1;}
+.overflowLine2 {-webkit-line-clamp: 2;}
 
 .accent {
   font-weight: var(--accent-weight);

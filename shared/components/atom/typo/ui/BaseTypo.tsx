@@ -10,7 +10,7 @@ export default function BaseTypo({
   children,
   className: classNameProps,
   size,
-  width,
+  width='fill',
   color='normal',
   accent,
   onClick,
@@ -23,14 +23,17 @@ export default function BaseTypo({
       className: classNames([
         style[size],
         accent && style.accent,
-        textOverflowLine ? style.overflowLine : undefined,
+        textOverflowLine ?
+          textOverflowLine === 1 ?
+            style.overflowLine1 :
+            style.overflowLine2 :
+          undefined,
         style[color],
         classNameProps,
       ]),
       style: {
         ...getWidth(width),
         color: getTextColor(color),
-        lineClamp: textOverflowLine,
         textDecoration: underline ? 'underline' : undefined,
       },
       onClick: () => {onClick && onClick()},

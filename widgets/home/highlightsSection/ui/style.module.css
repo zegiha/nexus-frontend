@@ -1,0 +1,7 @@
+.section {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  grid-gap: 24px;
+  background-color: var(--background-normal-light);
+}

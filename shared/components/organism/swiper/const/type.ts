@@ -9,5 +9,7 @@ export interface ISwiperNavigation {
 
 export interface ISwiper {
   children: Array<ReactNode> | ReactNode
+  loop?: boolean
   navigationPosition: ISwiperNavigation['position']
+  gap?: number
 }
