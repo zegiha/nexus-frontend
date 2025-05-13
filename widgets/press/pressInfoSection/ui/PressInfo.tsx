@@ -32,7 +32,7 @@ export default function PressInfo({ pressDetail, onSubscribe }: PressInfoProps) 
         </div>
         
         <Col gap={4}>
-          <Typo.xxlarge weight="bold" color="white">
+          <Typo.xxlarge weight="bold" color="static-white">
             {pressDetail.name}
           </Typo.xxlarge>
           
@@ -40,7 +40,7 @@ export default function PressInfo({ pressDetail, onSubscribe }: PressInfoProps) 
             {pressDetail.description}
           </Typo.medium>
           
-          <Typo.medium color="white">
+          <Typo.medium color="static-white">
             <strong>{pressDetail.subscriberCount.toLocaleString()}</strong> 구독중
           </Typo.medium>
         </Col>

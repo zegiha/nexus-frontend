@@ -28,18 +28,15 @@ export default function PressDetailSection({
   
   return (
     <Col gap={24}>
-      <PressInfo 
+      <PressInfo
         pressDetail={pressDetail} 
         onSubscribe={onSubscribe} 
       />
       
-      <div>
-        <PressCategories 
-          categories={pressDetail.categories} 
-          onSelectCategory={setSelectedCategory} 
-        />
-      </div>
-      
+      <PressCategories 
+        categories={pressDetail.categories} 
+        onSelectCategory={setSelectedCategory} 
+      />
       <HeadlinesGrid headlines={filteredHeadlines} />
     </Col>
   )

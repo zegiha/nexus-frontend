@@ -9,8 +9,7 @@ import styles from './styles.module.css'
 
 export default function PressDetailPage() {
   // URL에서 언론사 ID 파라미터 가져오기
-  const params = useParams()
-  const pressId = params.id as string
+  const {id: pressId} = useParams<{id: string}>()
   
   // 언론사 상세 정보와 헤드라인 데이터 가져오기
   const { pressDetail, isLoading: isPressLoading, error: pressError, toggleSubscription } = usePressDetail(pressId)

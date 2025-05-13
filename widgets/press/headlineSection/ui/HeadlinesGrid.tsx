@@ -22,9 +22,8 @@ export default function HeadlinesGrid({ headlines }: HeadlinesGridProps) {
   return (
     <div className={style.headlinesGrid}>
       {headlines.map((headline, index) => (
-        <div key={headline.id} className={style.headlineWrapper}>
+        <div key={index} className={style.headlineWrapper}>
           <PressPageHeadline {...headline} />
-          {index !== headlines.length - 1 && <Divider />}
         </div>
       ))}
     </div>
