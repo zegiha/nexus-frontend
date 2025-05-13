@@ -9,7 +9,7 @@ export default function SegmentBarSection({
 }: {
   children: ReactNode
 }) {
-  const [active, setActive] = useState<number>(1)
+  const [active, setActive] = useState<number>(0)
   return (
     <Col
       className={style.sectionContainer}

@@ -4,6 +4,7 @@ import {Typo} from '@/shared/components/atom/typo'
 import {Avatar} from '@/shared/components/molecule/avatar'
 import Image from 'next/image'
 import Link from 'next/link'
+import {useRouter} from 'next/navigation'
 import style from './latestNews.module.css'
 
 export default function NewsRow({
@@ -14,25 +15,38 @@ export default function NewsRow({
   img,
   video
 }: headlineEntity) {
+  const router = useRouter();
+  
+  const handleArticleClick = () => {
+    router.push(`/article/${id}`);
+  };
+  
   return (
-    <Link href={`/article/${id}`}>
-      <Row className={style.newsRow} gap={12}>
-        <Col gap={4}>
+    <Row className={style.newsRow} gap={12}>
+      <Col gap={4}>
+        <div onClick={handleArticleClick} className={style.articleContent}>
           <Typo.medium textOverflowLine={2}>
             {title}
           </Typo.medium>
           <Typo.medium color={'alternative'} textOverflowLine={1}>
             {contents}
           </Typo.medium>
-          <Avatar
-            size={'small'}
-            imageUrl={press.imgUrl}
-            name={press.name}
-            nameColor={'alternative'}
-          />
-        </Col>
+        </div>
+        <div onClick={(e) => {
+          e.stopPropagation();
+        }}>
+          <Link href={`/press/${encodeURIComponent(press.name)}`}>
+            <Avatar
+              size={'small'}
+              imageUrl={press.imgUrl}
+              name={press.name}
+              nameColor={'alternative'}
+            />
+          </Link>
+        </div>
+      </Col>
         {img && (
-          <div className={style.newsRowImgAndVideoWrapper}>
+          <div className={style.newsRowImgAndVideoWrapper} onClick={handleArticleClick}>
             <Image
               src={img.url}
               alt={img.alt ?? '헤드라인 이미지'}
@@ -47,9 +61,9 @@ export default function NewsRow({
           <video
             className={style.newsRowImgAndVideoWrapper}
             src={video.url}
+            onClick={handleArticleClick}
           />
         )}
       </Row>
-    </Link>
   )
 }

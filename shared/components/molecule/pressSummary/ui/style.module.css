@@ -1,0 +1,21 @@
+.pressContainer {
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  align-items: center;
+}
+
+.pressLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.pressLink:hover .pressContainer {
+  background-color: rgba(10, 10, 10, 0.05);
+}
+
+.pressName {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a1a;
+}

@@ -7,6 +7,7 @@ import Article from '@/widgets/home/pressSection/ui/Article'
 import HeadlineProvider from '@/widgets/home/pressSection/ui/headline/HeadlineProvider'
 import style from './style.module.css'
 import React from 'react'
+import Link from 'next/link'
 
 export default function Box({
   press,
@@ -20,11 +21,13 @@ export default function Box({
 
   return (
     <Col className={style.boxContainer} gap={24}>
-      <Avatar
-        size={'small'}
-        name={press.name}
-        imageUrl={press.imgUrl}
-      />
+      <Link href={`/press/${encodeURIComponent(press.name)}`}>
+        <Avatar
+          size={'small'}
+          name={press.name}
+          imageUrl={press.imgUrl}
+        />
+      </Link>
       <Col gap={12}>
         <HeadlineProvider headlines={headlines}/>
         <Col>

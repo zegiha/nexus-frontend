@@ -11,8 +11,8 @@ export default function Page() {
     <Col>
       <HighlightsSection/>
       <SegmentBarSection>
-        {/*<PressSection/>*/}
-        <HeadlineSection/>
+        <PressSection/>
+        {/* <HeadlineSection/> */}
       </SegmentBarSection>
     </Col>
   )
