@@ -12,4 +12,5 @@ export default interface IBaseTypo {
   onClick?: () => void
   textOverflowLine?: number
   underline?: boolean
+  wrap?: boolean
 }

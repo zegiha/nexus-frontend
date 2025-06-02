@@ -16,6 +16,7 @@ export default function BaseTypo({
   onClick,
   textOverflowLine,
   underline,
+  wrap=true
 }: IBaseTypo) {
   return createElement(
     getTag(size),
@@ -26,9 +27,12 @@ export default function BaseTypo({
         textOverflowLine ?
           textOverflowLine === 1 ?
             style.overflowLine1 :
-            style.overflowLine2 :
+            textOverflowLine === 2 ?
+              style.overflowLine2 :
+              style.overflowLine3:
           undefined,
         style[color],
+        !wrap && style.noWrap,
         classNameProps,
       ]),
       style: {

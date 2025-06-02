@@ -25,8 +25,9 @@ export default function BaseButtonContents({
   const typoProps = {
     color: getColor(color),
     accent: accent,
+    wrap: false,
     children,
   }
 
-  return <Typo.medium {...typoProps}></Typo.medium>
+  return <Typo.medium {...typoProps}/>
 }

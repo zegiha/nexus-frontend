@@ -4,6 +4,7 @@
 }
 
 .small, .medium, .parentHeight {
+  flex-shrink: 0;
   border-radius: 128px;
   position: relative;
   overflow: hidden;

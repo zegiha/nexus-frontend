@@ -1,7 +1,7 @@
-import {headlineEntity} from '@/entity/headline'
+import {articleEntity} from '@/entity/article'
 
-export default async function getHeadline() {
-  const dummyWithPicture: headlineEntity = {
+export default async function getArticlesEntity() {
+  const dummyWithPicture: articleEntity = {
     id: '00d249ec-d787-42aa-bcc6-e64c9c4232ef',
     category: '정치',
     title: '尹대통령 \'운명의 날\'…헌재 탄핵심판 4일 오전 11시 선고(종합)',
@@ -14,9 +14,10 @@ export default async function getHeadline() {
       name: 'SBS',
       imgUrl: 'https://i.pinimg.com/736x/66/7d/c0/667dc0938dc7c1d22e56f0bbd1d04357.jpg',
     },
+    createdAt:new Date('2025-06-02'),
   }
 
-  const dummyWithVideo: headlineEntity = {
+  const dummyWithVideo: articleEntity = {
     id: '00d249ec-d787-42aa-bcc6-e64c9c4232ef',
     title: '尹대통령 \'운명의 날\'…헌재 탄핵심판 4일 오전 11시 선고(종합)',
     contents: '11회 변론·16명 증인신문…38일 \'대통령사건 최장\' 평의 끝에 결론\n현 8명 중 재판관 6인 이상 찬성시 尹대통령 파면…미달시 직무복귀',
@@ -27,9 +28,10 @@ export default async function getHeadline() {
       name: 'SBS',
       imgUrl: 'https://i.pinimg.com/736x/66/7d/c0/667dc0938dc7c1d22e56f0bbd1d04357.jpg',
     },
+    createdAt:new Date('2025-06-02'),
   }
 
-  const dummy: headlineEntity = {
+  const dummy: articleEntity = {
     id: '00d249ec-d787-42aa-bcc6-e64c9c4232ef',
     title: '尹대통령 \'운명의 날\'…헌재 탄핵심판 4일 오전 11시 선고(종합)',
     contents: '11회 변론·16명 증인신문…38일 \'대통령사건 최장\' 평의 끝에 결론\n현 8명 중 재판관 6인 이상 찬성시 尹대통령 파면…미달시 직무복귀',
@@ -37,9 +39,10 @@ export default async function getHeadline() {
       name: 'SBS',
       imgUrl: 'https://i.pinimg.com/736x/66/7d/c0/667dc0938dc7c1d22e56f0bbd1d04357.jpg',
     },
+    createdAt:new Date('2025-06-02'),
   }
 
-  const res: Array<headlineEntity> = []
+  const res: Array<articleEntity> = []
   for(let i = 0; i < 18; i++) {
     if(i % 2 == 0) res.push(dummyWithPicture)
     else if(i % 3 == 0) res.push(dummyWithVideo)

@@ -1,5 +1,5 @@
+import ISegment from '@/shared/components/molecule/segment/const/ISegment'
 import {RoundButton} from '@/shared/components/molecule/button'
-import ISegment from '@/widgets/home/segmentBarSection/const/ISegment'
 
 export default function Segment({
   isActive,
@@ -8,6 +8,7 @@ export default function Segment({
 }: ISegment) {
   return (
     <RoundButton.translucent
+      width={'hug'}
       color={isActive ? 'brand' : 'gray'}
       size={'small'}
       onClick={activate}

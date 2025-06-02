@@ -1,8 +1,8 @@
-import {headlineEntity} from '@/entity/headline'
+import {articleWithoutPressEntity} from '@/entity/article'
 
-export default function headlineArrayParser(raw: Array<Omit<headlineEntity, 'press'>>): Array<Array<Omit<headlineEntity, 'press'>>> {
-  const res: Array<Array<Omit<headlineEntity, 'press'>>> = []
-  let tmp: Array<Omit<headlineEntity, 'press'>> = []
+export default function headlineArrayParser(raw: Array<articleWithoutPressEntity>): Array<Array<articleWithoutPressEntity>> {
+  const res: Array<Array<articleWithoutPressEntity>> = []
+  let tmp: Array<articleWithoutPressEntity> = []
   raw.forEach((item) => {
     if(!item.video && !item.img) {
       if(tmp.length === 1) res.push(tmp)

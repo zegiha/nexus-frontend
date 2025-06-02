@@ -1,4 +1,4 @@
-import {headlineEntity} from '@/entity/headline'
+import {articleWithoutPressEntity} from '@/entity/article'
 import {Col, Row} from '@/shared/components/atom/flex'
 import {Typo} from '@/shared/components/atom/typo'
 import Image from 'next/image'
@@ -11,7 +11,7 @@ export default function FewHeadline({
   contents,
   img,
   video,
-}: Omit<headlineEntity, 'press'>) {
+}: articleWithoutPressEntity) {
   const router = useRouter()
 
   return (
@@ -34,6 +34,8 @@ export default function FewHeadline({
             src={img.url}
             alt={img.alt ?? '헤드라인 이미지'}
             fill
+            priority={true}
+            fetchPriority={'low'}
             sizes={'133px'}
           />
         </div>

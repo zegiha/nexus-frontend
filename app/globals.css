@@ -199,6 +199,11 @@
   --transition-duration-slow: .52s;
 }
 
+:root {
+  --media-medium: 720px;
+  --media-small: 480px;
+}
+
 * {
   font-family: var(--default-font), sans-serif;
   box-sizing: border-box;

@@ -18,7 +18,7 @@ export default function Chip({
       )}
       width={'hug'}
     >
-      <Typo.small color={getColor(color)}>
+      <Typo.small width={'hug'} color={getColor(color)}>
         {children}
       </Typo.small>
     </Row>

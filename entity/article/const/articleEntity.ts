@@ -1,12 +1,11 @@
-export default interface headlineEntity {
+import {pressSummaryEntity} from '@/entity/press'
+
+export default interface articleEntity {
   id: string
   title: string
   contents: string
   category?: string
-  press: {
-    name: string
-    imgUrl: string
-  }
+  press: pressSummaryEntity,
   img?: {
     url: string
     alt?: string
@@ -15,4 +14,5 @@ export default interface headlineEntity {
     url: string
     alt?: string
   }
+  createdAt: Date
 }

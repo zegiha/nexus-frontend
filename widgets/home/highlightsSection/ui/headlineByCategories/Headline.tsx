@@ -1,4 +1,4 @@
-import {categorizedHeadlineEntity} from '@/entity/headline'
+import {articleWithCategoryEntity} from '@/entity/article'
 import {Col, Row} from '@/shared/components/atom/flex'
 import {Typo} from '@/shared/components/atom/typo'
 import {Avatar} from '@/shared/components/molecule/avatar'
@@ -16,7 +16,7 @@ export default function Headline({
   press,
   img,
   video,
-}: categorizedHeadlineEntity) {
+}: articleWithCategoryEntity) {
   return (
     <Link href={`/article/${id}`}>
       <Col className={style.headlineContainer} gap={8}>

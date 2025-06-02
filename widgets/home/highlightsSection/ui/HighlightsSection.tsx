@@ -10,9 +10,9 @@ export default function HighlightsSection() {
   } = useOffsetHeight()
 
   return (
-    <div className={style.section}>
+    <section className={style.section}>
       <HeadlinesByCategories updateOffsetHeight={updateOffsetHeight}/>
       <LatestNews offsetHeight={offsetHeight}/>
-    </div>
+    </section>
   )
 }

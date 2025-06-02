@@ -1,4 +1,4 @@
-import {headlineEntity} from '@/entity/headline'
+import {articleWithoutPressEntity} from '@/entity/article'
 import {Col} from '@/shared/components/atom/flex'
 import {Typo} from '@/shared/components/atom/typo'
 import Image from 'next/image'
@@ -10,13 +10,13 @@ export default function PlentyHeadlineWithMedia({
   title,
   img,
   video
-}: Omit<headlineEntity, 'press'>) {
+}: articleWithoutPressEntity) {
   const router = useRouter()
 
   return (
     <Col
       className={style.headlineContainer}
-      width={{unit: '%', value: 50}}
+      width={'50%'}
       gap={8}
       onClick={() => {router.replace(`/article/${id}`)}}
     >
@@ -26,6 +26,8 @@ export default function PlentyHeadlineWithMedia({
             src={img.url}
             alt={img.alt ?? '헤드라인 이미지'}
             fill
+            priority={true}
+            fetchPriority={'low'}
             sizes={'240px'}
           />
         </div>

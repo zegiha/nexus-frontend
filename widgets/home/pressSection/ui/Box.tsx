@@ -1,5 +1,4 @@
-import {headlineEntity} from '@/entity/headline'
-import {pressSummaryEntity} from '@/entity/press'
+import IBox from '@/widgets/home/pressSection/const/IBox'
 import {Divider} from '@/shared/components/atom/divider'
 import {Col} from '@/shared/components/atom/flex'
 import {Avatar} from '@/shared/components/molecule/avatar'
@@ -12,11 +11,7 @@ export default function Box({
   press,
   headlines,
   articles,
-}: {
-  press: pressSummaryEntity,
-  headlines: Array<Omit<headlineEntity, 'press'>>
-  articles: Array<{id: string, title: string}>
-}) {
+}: IBox) {
 
   return (
     <Col className={style.boxContainer} gap={24}>

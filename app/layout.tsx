@@ -4,7 +4,7 @@ import "./globals.css";
 import "swiper/css"
 import localFont from 'next/font/local'
 import {ReactNode} from 'react'
-import { Header } from "../shared/components/organism/header";
+import { Header } from "@/shared/components/organism/header";
 
 const Pretendard = localFont({
   src: '../public/font/PretendardVariable.woff2',

@@ -1,4 +1,4 @@
-import {headlineEntity} from '@/entity/headline'
+import {articleWithoutPressEntity} from '@/entity/article'
 import {Col} from '@/shared/components/atom/flex'
 import {Typo} from '@/shared/components/atom/typo'
 import style from './style.module.css'
@@ -8,7 +8,7 @@ export default function PlentyHeadlineWithoutMedia({
   id,
   title,
   contents,
-}: Omit<headlineEntity, 'press'>) {
+}: articleWithoutPressEntity) {
   const router = useRouter()
 
   return (

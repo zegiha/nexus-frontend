@@ -25,7 +25,7 @@ export default function Header() {
                     <Search
                     value={searchValue}
                     onChange={e => {setSearchValue(e.target.value)}}
-                    searchResult={null}
+                    searchResult={['hoho']}
                     />
                 </Row>
                 <Row width={'hug'} gap={8}>

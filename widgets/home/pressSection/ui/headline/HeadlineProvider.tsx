@@ -1,4 +1,4 @@
-import {headlineEntity} from '@/entity/headline'
+import {articleWithoutPressEntity} from '@/entity/article'
 import {Row} from '@/shared/components/atom/flex'
 import Swiper from '@/shared/components/organism/swiper/ui/Swiper'
 import headlineArrayParser from '@/widgets/home/pressSection/helper/headlineArrayParser'
@@ -10,7 +10,7 @@ import React from 'react'
 export default function HeadlineProvider({
   headlines
 }: {
-  headlines: Array<Omit<headlineEntity, 'press'>>
+  headlines: Array<articleWithoutPressEntity>
 }) {
   if (2 < headlines.length)
     return (

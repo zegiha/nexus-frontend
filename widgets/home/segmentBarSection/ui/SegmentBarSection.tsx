@@ -1,24 +1,36 @@
+'use client'
+
 import {Col} from '@/shared/components/atom/flex'
-import {semantic} from '@/shared/design'
-import SegmentBar from '@/widgets/home/segmentBarSection/ui/SegmentBar'
-import {ReactNode, useState} from 'react'
+import {SegmentBar} from '@/shared/components/organism/segmentBar'
+import categories from '@/widgets/home/categorySection/const/categories'
+import CategorySection from '@/widgets/home/categorySection/ui/CategorySection'
+import PressSection from '@/widgets/home/pressSection/ui/PressSection'
+import classNames from 'classnames'
+import {AnimatePresence} from 'motion/react'
+import {useState} from 'react'
 import style from './style.module.css'
 
-export default function SegmentBarSection({
-  children
-}: {
-  children: ReactNode
-}) {
-  const [active, setActive] = useState<number>(1)
+export default function() {
+  const [active, setActive] = useState<number>(0)
+  const segments = ['언론사별', ...categories]
+
   return (
-    <Col
-      className={style.sectionContainer}
-      style={{backgroundColor: active === 0 ?
-          semantic.light.background.alternative :
-          semantic.light.background.normal}}
-    >
-      <SegmentBar/>
-      {children}
+    <Col className={classNames(
+      style.container,
+      active === 0 ?
+        style.whenPressSection :
+        style.whenCategorySection
+    )}>
+      <SegmentBar segments={segments} active={active} setActive={setActive} />
+      <AnimatePresence mode={'wait'}>
+        {active === 0 ?
+          <PressSection key={'press'}/>:
+          <CategorySection
+            key={`category-${segments[active]}`}
+            activeCategory={segments[active]}
+          />
+        }
+      </AnimatePresence>
     </Col>
   )
 }

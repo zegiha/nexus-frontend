@@ -1,4 +1,4 @@
-import {headlineEntity} from '@/entity/headline'
+import {articleEntity} from '@/entity/article'
 import {Col, Row} from '@/shared/components/atom/flex'
 import {Typo} from '@/shared/components/atom/typo'
 import {Avatar} from '@/shared/components/molecule/avatar'
@@ -13,7 +13,7 @@ export default function NewsRow({
   press,
   img,
   video
-}: headlineEntity) {
+}: articleEntity) {
   return (
     <Link href={`/article/${id}`}>
       <Row className={style.newsRow} gap={12}>

@@ -1,19 +1,7 @@
-.sectionContainer {
+.container {
   position: relative;
+  transition: background-color var(--transition-duration-fast) var(--transition-cubic-bezier);
 }
 
-.segmentBarSectionWrapper {
-  position: sticky;
-  top: 77px;
-  padding: 4px 24px;
-  z-index: 10;
-  pointer-events: none;
-}
-
-.segmentBarContainer {
-  padding: 12px 24px;
-  border-radius: 28px;
-  background-color: var(--background-elevated-light);
-  box-shadow: 0 8px 24px 12px rgba(var(--gray-50-rgb), 0.24);
-  pointer-events: auto;
-}
+.whenPressSection {background-color: var(--background-alternative-light);}
+.whenCategorySection {background-color: var(--background-normal-light);}

@@ -1,17 +1,17 @@
 'use client'
 
-import {categorizedHeadlineEntity, getHeadlineSummaryByCategory} from '@/entity/headline'
+import {articleWithCategoryEntity, getArticlesWithCategoryEntity} from '@/entity/article'
 import {useQuery} from '@tanstack/react-query'
 import {RefObject, useEffect, useRef} from 'react'
 
 export default function useHeadlinesByCategories(
   updateOffsetHeight: (ref: RefObject<HTMLDivElement | null>) => void
 ) {
-  const queryRes = useQuery<Array<categorizedHeadlineEntity>, Error>({
+  const queryRes = useQuery<Array<articleWithCategoryEntity>, Error>({
     queryKey: ['headlineByCategory'],
     queryFn: async () => {
       await new Promise(resolve => setTimeout(resolve, 2000)); // 2초 대기
-      return getHeadlineSummaryByCategory();
+      return getArticlesWithCategoryEntity();
     },
   })
 

@@ -4,4 +4,7 @@
   grid-template-columns: 7fr 5fr;
   grid-gap: 24px;
   background-color: var(--background-normal-light);
+  @media(max-width: 720px) {
+    grid-template-columns: 1fr;
+  }
 }

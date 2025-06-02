@@ -1,7 +1,7 @@
-import {categorizedHeadlineEntity} from '@/entity/headline'
+import {articleWithCategoryEntity} from '@/entity/article'
 
-export default async function getHeadlineSummaryByCategory(): Promise<Array<categorizedHeadlineEntity>> {
-  const dummyWithPicture: categorizedHeadlineEntity = {
+export default async function getArticlesWithCategoryEntity(): Promise<Array<articleWithCategoryEntity>> {
+  const dummyWithPicture: articleWithCategoryEntity = {
     id: '00d249ec-d787-42aa-bcc6-e64c9c4232ef',
     category: '정치',
     title: '尹대통령 \'운명의 날\'…헌재 탄핵심판 4일 오전 11시 선고(종합)',
@@ -14,9 +14,10 @@ export default async function getHeadlineSummaryByCategory(): Promise<Array<cate
       name: 'SBS',
       imgUrl: 'https://i.pinimg.com/736x/66/7d/c0/667dc0938dc7c1d22e56f0bbd1d04357.jpg',
     },
+    createdAt:new Date('2025-06-02'),
   }
 
-  const dummyWithVideo: categorizedHeadlineEntity = {
+  const dummyWithVideo: articleWithCategoryEntity = {
     id: '00d249ec-d787-42aa-bcc6-e64c9c4232ef',
     category: '정치',
     title: '尹대통령 \'운명의 날\'…헌재 탄핵심판 4일 오전 11시 선고(종합)',
@@ -28,9 +29,10 @@ export default async function getHeadlineSummaryByCategory(): Promise<Array<cate
       name: 'SBS',
       imgUrl: 'https://i.pinimg.com/736x/66/7d/c0/667dc0938dc7c1d22e56f0bbd1d04357.jpg',
     },
+    createdAt:new Date('2025-06-02'),
   }
 
-  const res: Array<categorizedHeadlineEntity> = []
+  const res: Array<articleWithCategoryEntity> = []
   for(let i = 0; i < 10; i++) {
     if(i % 2 == 0) res.push(dummyWithPicture)
     else res.push(dummyWithVideo)
