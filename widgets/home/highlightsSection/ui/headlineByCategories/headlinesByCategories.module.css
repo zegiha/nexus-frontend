@@ -7,10 +7,13 @@
   padding: 12px;
   border-radius: 16px;
   background-color: var(--component-fill-alternative-light);
+}
+
+.articleClickable {
   cursor: pointer;
 }
 
-.headlineContainer:hover>.titleWrapper {
+.articleClickable:hover .titleWrapper {
   text-decoration: underline;
 }
 

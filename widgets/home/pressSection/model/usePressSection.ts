@@ -13,7 +13,7 @@ export default function usePressSection() {
     }>
   >({
     queryKey: ['headlinesByPress'],
-    queryFn: getArticlesByPress,
+    queryFn: async () => getArticlesByPress('pressId'),
   })
 
   return {

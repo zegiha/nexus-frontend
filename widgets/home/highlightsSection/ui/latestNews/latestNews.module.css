@@ -2,10 +2,13 @@
   padding: 8px;
   border-radius: 8px;
   transition: var(--transition-duration-fast) var(--transition-cubic-bezier);
-  cursor: pointer;
 }
 .newsRow:hover {background-color: var(--interaction-hover);}
 .newsRow:active {background-color: var(--interaction-active);}
+
+.articleContent {
+  cursor: pointer;
+}
 
 .newsRowSkeleton, .newsRowSkeleton:hover, .newsRowSkeleton:active {
   background-color: var(--component-fill-normal-light);

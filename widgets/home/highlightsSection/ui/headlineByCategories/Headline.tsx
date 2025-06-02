@@ -6,6 +6,7 @@ import {Chip} from '@/shared/components/molecule/chip'
 import classNames from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
+import {useRouter} from 'next/navigation'
 import style from './headlinesByCategories.module.css'
 
 export default function Headline({
@@ -17,9 +18,15 @@ export default function Headline({
   img,
   video,
 }: articleWithCategoryEntity) {
+  const router = useRouter();
+
+  const handleArticleClick = () => {
+    router.push(`/article/${id}`);
+  };
+
   return (
-    <Link href={`/article/${id}`}>
-      <Col className={style.headlineContainer} gap={8}>
+    <Col className={style.headlineContainer} gap={8}>
+      <div onClick={handleArticleClick} className={style.articleClickable}>
         <Chip color={'gray'}>
           {category}
         </Chip>
@@ -31,15 +38,21 @@ export default function Headline({
             {contents}
           </Typo.medium>
         </Col>
-        <Row className={style.visualPadding}>
+      </div>
+
+      <Row className={style.visualPadding}>
+        <Link href={`/press/${encodeURIComponent(press.name)}`}>
           <Avatar
             size={'medium'}
             imageUrl={press.imgUrl}
             name={press.name}
             nameColor={'alternative'}
           />
-        </Row>
-        {img && (
+        </Link>
+      </Row>
+
+      {img && (
+        <div onClick={handleArticleClick} className={style.articleClickable}>
           <Col gap={4}>
             <div className={style.headlineImgWrapper}>
               <Image
@@ -57,8 +70,11 @@ export default function Headline({
               </div>
             )}
           </Col>
-        )}
-        {video && (
+        </div>
+      )}
+
+      {video && (
+        <div onClick={handleArticleClick} className={style.articleClickable}>
           <Col gap={4}>
             <video
               className={style.headlineImgWrapper}
@@ -70,8 +86,8 @@ export default function Headline({
               </div>
             )}
           </Col>
-        )}
-      </Col>
-    </Link>
+        </div>
+      )}
+    </Col>
   )
 }

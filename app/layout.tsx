@@ -23,13 +23,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-    <body className={`${Pretendard.className}`}>
-    <TanstackQueryProvider>
-      <Header/>
-      {children}
-      <div id={''}/>
-    </TanstackQueryProvider>
-    </body>
+      <body className={`${Pretendard.className}`}>
+        <TanstackQueryProvider>
+          <Header/>
+          {children}
+          <div id={''}/>
+        </TanstackQueryProvider>
+      </body>
     </html>
   )
 }

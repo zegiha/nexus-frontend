@@ -6,11 +6,12 @@ import { useState } from "react"
 import { IconButton } from "@/shared/components/molecule/iconButton"
 import style from './style.module.css'
 import Logo from "@/public/Logo"
-// import { useRouter } from "next/router"
+import { useRouter } from "next/navigation" 
 
 export default function Header() {
     const [searchValue, setSearchValue] = useState<string | null>(null)
     const [isBellOpen, setIsBellOpen] = useState<boolean>(false)
+    const router = useRouter() 
 
     return (
         <>
@@ -18,9 +19,10 @@ export default function Header() {
             className={style.container}
             justifyContent={'space-between'}
             alignItems={'center'}
-            
             >
-                <Logo/>
+                <div onClick={() => router.push('/')} style={{ cursor: 'pointer' }}>
+                    <Logo/>
+                </div>
                 <Row className={style.searchWrapper}>
                     <Search
                     value={searchValue}
