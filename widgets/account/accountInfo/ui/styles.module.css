@@ -1,0 +1,6 @@
+.infoContainer {
+  border: 1px solid var(--line-border-light);
+  border-radius: 8px;
+  padding: 16px;
+  min-width: 320px;
+}

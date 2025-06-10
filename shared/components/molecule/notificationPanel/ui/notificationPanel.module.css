@@ -1,0 +1,140 @@
+.div {
+  position: relative;
+  line-height: 28px;
+  font-weight: 600;
+  color: var(--label-strong-light);
+}
+
+.frameChild {
+  width: 48px;
+  height: 48px;
+  position: relative;
+  border-radius: 48px;
+  background-color: var(--component-fill-normal-light);
+  max-height: 100%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.div1 {
+  align-self: stretch;
+  position: relative;
+  line-height: 20px;
+  font-weight: 500;
+  color: var(--label-strong-light);
+  display: -webkit-inline-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
+}
+
+.div2 {
+  align-self: stretch;
+  position: relative;
+  line-height: 18px;
+  font-size: 14px;
+  color: var(--label-alternative-light);
+  display: -webkit-inline-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
+}
+
+.group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 4px;
+  min-width: 0;
+}
+
+.frameItem {
+  width: 80px;
+  height: 48px;
+  position: relative;
+  border-radius: 4px;
+  background-color: var(--component-fill-normal-light);
+  flex-shrink: 0;
+}
+
+.frameContainer {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  width: 100%;
+}
+
+.frameWrapper {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 8px 0;
+  border-radius: 8px;
+  transition: all var(--transition-duration-fast) var(--transition-cubic-bezier);
+  cursor: pointer;
+}
+
+.frameWrapper:hover {
+  background-color: var(--interaction-hover);
+  padding: 8px 12px;
+}
+
+.frameGroup {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 4px;
+  font-size: 16px;
+}
+
+.parent {
+  align-self: stretch;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.frameParent {
+  width: 100%;
+  min-width: 480px;
+  max-width: 600px;
+  position: absolute;
+  margin: 0 !important;
+  top: 54px;
+  right: 0;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  background-color: var(--background-elevated-light);
+  border: 1px solid var(--line-border-light);
+  box-sizing: border-box;
+  height: 480px;
+  overflow-y: auto;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 16px;
+  gap: 16px;
+  text-align: left;
+  font-size: 18px;
+  color: var(--label-normal-light);
+  font-family: Pretendard;
+  z-index: 1000;
+}

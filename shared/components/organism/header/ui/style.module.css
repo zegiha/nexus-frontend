@@ -10,3 +10,7 @@
 .searchWrapper {
     max-width: 480px;
 }
+
+.bellContainer {
+    position: relative;
+}
