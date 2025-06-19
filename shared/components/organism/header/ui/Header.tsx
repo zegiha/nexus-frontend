@@ -58,7 +58,7 @@ export default function Header() {
                         />
                         <IconButton.transparent
                         iconKey={'account'}
-                        onClick={() => router.push('/account')}
+                        onClick={() => router.push('/auth/login')}
                         />
                     </Row>
                     <AnimatePresence>

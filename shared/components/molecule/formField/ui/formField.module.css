@@ -1,0 +1,119 @@
+.fieldContainer {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+
+.labelRow {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.label {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  color: var(--label-strong-light);
+}
+
+.required {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--status-negative-light);
+  font-weight: 500;
+}
+
+.inputWrapper {
+  align-self: stretch;
+  border-radius: 8px;
+  border: 1.5px solid var(--line-border-light);
+  box-sizing: border-box;
+  height: 48px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 12px 16px;
+  transition: all var(--transition-duration-fast) var(--transition-cubic-bezier);
+  background-color: var(--background-normal-light);
+}
+
+.inputWrapper.focused {
+  border-color: var(--brand-normal-light);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.inputWrapper.error {
+  border-color: var(--status-negative-light);
+  background-color: var(--status-translucent-negative-light);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--label-strong-light);
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
+}
+
+.input::placeholder {
+  color: var(--label-alternative-light);
+  font-weight: 400;
+}
+
+.errorMessage {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--status-negative-light);
+  font-weight: 500;
+}
+
+.helpText {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--label-alternative-light);
+  font-weight: 400;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 480px) {
+  .inputWrapper {
+    height: 44px;
+    padding: 10px 14px;
+    border-radius: 6px;
+  }
+  
+  .input {
+    font-size: 16px;
+    line-height: 22px;
+  }
+  
+  .label {
+    font-size: 13px;
+    line-height: 18px;
+  }
+  
+  .required {
+    font-size: 13px;
+    line-height: 18px;
+  }
+  
+  .errorMessage,
+  .helpText {
+    font-size: 13px;
+    line-height: 18px;
+  }
+}

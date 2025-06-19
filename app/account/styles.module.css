@@ -309,6 +309,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  padding-top: 16px; /* 헤더와의 간격 조정 */
   min-height: 1024px;
   text-align: left;
   font-size: 16px;

@@ -1,6 +1,9 @@
 @import '@material-symbols/font-300';
 
 :root {
+  /* Layout Variables */
+  --header-height: 80px;
+  
   /* Base Colors */
   --white: #ffffff;
   --black: #0a0a0a;
@@ -239,4 +242,17 @@ input::-webkit-search-results-decoration{
 
 img {
   object-fit: cover;
+}
+
+/* Main Content Layout */
+main {
+  /* 헤더가 sticky로 되어 있어서 실제로는 패딩이 필요하지 않음 */
+  /* 하지만 콘텐츠가 헤더 바로 아래부터 시작되도록 보장 */
+  position: relative;
+  z-index: 1;
+}
+
+/* Auth 페이지 전용 스타일 */
+.auth-page {
+  min-height: calc(100vh - var(--header-height));
 }

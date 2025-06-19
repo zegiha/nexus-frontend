@@ -1,0 +1,133 @@
+.formContainer {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.stepContainer {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 28px;
+  min-height: auto;
+  width: 100%;
+}
+
+.stepHeader {
+  text-align: center;
+  margin-bottom: 32px;
+  padding: 0 16px;
+}
+
+.stepTitle {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--label-strong-light);
+  margin-bottom: 12px;
+  line-height: 36px;
+}
+
+.stepDescription {
+  font-size: 16px;
+  color: var(--label-alternative-light);
+  line-height: 24px;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.progressIndicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+  padding: 0 16px;
+}
+
+.progressDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--fill-quaternary-light);
+  transition: all var(--transition-duration-fast) var(--transition-cubic-bezier);
+  border: 2px solid var(--fill-quaternary-light);
+}
+
+.progressDot.active {
+  background-color: var(--accent-brand-light);
+  border-color: var(--accent-brand-light);
+  transform: scale(1.2);
+}
+
+.nextButton,
+.completeButton {
+  margin-top: 24px;
+  width: 100%;
+}
+
+.stepContent {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 24px;
+  width: 100%;
+  flex: 1;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 480px) {
+  .stepHeader {
+    margin-bottom: 20px;
+    padding: 0 12px;
+  }
+  
+  .stepTitle {
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 6px;
+  }
+  
+  .stepDescription {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  
+  .progressIndicator {
+    margin-bottom: 24px;
+    gap: 10px;
+  }
+  
+  .progressDot {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .stepContent {
+    gap: 20px;
+  }
+  
+  .nextButton,
+  .completeButton {
+    margin-top: 20px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .stepTitle {
+    font-size: 22px;
+    line-height: 30px;
+  }
+  
+  .stepDescription {
+    font-size: 15px;
+    line-height: 22px;
+  }
+}

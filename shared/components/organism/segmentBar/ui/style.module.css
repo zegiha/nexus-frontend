@@ -1,6 +1,6 @@
 .segmentBarSectionWrapper {
   position: sticky;
-  top: 77px;
+  top: var(--header-height);
   margin-top: 8px;
   padding: 4px 24px;
   z-index: 10;

@@ -26,7 +26,9 @@ export default function RootLayout({
       <body className={`${Pretendard.className}`}>
         <TanstackQueryProvider>
           <Header/>
-          {children}
+          <main style={{ paddingTop: '0px' }}>
+            {children}
+          </main>
           <div id={''}/>
         </TanstackQueryProvider>
       </body>

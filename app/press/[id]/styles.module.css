@@ -1,6 +1,7 @@
 .container {
   width: 100%;
   padding: 24px;
+  padding-top: 16px; /* 헤더와의 간격 조정 */
   display: flex;
   flex-direction: column;
   align-items: center;

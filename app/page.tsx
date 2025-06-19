@@ -5,7 +5,7 @@ import {HighlightsSection, SegmentBarSection} from '@/widgets/home'
 
 export default function Page() {
   return (
-    <Col>
+    <Col style={{ paddingTop: '8px' }}>
       <HighlightsSection/>
       <SegmentBarSection/>
     </Col>

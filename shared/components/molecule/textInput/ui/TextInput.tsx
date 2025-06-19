@@ -25,11 +25,13 @@ export default function TextInput({
       htmlFor={name}
     >
       <Col gap={4}>
-        <Row justifyContent={'space-between'}>
-          {labelContents}
+        <Row justifyContent={'space-between'} alignItems={'center'}>
+          <Typo.small color={'strong'}>
+            {labelContents}
+          </Typo.small>
           {isNecessary &&
             <Typo.small color={'negative'}>
-              *필수
+              필수*
             </Typo.small>
           }
         </Row>
