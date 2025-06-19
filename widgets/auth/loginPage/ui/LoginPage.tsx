@@ -2,10 +2,6 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { Col, Flex } from '@/shared/components/atom/flex'
-import { AuthLayout } from '@/shared/components/organism/authLayout'
-import { Button } from '@/shared/components/molecule/button'
-import { TextInput } from '@/shared/components/molecule/textInput'
 import styles from './loginPage.module.css'
 
 const isValidEmail = (email: string) => {
@@ -41,65 +37,50 @@ export default function LoginPage() {
   }
 
   return (
-    <AuthLayout>
-      <div className={styles.headerContainer}>
-        <h1 className={styles.title}>로그인</h1>
-        <p className={styles.description}>계정에 로그인하여 Nexus를 이용해보세요</p>
+    <div className={styles.desktop12}>
+      <div className={styles.nexusParent}>
+        <div className={styles.nexusIcon}>Nexus</div>
+        <div className={styles.frameParent}>
+          <div className={styles.frameGroup}>
+            <div className={styles.parent}>
+              <div className={styles.div}>이메일</div>
+              <div className={styles.div1}>필수*</div>
+            </div>
+            <div className={styles.sunrin076sunrinthskrWrapper}>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="23sunrin076@sunrint.hs.kr"
+                className={styles.sunrin076sunrinthskr}
+              />
+            </div>
+          </div>
+          <div className={styles.frameGroup}>
+            <div className={styles.parent}>
+              <div className={styles.div}>비밀번호</div>
+              <div className={styles.div1}>필수*</div>
+            </div>
+            <div className={styles.wrapper}>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="비밀번호를 입력해주세요"
+                className={styles.sunrin076sunrinthskr}
+              />
+            </div>
+          </div>
+        </div>
+        <div className={styles.frameDiv}>
+          <div className={styles.container} onClick={handleLogin}>
+            <div className={styles.div5}>로그인</div>
+          </div>
+          <div className={styles.div6} onClick={() => router.push('/auth/register')}>
+            아직 계정이 없으신가요? 회원 가입하기
+          </div>
+        </div>
       </div>
-      
-      <Col className={styles.formContainer}>
-        <TextInput
-          inputType={'email'}
-          labelContents='이메일'
-          name='email'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="이메일을 입력해주세요"
-          isNecessary={true}
-          checker={[
-            (value: string) => {
-              if (!value) return '이메일을 입력해주세요'
-              if (!isValidEmail(value)) return '올바른 이메일 형식을 입력해주세요'
-              return null
-            }
-          ]}
-        />
-        
-        <TextInput
-          inputType={'password'}
-          labelContents='비밀번호'
-          name='password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="비밀번호를 입력해주세요"
-          isNecessary={true}
-          checker={[
-            (value: string) => {
-              if (!value) return '비밀번호를 입력해주세요'
-              if (value.length < 6) return '비밀번호는 최소 6자 이상이어야 합니다'
-              return null
-            }
-          ]}
-        />
-      </Col>
-
-      <Col className={styles.buttonContainer}>
-        <Button.solid
-          size="large"
-          width="fill"
-          color="brand"
-          onClick={handleLogin}
-        >
-          로그인
-        </Button.solid>
-        
-        <Flex 
-          className={styles.signupLink}
-          onClick={() => router.push('/auth/register')}
-        >
-          아직 계정이 없으신가요? 회원 가입하기
-        </Flex>
-      </Col>
-    </AuthLayout>
+    </div>
   )
 }

@@ -3,7 +3,6 @@
 import type { NextPage } from 'next'
 import { useState } from 'react'
 import Image from 'next/image'
-import { Icon } from '@/shared/components/atom/icon'
 import styles from './styles.module.css'
 
 const AccountPage: NextPage = () => {
@@ -26,7 +25,7 @@ const AccountPage: NextPage = () => {
             className={`${styles.accountCircleParent} ${activeSection === 'account' ? styles.active : ''}`}
             onClick={() => setActiveSection('account')}
           >
-            <Icon iconKey="account" size={24} color="normal" />
+            <Image className={styles.searchIcon} width={24} height={24} alt="account" src="/account_circle.svg" />
             <div className={styles.div1}>계정</div>
           </div>
           
@@ -34,7 +33,7 @@ const AccountPage: NextPage = () => {
             className={`${styles.favoriteParent} ${activeSection === 'subscription' ? styles.active : ''}`}
             onClick={() => setActiveSection('subscription')}
           >
-            <Icon iconKey="heart" size={24} color="normal" />
+            <Image className={styles.searchIcon} width={24} height={24} alt="favorite" src="/favorite.svg" />
             <div className={styles.div}>구독</div>
           </div>
         </div>

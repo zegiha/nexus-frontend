@@ -2,11 +2,6 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { Col } from '@/shared/components/atom/flex'
-import { AuthLayout } from '@/shared/components/organism/authLayout'
-import { TextInput } from '@/shared/components/molecule/textInput'
-import { VerificationCode } from '@/shared/components/molecule/verificationCode'
-import { Button } from '@/shared/components/molecule/button'
 import styles from './registerPage.module.css'
 
 // 이메일 유효성 검사 함수
@@ -28,165 +23,161 @@ export default function RegisterPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [verificationCode, setVerificationCode] = useState('')
-  const [errors, setErrors] = useState<{[key: string]: string}>({})
-
-  const getStepInfo = (currentStep: RegisterStep) => {
-    switch (currentStep) {
-      case 'email':
-        return {
-          title: '이메일 입력',
-          description: '회원가입을 위해 이메일 주소를 입력해주세요'
-        }
-      case 'verification':
-        return {
-          title: '이메일 인증',
-          description: '이메일로 전송된 인증번호를 입력해주세요'
-        }
-      case 'password':
-        return {
-          title: '비밀번호 설정',
-          description: '계정에서 사용할 비밀번호를 설정해주세요'
-        }
-    }
-  }
 
   const handleEmailNext = () => {
     if (!email) {
-      setErrors({ email: '이메일을 입력해주세요' })
+      alert('이메일을 입력해주세요')
       return
     }
     
     if (!isValidEmail(email)) {
-      setErrors({ email: '올바른 이메일 형식을 입력해주세요' })
+      alert('올바른 이메일 형식을 입력해주세요')
       return
     }
     
     console.log('Send verification code to:', email)
-    setErrors({})
     setStep('verification')
   }
 
-  const handleVerificationComplete = (code: string) => {
-    setVerificationCode(code)
-    if (code.length === 6) {
-      setStep('password')
+  const handleVerificationNext = () => {
+    if (verificationCode.length !== 6) {
+      alert('6자리 인증번호를 입력해주세요')
+      return
     }
+    setStep('password')
   }
 
   const handlePasswordComplete = () => {
     if (!password) {
-      setErrors({ password: '비밀번호를 입력해주세요' })
+      alert('비밀번호를 입력해주세요')
       return
     }
 
     if (!isValidPassword(password)) {
-      setErrors({ password: '비밀번호는 8자 이상, 영문과 숫자를 포함해야 합니다' })
+      alert('비밀번호는 8자 이상, 영문과 숫자를 포함해야 합니다')
       return
     }
 
     console.log('Register user:', { email, password })
-    
     alert('회원가입이 완료되었습니다! 로그인 페이지로 이동합니다.')
     router.push('/auth/login')
   }
 
-  const renderProgressIndicator = () => {
-    const steps: RegisterStep[] = ['email', 'verification', 'password']
-    const currentIndex = steps.indexOf(step)
+  const handleVerificationInput = (index: number, value: string) => {
+    if (value.length > 1) return
     
-    return (
-      <div className={styles.progressIndicator}>
-        {steps.map((_, index) => (
-          <div
-            key={index}
-            className={`${styles.progressDot} ${index <= currentIndex ? styles.active : ''}`}
-          />
-        ))}
-      </div>
-    )
+    const newCode = verificationCode.split('')
+    newCode[index] = value
+    setVerificationCode(newCode.join(''))
+    
+    // Auto focus next input
+    if (value && index < 5) {
+      const nextInput = document.querySelector(`input[name="code-${index + 1}"]`) as HTMLInputElement
+      if (nextInput) nextInput.focus()
+    }
   }
 
   const renderStep = () => {
     switch (step) {
       case 'email':
         return (
-          <div className={styles.stepContent}>
-            <Col className={styles.formContainer}>
-              <TextInput
-                inputType="email"
-                labelContents="이메일"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="이메일을 입력해주세요"
-                isNecessary={true}
-                checker={[
-                  (value: string) => {
-                    if (!value) return '이메일을 입력해주세요'
-                    if (!isValidEmail(value)) return '올바른 이메일 형식을 입력해주세요'
-                    return null
-                  }
-                ]}
-              />
-            </Col>
-            <Button.solid
-              size="large"
-              width="fill"
-              color="brand"
-              onClick={handleEmailNext}
-            >
-              다음
-            </Button.solid>
+          <div className={styles.desktop13}>
+            <div className={styles.parent}>
+              <div className={styles.div}>이메일</div>
+              <div className={styles.frameWrapper}>
+                <div className={styles.frameParent}>
+                  <div className={styles.group}>
+                    <div className={styles.div1}>이메일</div>
+                    <div className={styles.div2}>필수*</div>
+                  </div>
+                  <div className={styles.sunrin076sunrinthskrWrapper}>
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="23sunrin076@sunrint.hs.kr"
+                      className={styles.sunrin076sunrinthskr}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className={styles.frameContainer}>
+                <div className={styles.wrapper} onClick={handleEmailNext}>
+                  <div className={styles.div3}>다음</div>
+                </div>
+              </div>
+            </div>
           </div>
         )
 
       case 'verification':
         return (
-          <div className={styles.stepContent}>
-            <VerificationCode
-              onComplete={handleVerificationComplete}
-              error={errors.verification}
-            />
-            <Button.solid
-              size="large"
-              width="fill"
-              color="brand"
-              onClick={() => setStep('password')}
-            >
-              다음
-            </Button.solid>
+          <div className={styles.desktop14}>
+            <div className={styles.parent}>
+              <div className={styles.div}>이메일 인증</div>
+              <div className={styles.frameParent}>
+                <div className={styles.frameGroup}>
+                  {Array.from({ length: 6 }, (_, i) => (
+                    <div key={i} className={
+                      verificationCode[i] ? styles.wrapper : 
+                      i === verificationCode.length ? styles.frameItem : styles.frameChild
+                    }>
+                      {verificationCode[i] ? (
+                        <div className={styles.div1}>{verificationCode[i]}</div>
+                      ) : (
+                        <input
+                          type="text"
+                          maxLength={1}
+                          name={`code-${i}`}
+                          onChange={(e) => handleVerificationInput(i, e.target.value)}
+                          className={styles.hiddenInput}
+                        />
+                      )}
+                    </div>
+                  ))}
+                </div>
+                <div className={styles.div3}>인증번호를 입력해주세요</div>
+                {verificationCode.length === 0 && (
+                  <div className={styles.div4}>인증번호가 비어있습니다!</div>
+                )}
+              </div>
+              <div className={styles.frameWrapper}>
+                <div className={styles.frame} onClick={handleVerificationNext}>
+                  <div className={styles.div5}>다음</div>
+                </div>
+              </div>
+            </div>
           </div>
         )
 
       case 'password':
         return (
-          <div className={styles.stepContent}>
-            <Col className={styles.formContainer}>
-              <TextInput
-                inputType="password"
-                labelContents="비밀번호"
-                name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="비밀번호를 입력해주세요"
-                isNecessary={true}
-                checker={[
-                  (value: string) => {
-                    if (!value) return '비밀번호를 입력해주세요'
-                    if (!isValidPassword(value)) return '비밀번호는 8자 이상, 영문과 숫자를 포함해야 합니다'
-                    return null
-                  }
-                ]}
-              />
-            </Col>
-            <Button.solid
-              size="large"
-              width="fill"
-              color="brand"
-              onClick={handlePasswordComplete}
-            >
-              완료!
-            </Button.solid>
+          <div className={styles.desktop15}>
+            <div className={styles.parent}>
+              <div className={styles.div}>비밀번호</div>
+              <div className={styles.frameWrapper}>
+                <div className={styles.frameParent}>
+                  <div className={styles.group}>
+                    <div className={styles.div1}>비밀번호</div>
+                    <div className={styles.div2}>필수*</div>
+                  </div>
+                  <div className={styles.password1234Wrapper}>
+                    <input
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      placeholder="password1234!"
+                      className={styles.password1234}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className={styles.frameContainer}>
+                <div className={styles.wrapper} onClick={handlePasswordComplete}>
+                  <div className={styles.div3}>완료!</div>
+                </div>
+              </div>
+            </div>
           </div>
         )
 
@@ -195,35 +186,5 @@ export default function RegisterPage() {
     }
   }
 
-  const getTitle = () => {
-    switch (step) {
-      case 'email':
-        return '이메일'
-      case 'verification':
-        return '이메일 인증'
-      case 'password':
-        return '비밀번호'
-      default:
-        return ''
-    }
-  }
-
-  return (
-    <AuthLayout>
-      {renderProgressIndicator()}
-      
-      <div className={styles.stepHeader}>
-        <div className={styles.stepTitle}>
-          {getStepInfo(step).title}
-        </div>
-        <div className={styles.stepDescription}>
-          {getStepInfo(step).description}
-        </div>
-      </div>
-
-      <div className={styles.stepContainer}>
-        {renderStep()}
-      </div>
-    </AuthLayout>
-  )
+  return renderStep()
 }

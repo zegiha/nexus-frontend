@@ -1,58 +1,177 @@
-.logo {
-  align-self: flex-start;
+.nexusIcon {
+  width: 125px;
+  position: relative;
+  max-height: 100%;
+  font-size: 32px;
+  font-weight: bold;
+  color: #2f89fa;
 }
 
-.headerContainer {
-  text-align: center;
-  margin-bottom: 32px;
-  padding: 0 16px;
+.div {
+  position: relative;
+  line-height: 16px;
 }
 
-.title {
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--label-strong-light);
-  margin-bottom: 12px;
-  line-height: 36px;
-  margin: 0 0 12px 0;
+.div1 {
+  position: relative;
+  line-height: 16px;
+  color: #f53134;
 }
 
-.description {
-  font-size: 16px;
-  color: var(--label-alternative-light);
-  line-height: 24px;
-  max-width: 360px;
-  margin: 0 auto;
-}
-
-.formContainer {
+.parent {
   align-self: stretch;
+  overflow: hidden;
   display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: flex-start;
-  gap: 20px;
-  margin-bottom: 8px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0px;
 }
 
-.buttonContainer {
-  align-self: stretch;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: center;
-  gap: 20px;
-}
-
-.signupLink {
-  font-size: 14px;
+.sunrin076sunrinthskr {
+  position: relative;
   line-height: 20px;
-  color: var(--label-alternative-light);
-  text-decoration: underline;
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  font-size: 16px;
+  color: #1a1a1a;
+}
+
+.sunrin076sunrinthskr::placeholder {
+  color: #858585;
+}
+
+.sunrin076sunrinthskrWrapper {
+  align-self: stretch;
+  border-radius: 4px;
+  border: 1px solid #2f89fa;
+  box-sizing: border-box;
+  height: 41px;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 12px 10px;
+  font-size: 16px;
+  color: #1a1a1a;
+}
+
+.frameGroup {
+  align-self: stretch;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 4px;
+}
+
+.wrapper {
+  align-self: stretch;
+  border-radius: 4px;
+  border: 1px solid rgba(10, 10, 10, 0.12);
+  box-sizing: border-box;
+  height: 44px;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 12px 10px;
+  font-size: 16px;
+}
+
+.frameParent {
+  align-self: stretch;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.div5 {
+  position: relative;
+  line-height: 21px;
+  font-weight: 600;
+}
+
+.container {
+  align-self: stretch;
+  border-radius: 4px;
+  background-color: #2f89fa;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0px;
   cursor: pointer;
-  transition: color var(--transition-duration-fast) var(--transition-cubic-bezier);
-  text-align: center;
-  padding: 8px 0;
+  transition: all 0.2s ease;
+}
+
+.container:hover {
+  background-color: #1e73e8;
+}
+
+.div6 {
+  position: relative;
+  font-size: 14px;
+  text-decoration: underline;
+  line-height: 18px;
+  color: #858585;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.div6:hover {
+  color: #2f89fa;
+}
+
+.frameDiv {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 16px;
+  color: #fff;
+}
+
+.nexusParent {
+  width: 360px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 240px 0px;
+  box-sizing: border-box;
+  gap: 24px;
+}
+
+.desktop12 {
+  width: 100%;
+  position: relative;
+  background-color: #fff;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  text-align: left;
+  font-size: 12px;
+  color: #858585;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .signupLink:hover {
