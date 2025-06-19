@@ -1,42 +1,38 @@
-'use client'
+"use client";
 
-import { Row, Col } from '@/shared/components/atom/flex'
-import { Typo } from '@/shared/components/atom/typo'
-import { Icon } from '@/shared/components/atom/icon'
-import { Interaction } from '@/shared/components/atom/interaction'
-import styles from './styles.module.css'
+import styles from "./styles.module.css";
+import { Icon } from "@/shared/components/atom/icon";
 
 interface AccountSidebarProps {
-  activeSection: 'account' | 'subscription'
-  onSectionChange: (section: 'account' | 'subscription') => void
+  activeTab: "account" | "subscription";
+  onTabChange: (tab: "account" | "subscription") => void;
 }
 
-export default function AccountSidebar({ activeSection, onSectionChange }: AccountSidebarProps) {
+export default function AccountSidebar({
+  activeTab,
+  onTabChange,
+}: AccountSidebarProps) {
   return (
-    <Col className={styles.sidebar}>
-      <Interaction.button
-        className={`${styles.sidebarItem} ${activeSection === 'account' ? styles.active : ''}`}
-        onClick={() => onSectionChange('account')}
+    <div className={styles.frameContainer}>
+      {" "}
+      <div
+        className={`${styles.accountCircleParent} ${
+          activeTab === "account" ? styles.active : ""
+        }`}
+        onClick={() => onTabChange("account")}
       >
-        <Row gap={8} alignItems="center">
-          <Icon iconKey="account" />
-          <Typo.medium color={activeSection === 'account' ? 'strong' : 'normal'}>
-            계정
-          </Typo.medium>
-        </Row>
-      </Interaction.button>
-      
-      <Interaction.button
-        className={`${styles.sidebarItem} ${activeSection === 'subscription' ? styles.active : ''}`}
-        onClick={() => onSectionChange('subscription')}
+        <Icon iconKey="person" size={24} color="normal" />
+        <div className={styles.div1}>계정</div>
+      </div>
+      <div
+        className={`${styles.favoriteParent} ${
+          activeTab === "subscription" ? styles.active : ""
+        }`}
+        onClick={() => onTabChange("subscription")}
       >
-        <Row gap={8} alignItems="center">
-          <Icon iconKey="favorite" />
-          <Typo.medium color={activeSection === 'subscription' ? 'strong' : 'normal'}>
-            구독
-          </Typo.medium>
-        </Row>
-      </Interaction.button>
-    </Col>
-  )
+        <Icon iconKey="subscriptions" size={24} color="normal" />
+        <div className={styles.div}>구독</div>
+      </div>
+    </div>
+  );
 }

@@ -4,6 +4,16 @@ type TIconKey =
   'account' |
   'arrow_forward' |
   'arrow_backward' |
-  'heart'
+  'heart' |
+  'person' |
+  'subscriptions' |
+  'settings' |
+  'notifications_active' |
+  'notifications_off' |
+  'close' |
+  'delete' |
+  'edit' |
+  'visibility' |
+  'visibility_off'
 
 export default TIconKey

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "@/shared/contexts/AuthContext";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import AccountSidebar from "@/widgets/account/sidebar/ui/AccountSidebar";
 import AccountInfo from "@/widgets/account/accountInfo/ui/AccountInfo";
 import Subscription from "@/widgets/account/subscription/ui/Subscription";
@@ -25,7 +26,7 @@ export default function AccountPage() {
   // 로딩 중이거나 인증되지 않은 경우
   if (isLoading) {
     return (
-      <div className={styles.accountPage}>
+      <div className={styles.desktop10}>
         <div
           style={{
             display: "flex",
@@ -45,7 +46,50 @@ export default function AccountPage() {
   }
 
   return (
-    <div className={styles.accountPage}>
+    <div className={styles.desktop10}>
+      {/* 헤더 */}
+      <div className={styles.desktop10Inner}>
+        <div className={styles.nexusParent}>
+          <Image
+            className={styles.nexusIcon}
+            width={58.1}
+            height={14.9}
+            sizes="100vw"
+            alt=""
+            src="/Nexus.svg"
+          />
+          <div className={styles.searchParent}>
+            <Image
+              className={styles.searchIcon}
+              width={24}
+              height={24}
+              sizes="100vw"
+              alt=""
+              src="/search.svg"
+            />
+            <div className={styles.div}>검색어를 입력해주세요</div>
+          </div>
+          <div className={styles.frameParent}>
+            <Image
+              className={styles.frameChild}
+              width={40}
+              height={40}
+              sizes="100vw"
+              alt=""
+              src="/Frame 107.png"
+            />
+            <Image
+              className={styles.frameChild}
+              width={40}
+              height={40}
+              sizes="100vw"
+              alt=""
+              src="/Frame 112.png"
+            />
+          </div>
+        </div>
+      </div>
+
       {/* 메인 콘텐츠 */}
       <div className={styles.frameGroup}>
         {/* 사이드바 */}

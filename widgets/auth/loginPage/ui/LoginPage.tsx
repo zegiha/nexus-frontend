@@ -1,40 +1,57 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import styles from './loginPage.module.css'
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useSignIn } from "@/entity/auth/api";
+import { useAuth } from "@/shared/contexts/AuthContext";
+import styles from "./loginPage.module.css";
 
 const isValidEmail = (email: string) => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  return emailRegex.test(email)
-}
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
 
 export default function LoginPage() {
-  const router = useRouter()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const router = useRouter();
+  const { login } = useAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const signInMutation = useSignIn((data) => {
+    console.log("로그인 성공 데이터:", data);
+    login(data);
+    console.log("AuthContext login 호출 완료");
+  });
 
-  const handleLogin = () => {
-    // 기본적인 검사 (TextInput 컴포넌트에서 이미 검증됨)
+  const handleLogin = async () => {
+    // 기본적인 검사
     if (!email || !password) {
-      alert('모든 필드를 입력해주세요.')
-      return
+      alert("모든 필드를 입력해주세요.");
+      return;
     }
 
     if (!isValidEmail(email)) {
-      alert('올바른 이메일 형식을 입력해주세요.')
-      return
+      alert("올바른 이메일 형식을 입력해주세요.");
+      return;
     }
 
     if (password.length < 6) {
-      alert('비밀번호는 최소 6자 이상이어야 합니다.')
-      return
+      alert("비밀번호는 최소 6자 이상이어야 합니다.");
+      return;
     }
 
-    console.log('Login attempt:', { email, password })
-    alert('로그인 성공! 홈페이지로 이동합니다.')
-    router.push('/')
-  }
+    try {
+      await signInMutation.mutateAsync({
+        email,
+        password,
+      });
+
+      alert("로그인 성공! 홈페이지로 이동합니다.");
+      router.push("/");
+    } catch (error: any) {
+      console.error("로그인 실패:", error);
+      alert(error?.response?.data?.message || "로그인에 실패했습니다.");
+    }
+  };
 
   return (
     <div className={styles.desktop12}>
@@ -71,16 +88,28 @@ export default function LoginPage() {
               />
             </div>
           </div>
-        </div>
+        </div>{" "}
         <div className={styles.frameDiv}>
-          <div className={styles.container} onClick={handleLogin}>
-            <div className={styles.div5}>로그인</div>
+          <div
+            className={styles.container}
+            onClick={handleLogin}
+            style={{
+              opacity: signInMutation.isPending ? 0.6 : 1,
+              cursor: signInMutation.isPending ? "not-allowed" : "pointer",
+            }}
+          >
+            <div className={styles.div5}>
+              {signInMutation.isPending ? "로그인 중..." : "로그인"}
+            </div>
           </div>
-          <div className={styles.div6} onClick={() => router.push('/auth/register')}>
+          <div
+            className={styles.div6}
+            onClick={() => router.push("/auth/register")}
+          >
             아직 계정이 없으신가요? 회원 가입하기
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
