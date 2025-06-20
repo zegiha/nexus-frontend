@@ -1,4 +1,4 @@
-import {articleWithoutPressEntity} from '@/entity/article'
+import {articleWithoutPressEntity} from '@/prev_entity/article'
 import {Col} from '@/shared/components/atom/flex'
 import {Typo} from '@/shared/components/atom/typo'
 import Image from 'next/image'

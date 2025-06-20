@@ -1,4 +1,4 @@
-import {articleWithCategoryEntity} from '@/entity/article'
+import {articleWithCategoryEntity} from '@/prev_entity/article'
 import {Col, Row} from '@/shared/components/atom/flex'
 import {Typo} from '@/shared/components/atom/typo'
 import {Avatar} from '@/shared/components/molecule/avatar'

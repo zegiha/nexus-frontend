@@ -6,7 +6,7 @@ import {
   useRequestEmailVerification,
   useVerifyEmail,
   useSignUp,
-} from "@/entity/auth/api";
+} from "@/prev_entity/auth/api";
 import { useAuth } from "@/shared/contexts/AuthContext";
 import styles from "./registerPage.module.css";
 

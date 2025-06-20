@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { AuthResponse } from "@/entity/types/auth";
+import { AuthResponse } from "@/prev_entity/types/auth";
 
 interface User {
   id: string;

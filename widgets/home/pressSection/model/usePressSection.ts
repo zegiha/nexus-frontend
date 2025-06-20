@@ -1,7 +1,7 @@
 'use client'
 
-import {articleWithoutPressEntity, getArticlesByPress,} from '@/entity/article'
-import {pressSummaryEntity} from '@/entity/press'
+import {articleWithoutPressEntity, getArticlesByPress,} from '@/prev_entity/article'
+import {pressSummaryEntity} from '@/prev_entity/press'
 import {useQuery} from '@tanstack/react-query'
 
 export default function usePressSection() {

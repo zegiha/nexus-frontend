@@ -1,6 +1,6 @@
 'use client'
 
-import {articleEntity} from '@/entity/article'
+import {articleEntity} from '@/prev_entity/article'
 import {Col, Row} from '@/shared/components/atom/flex'
 import {Typo} from '@/shared/components/atom/typo'
 import Image from 'next/image'

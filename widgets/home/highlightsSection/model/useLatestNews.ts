@@ -1,6 +1,6 @@
 'use client'
 
-import {getArticlesEntity, articleEntity} from '@/entity/article'
+import {getArticlesEntity, articleEntity} from '@/prev_entity/article'
 import {useQuery} from '@tanstack/react-query'
 import {useEffect, useRef} from 'react'
 

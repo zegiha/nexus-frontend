@@ -1,4 +1,4 @@
-import {articleWithoutPressEntity} from '@/entity/article'
+import {articleWithoutPressEntity} from '@/prev_entity/article'
 import {Row} from '@/shared/components/atom/flex'
 import Swiper from '@/shared/components/organism/swiper/ui/Swiper'
 import headlineArrayParser from '@/widgets/home/pressSection/helper/headlineArrayParser'

@@ -1,6 +1,6 @@
 'use client'
 
-import {articleEntity, getArticlesEntity} from '@/entity/article'
+import {articleEntity, getArticlesEntity} from '@/prev_entity/article'
 import {useQuery} from '@tanstack/react-query'
 
 export default function useHeadlinesByPress(pressId: string) {

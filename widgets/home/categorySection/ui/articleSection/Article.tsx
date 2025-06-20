@@ -1,4 +1,4 @@
-import {articleWithMediaEntity} from '@/entity/article'
+import {articleWithMediaEntity} from '@/prev_entity/article'
 import {Col, Row} from '@/shared/components/atom/flex'
 import {Typo} from '@/shared/components/atom/typo'
 import {formatDateWithDot} from '@/shared/helper'

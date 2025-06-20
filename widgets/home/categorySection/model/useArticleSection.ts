@@ -1,6 +1,6 @@
 'use client'
 
-import {getArticlesWithMediaEntity} from '@/entity/article'
+import {getArticlesWithMediaEntity} from '@/prev_entity/article'
 import {useQuery} from '@tanstack/react-query'
 
 export default function useArticleSection() {

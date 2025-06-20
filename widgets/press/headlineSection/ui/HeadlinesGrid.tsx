@@ -1,6 +1,6 @@
 'use client'
 
-import {articleEntity} from '@/entity/article'
+import {articleEntity} from '@/prev_entity/article'
 import {Col} from '@/shared/components/atom/flex'
 import PressPageHeadline from './PressPageHeadline'
 import style from './style.module.css'

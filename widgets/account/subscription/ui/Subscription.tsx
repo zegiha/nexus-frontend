@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useGetSubscriptions, useUnsubscribe } from "@/entity/user/api";
+import { useGetSubscriptions, useUnsubscribe } from "@/prev_entity/user/api";
 import { Icon } from "@/shared/components/atom/icon";
 import styles from "./styles.module.css";
 

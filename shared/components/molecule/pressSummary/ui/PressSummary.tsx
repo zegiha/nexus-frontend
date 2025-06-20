@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import {Col, Row} from '@/shared/components/atom/flex'
 import {Avatar} from '@/shared/components/molecule/avatar'
-import {pressSummaryEntity} from '@/entity/press'
+import {pressSummaryEntity} from '@/prev_entity/press'
 import style from './style.module.css'
 
 interface PressSummaryProps {

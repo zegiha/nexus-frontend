@@ -1,5 +1,5 @@
-import {articleWithoutPressEntity} from '@/entity/article'
-import {pressSummaryEntity} from '@/entity/press'
+import {articleWithoutPressEntity} from '@/prev_entity/article'
+import {pressSummaryEntity} from '@/prev_entity/press'
 
 export default interface IBox {
   press: pressSummaryEntity

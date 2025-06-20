@@ -1,6 +1,6 @@
 'use client'
 
-import {getPressDetail, pressDetailEntity} from '@/entity/press'
+import {getPressDetail, pressDetailEntity} from '@/prev_entity/press'
 import {useEffect, useState} from 'react'
 
 export default function usePressDetail(pressId: string) {

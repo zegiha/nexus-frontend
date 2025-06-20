@@ -1,6 +1,6 @@
 'use client'
 
-import {pressDetailEntity} from '@/entity/press'
+import {pressDetailEntity} from '@/prev_entity/press'
 import {Col, Row} from '@/shared/components/atom/flex'
 import {Typo} from '@/shared/components/atom/typo'
 import Image from 'next/image'

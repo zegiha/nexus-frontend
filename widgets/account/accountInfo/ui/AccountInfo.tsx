@@ -6,7 +6,7 @@ import {
   useChangeEmail,
   useChangePassword,
   useDeleteAccount,
-} from "@/entity/user/api";
+} from "@/prev_entity/user/api";
 import styles from "./styles.module.css";
 
 export default function AccountInfo() {

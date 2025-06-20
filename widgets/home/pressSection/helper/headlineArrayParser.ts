@@ -1,4 +1,4 @@
-import {articleWithoutPressEntity} from '@/entity/article'
+import {articleWithoutPressEntity} from '@/prev_entity/article'
 
 export default function headlineArrayParser(raw: Array<articleWithoutPressEntity>): Array<Array<articleWithoutPressEntity>> {
   const res: Array<Array<articleWithoutPressEntity>> = []

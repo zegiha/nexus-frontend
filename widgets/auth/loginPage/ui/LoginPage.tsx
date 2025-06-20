@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useSignIn } from "@/entity/auth/api";
+import { useSignIn } from "@/prev_entity/auth/api";
 import { useAuth } from "@/shared/contexts/AuthContext";
 import styles from "./loginPage.module.css";
 

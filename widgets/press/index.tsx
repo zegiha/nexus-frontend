@@ -1,7 +1,7 @@
 'use client'
 
-import {articleEntity} from '@/entity/article'
-import {pressDetailEntity} from '@/entity/press'
+import {articleEntity} from '@/prev_entity/article'
+import {pressDetailEntity} from '@/prev_entity/press'
 import {Col} from '@/shared/components/atom/flex'
 import {SegmentBar} from '@/shared/components/organism/segmentBar'
 import PressInfo from '@/widgets/press/pressInfoSection/ui/PressInfo'
