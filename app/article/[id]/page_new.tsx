@@ -3,10 +3,12 @@
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
+import { getArticleById } from '@/entity/article/api/getArticles'
 import styles from './index.module.css'
 
-// 실제 뉴스 데이터
-const articleData = {
+// 더미 데이터
+const dummyArticle = {
   id: '1',
   title: '윤석열, 스캔들에 휩싸였다 계엄령까지 선포한 한국의 대통령',
   publishedAt: '2025.04.01.',
@@ -60,63 +62,87 @@ const articleData = {
 
 export default function ArticleDetailPage() {
   const params = useParams()
-  const [article, setArticle] = useState<any>(articleData)
-  const [loading, setLoading] = useState(false) // 실제 데이터 사용으로 로딩 불필요
+  const [article, setArticle] = useState<any>(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // 발표용: API 호출 없이 실제 뉴스 데이터만 사용
-    // ID에 따라 다른 뉴스 데이터를 제공할 수 있도록 확장 가능
-    const articleId = params.id as string
-    
-    // 기본적으로 뉴스 데이터 사용하되, ID별로 약간씩 다른 데이터 제공
-    const customizedArticle = {
-      ...articleData,
-      id: articleId,
-      title: articleId === '1' ? articleData.title : 
-             articleId === '2' ? '국회, 예산안 처리 위한 임시국회 소집' :
-             articleId === '3' ? '경제성장률 전망 상향 조정, 내수 회복 기대' :
-             articleId === '4' ? '교육부, 새 학기 방역 지침 발표' :
-             articleId === '5' ? '지역균형발전 정책 추진 현황 점검' :
-             `중요 뉴스 ${articleId}`,
+    const fetchArticle = async () => {
+      if (params.id) {
+        try {
+          // API 호출 시도하되 실패시 더미 데이터 사용
+          const fetchedArticle = await getArticleById(params.id as string)
+          setArticle(fetchedArticle || dummyArticle)
+        } catch (error) {
+          console.error('Failed to fetch article:', error)
+          // 에러시 더미 데이터 사용
+          setArticle(dummyArticle)
+        } finally {
+          setLoading(false)
+        }
+      }
     }
-    
-    setArticle(customizedArticle)
+
+    fetchArticle()
   }, [params.id])
+
+  if (loading) {
+    return <div className={styles.loading}>로딩 중...</div>
+  }
 
   return (
     <div className={styles.desktop3}>
+      {/* 헤더 */}
+      <div className={styles.header}>
+        <div className={styles.nexusParent}>
+          <Link href="/">
+            <svg width="58" height="15" viewBox="0 0 58 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fillRule="evenodd" clipRule="evenodd" d="M12.0814 10.589V0.538086H9.46206V10.589H12.0814Z" fill="#0A0A0A"/>
+              <path d="M9.72602 15.2388H12.0814V10.589H9.46206H9.31992L2.39597 0.538086H0V15.2388H2.63963V5.18789H2.76146L9.72602 15.2388Z" fill="#2F89FA"/>
+            </svg>
+          </Link>
+          <div className={styles.searchParent}>
+            <div className="material-symbols-rounded" style={{fontSize: '24px', color: '#858585'}}>search</div>
+            <div className={styles.div}>검색어를 입력해주세요</div>
+          </div>
+          <div className={styles.frameParent}>
+            <Image className={styles.frameChild} width={40} height={40} sizes="100vw" alt="" src="/Frame 107.png" />
+            <Image className={styles.frameChild} width={40} height={40} sizes="100vw" alt="" src="/Frame 112.png" />
+          </div>
+        </div>
+      </div>
+
       {/* 메인 컨텐츠 */}
       <div className={styles.desktop3Inner}>
         <div className={styles.frameGroup}>
           {/* 제목과 날짜 */}
           <div className={styles.parent}>
-            <div className={styles.div1}>{article.title}</div>
+            <div className={styles.div1}>{dummyArticle.title}</div>
             <div className={styles.div2}>
-              입력{article.publishedAt}  {article.publishedTime} 수정{article.modifiedAt}  {article.modifiedTime}
+              입력{dummyArticle.publishedAt}  {dummyArticle.publishedTime} 수정{dummyArticle.modifiedAt}  {dummyArticle.modifiedTime}
             </div>
           </div>
 
           {/* 기자 정보 */}
           <div className={styles.frameContainer}>
-            <Image className={styles.frameInner} width={32} height={32} sizes="100vw" alt="" src={article.journalist.profileImage} />
-            <div className={styles.div3}>{article.journalist.name} 기자</div>
+            <Image className={styles.frameInner} width={32} height={32} sizes="100vw" alt="" src={dummyArticle.journalist.profileImage} />
+            <div className={styles.div3}>{dummyArticle.journalist.name} 기자</div>
           </div>
 
           {/* 본문 내용 */}
           <div className={styles.frameDiv}>
             {/* 메인 이미지 */}
             <div className={styles.image1Parent}>
-              <Image className={styles.image1Icon} width={810} height={405} sizes="100vw" alt="" src={article.mainImage.url} />
+              <Image className={styles.image1Icon} width={810} height={405} sizes="100vw" alt="" src={dummyArticle.mainImage.url} />
               <div className={styles.ytnWrapper}>
-                <div className={styles.ytn}>{article.mainImage.caption}</div>
+                <div className={styles.ytn}>{dummyArticle.mainImage.caption}</div>
               </div>
             </div>
 
             {/* 핵심 요약 */}
             <div className={styles.parent}>
-              <div className={styles.div4}>{article.summary.title}</div>
+              <div className={styles.div4}>{dummyArticle.summary.title}</div>
               <div className={styles.div5}>
-                {article.summary.points.map((point: string, index: number) => (
+                {dummyArticle.summary.points.map((point, index) => (
                   <p key={index} className={styles.p}>
                     <span>
                       <span>{point}</span>
@@ -128,17 +154,17 @@ export default function ArticleDetailPage() {
 
             {/* 정치적 배경 */}
             <div className={styles.parent}>
-              <div className={styles.div4}>{article.sections[0].title}</div>
-              <div className={styles.div5}>{article.sections[0].content}</div>
+              <div className={styles.div4}>{dummyArticle.sections[0].title}</div>
+              <div className={styles.div5}>{dummyArticle.sections[0].content}</div>
             </div>
 
             {/* 더 알아보기 */}
             <div className={styles.frameParent1}>
               <div className={styles.parent1}>
-                <div className={styles.div4}>{article.sections[1].title}</div>
-                <div className={styles.div5}>{article.sections[1].content}</div>
+                <div className={styles.div4}>{dummyArticle.sections[1].title}</div>
+                <div className={styles.div5}>{dummyArticle.sections[1].content}</div>
               </div>
-              {article.sections[1].bulletPoints?.map((point: string, index: number) => (
+              {dummyArticle.sections[1].bulletPoints?.map((point, index) => (
                 <div key={index} className={styles.wrapper}>
                   <div className={styles.div10}>
                     <ul className={styles.ul}>
@@ -151,26 +177,26 @@ export default function ArticleDetailPage() {
 
             {/* 계엄령 선포와 철회 과정 */}
             <div className={styles.parent}>
-              <div className={styles.div4}>{article.sections[2].title}</div>
-              <div className={styles.div5}>{article.sections[2].content}</div>
+              <div className={styles.div4}>{dummyArticle.sections[2].title}</div>
+              <div className={styles.div5}>{dummyArticle.sections[2].content}</div>
             </div>
 
             {/* 두 번째 이미지 */}
             <div className={styles.image1Group}>
-              <Image className={styles.image1Icon} width={810} height={405} sizes="100vw" alt="" src={article.mainImage.url} />
-              <div className={styles.ytn1}>{article.mainImage.caption}</div>
+              <Image className={styles.image1Icon} width={810} height={405} sizes="100vw" alt="" src={dummyArticle.mainImage.url} />
+              <div className={styles.ytn1}>{dummyArticle.mainImage.caption}</div>
             </div>
 
             {/* 국내외 반응 */}
             <div className={styles.parent}>
-              <div className={styles.div4}>{article.sections[3].title}</div>
-              <div className={styles.div5}>{article.sections[3].content}</div>
+              <div className={styles.div4}>{dummyArticle.sections[3].title}</div>
+              <div className={styles.div5}>{dummyArticle.sections[3].content}</div>
             </div>
 
             {/* 향후 전망 */}
             <div className={styles.parent}>
-              <div className={styles.div4}>{article.sections[4].title}</div>
-              <div className={styles.div5}>{article.sections[4].content}</div>
+              <div className={styles.div4}>{dummyArticle.sections[4].title}</div>
+              <div className={styles.div5}>{dummyArticle.sections[4].content}</div>
             </div>
           </div>
         </div>

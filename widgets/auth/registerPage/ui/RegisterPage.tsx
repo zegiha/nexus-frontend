@@ -54,9 +54,9 @@ export default function RegisterPage() {
       setStep("verification");
     } catch (error: any) {
       console.error("이메일 인증 요청 실패:", error);
-      alert(
-        error?.response?.data?.message || "이메일 인증 요청에 실패했습니다."
-      );
+      // 발표용 - API 실패해도 계속 진행
+      alert("인증 이메일이 발송되었습니다. (데모 모드)");
+      setStep("verification");
     }
   };
   const handleVerificationNext = async () => {
@@ -74,7 +74,9 @@ export default function RegisterPage() {
       setStep("password");
     } catch (error: any) {
       console.error("이메일 인증 실패:", error);
-      alert(error?.response?.data?.message || "인증번호가 올바르지 않습니다.");
+      // 발표용 - API 실패해도 계속 진행
+      alert("이메일 인증이 완료되었습니다. (데모 모드)");
+      setStep("password");
     }
   };
   const handlePasswordComplete = async () => {
@@ -113,25 +115,23 @@ export default function RegisterPage() {
       console.error("회원가입 실패:", error);
       console.error("에러 세부사항:", error.response?.data);
 
-      // 만약 id 에러가 여전히 발생하면 id 없이 재시도
-      if (error.response?.data?.message?.includes("id")) {
-        console.log("ID 없이 재시도...");
-        try {
-          await signUp.mutateAsync({
-            email,
-            password,
-            name: extractedName,
-          });
-          alert("회원가입이 완료되었습니다! 홈페이지로 이동합니다.");
-          router.push("/");
-        } catch (retryError: any) {
-          console.error("재시도 실패:", retryError);
-          alert(
-            retryError?.response?.data?.message || "회원가입에 실패했습니다."
-          );
-        }
-      } else {
-        alert(error?.response?.data?.message || "회원가입에 실패했습니다.");
+      // 발표용 - API 실패해도 더미 사용자로 로그인 처리
+      try {
+        // 더미 사용자 데이터로 로그인 처리
+        const dummyUser = {
+          id: crypto.randomUUID(),
+          email: email,
+          name: extractedName,
+          accessToken: "dummy-access-token",
+          refreshToken: "dummy-refresh-token"
+        };
+        
+        login(dummyUser);
+        alert("회원가입이 완료되었습니다! (데모 모드) 홈페이지로 이동합니다.");
+        router.push("/");
+      } catch (dummyError) {
+        console.error("더미 로그인 실패:", dummyError);
+        alert("회원가입에 실패했습니다. 다시 시도해주세요.");
       }
     }
   };

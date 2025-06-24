@@ -1,0 +1,268 @@
+.nexusIcon {
+  	width: 58.1px;
+  	position: relative;
+  	height: 14.9px;
+}
+.searchIcon {
+  	width: 24px;
+  	position: relative;
+  	max-height: 100%;
+}
+.div {
+  	position: relative;
+  	line-height: 20px;
+}
+.searchParent {
+  	width: 480px;
+  	border-radius: 44px;
+  	background-color: rgba(10, 10, 10, 0.07);
+  	overflow: hidden;
+  	flex-shrink: 0;
+  	display: flex;
+  	flex-direction: row;
+  	align-items: center;
+  	justify-content: flex-start;
+  	padding: 10px 16px;
+  	box-sizing: border-box;
+  	gap: 4px;
+}
+.frameChild {
+  	width: 40px;
+  	border-radius: 40px;
+  	height: 40px;
+  	overflow: hidden;
+  	flex-shrink: 0;
+  	object-fit: cover;
+}
+.frameParent {
+  	overflow: hidden;
+  	display: flex;
+  	flex-direction: row;
+  	align-items: center;
+  	justify-content: flex-start;
+  	gap: 8px;
+}
+.nexusParent {
+  	flex: 1;
+  	height: 64px;
+  	overflow: hidden;
+  	display: flex;
+  	flex-direction: row;
+  	align-items: center;
+  	justify-content: space-between;
+  	padding: 16px 24px;
+  	box-sizing: border-box;
+  	gap: 0px;
+}
+.header {
+  	width: 1440px;
+  	background-color: #fff;
+  	border-bottom: 1px solid rgba(10, 10, 10, 0.16);
+  	box-sizing: border-box;
+  	height: 64px;
+  	overflow: hidden;
+  	flex-shrink: 0;
+  	display: flex;
+  	flex-direction: row;
+  	align-items: center;
+  	justify-content: center;
+}
+.div1 {
+  	align-self: stretch;
+  	position: relative;
+  	line-height: 40px;
+  	font-weight: 600;
+}
+.div2 {
+  	align-self: stretch;
+  	position: relative;
+  	font-size: 14px;
+  	line-height: 18px;
+  	color: #858585;
+  	white-space: pre-wrap;
+}
+.parent {
+  	align-self: stretch;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	justify-content: flex-start;
+  	gap: 8px;
+}
+.frameInner {
+  	width: 32px;
+  	position: relative;
+  	border-radius: 32px;
+  	max-height: 100%;
+  	overflow: hidden;
+  	flex-shrink: 0;
+  	object-fit: cover;
+}
+.div3 {
+  	position: relative;
+  	line-height: 28px;
+}
+.frameContainer {
+  	display: flex;
+  	flex-direction: row;
+  	align-items: center;
+  	justify-content: flex-start;
+  	gap: 8px;
+  	font-size: 18px;
+  	color: #1a1a1a;
+}
+.image1Icon {
+  	align-self: stretch;
+  	position: relative;
+  	border-radius: 12px;
+  	max-width: 100%;
+  	overflow: hidden;
+  	max-height: 100%;
+  	object-fit: cover;
+}
+.ytn {
+  	flex: 1;
+  	position: relative;
+  	line-height: 18px;
+}
+.ytnWrapper {
+  	align-self: stretch;
+  	display: flex;
+  	flex-direction: row;
+  	align-items: center;
+  	justify-content: center;
+  	padding: 0px 8px;
+}
+.image1Parent {
+  	align-self: stretch;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	justify-content: flex-start;
+  	gap: 8px;
+  	font-size: 14px;
+  	color: #858585;
+}
+.div4 {
+  	position: relative;
+  	line-height: 28px;
+  	font-weight: 600;
+}
+.p {
+  	margin: 0;
+}
+.span {
+  	text-decoration: underline;
+  	color: #2e86f5;
+}
+.div5 {
+  	align-self: stretch;
+  	position: relative;
+  	font-size: 18px;
+  	line-height: 28px;
+  	color: #1a1a1a;
+}
+.parent1 {
+  	align-self: stretch;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	justify-content: flex-start;
+  	gap: 8px;
+  	font-size: 20px;
+  	color: #0a0a0a;
+}
+.ul {
+  	margin: 0;
+  	font-family: inherit;
+  	font-size: inherit;
+  	padding-left: 24px;
+}
+.div10 {
+  	align-self: stretch;
+  	position: relative;
+  	line-height: 28px;
+}
+.wrapper {
+  	align-self: stretch;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	justify-content: flex-start;
+  	padding: 0px 12px;
+}
+.frameParent1 {
+  	align-self: stretch;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	justify-content: flex-start;
+  	gap: 12px;
+  	font-size: 18px;
+  	color: #1a1a1a;
+}
+.ytn1 {
+  	position: relative;
+  	line-height: 18px;
+}
+.image1Group {
+  	align-self: stretch;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	justify-content: flex-start;
+  	gap: 4px;
+  	font-size: 14px;
+  	color: #858585;
+}
+.frameDiv {
+  	align-self: stretch;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	justify-content: flex-start;
+  	gap: 32px;
+  	font-size: 20px;
+}
+.frameGroup {
+  	align-self: stretch;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: flex-start;
+  	justify-content: flex-start;
+  	padding: 128px 0px;
+  	gap: 24px;
+}
+.desktop3Inner {
+  	width: 810px;
+  	overflow: hidden;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: center;
+  	justify-content: center;
+  	font-size: 32px;
+  	color: #0a0a0a;
+}
+.desktop3 {
+  	width: 100%;
+  	position: relative;
+  	background-color: #fff;
+  	overflow: hidden;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: center;
+  	justify-content: flex-start;
+  	text-align: left;
+  	font-size: 16px;
+  	color: #858585;
+  	font-family: Pretendard;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 18px;
+  color: #858585;
+}

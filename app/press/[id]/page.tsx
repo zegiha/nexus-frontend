@@ -24,8 +24,8 @@ export default function PressDetailPage() {
     )
   }
   
-  // 에러 상태 처리
-  if (pressError || headlinesError || !pressDetail) {
+  // 에러 상태 처리 - 더미 데이터가 있으면 표시
+  if ((pressError || headlinesError) && !pressDetail) {
     return (
       <Col className={styles.container}>
         <div className={styles.error}>정보를 불러오는데 실패했습니다.</div>
@@ -33,7 +33,7 @@ export default function PressDetailPage() {
     )
   }
   
-  if(headlines !== undefined)
+  if(headlines !== undefined && pressDetail)
     return (
       <Col className={styles.container}>
         <PressDetailSection

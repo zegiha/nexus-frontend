@@ -11,6 +11,9 @@ interface ISearch {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
   placeholder?: string
   searchResult: Array<ReactNode> | null
+  onFocus?: () => void
+  onBlur?: () => void
+  onKeyPress?: (e: React.KeyboardEvent) => void
 }
 
 export default function Search({
@@ -18,9 +21,25 @@ export default function Search({
   onChange,
   placeholder='검색어를 입력해주세요',
   searchResult,
+  onFocus,
+  onBlur,
+  onKeyPress,
 }: ISearch) {
   const inputRef = useRef<HTMLInputElement>(null)
   const [isActive, setIsActive] = useState<boolean>(false)
+
+  const handleFocus = () => {
+    setIsActive(true)
+    onFocus?.()
+  }
+
+  const handleBlur = () => {
+    // 짧은 딜레이 후 블러 처리 (클릭 이벤트가 먼저 실행되도록)
+    setTimeout(() => {
+      setIsActive(false)
+      onBlur?.()
+    }, 150)
+  }
 
   return (
     <Col className={style.wrapper} gap={4}>
@@ -45,8 +64,9 @@ export default function Search({
           className={style.input}
           value={value ?? ''}
           onChange={onChange}
-          onFocus={() => setIsActive(true)}
-          onBlur={() => setIsActive(false)}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          onKeyPress={onKeyPress}
           placeholder={placeholder}
         />
       </Row>
