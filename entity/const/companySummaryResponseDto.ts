@@ -7,6 +7,7 @@
  */
 
 export type CompanySummaryResponseDto = {
+  uuid: string;
   profileImageUrl: string;
   name: string;
 };

@@ -1,0 +1,9 @@
+.infoSection {
+  padding: 64px 32px;
+  border-radius: 8px;
+  background-color: var(--reverse-black-light);
+}
+
+.infoTextWrapper {
+  padding: 8px 0;
+}

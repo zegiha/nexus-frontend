@@ -39,6 +39,7 @@ export default function BaseTypo({
         ...getWidth(width),
         color: getTextColor(color),
         textDecoration: underline ? 'underline' : undefined,
+        cursor: onClick ? 'pointer' : undefined,
       },
       onClick: () => {onClick && onClick()},
     },

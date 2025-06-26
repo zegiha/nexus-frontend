@@ -22,9 +22,12 @@ import type {
 } from "@tanstack/react-query";
 
 import type {
-  ArticleControllerFindArticleByCategoryParams,
+  ArticleAllCategoryResponseDto,
+  ArticleAllPressResponseDto,
   ArticleControllerGetArticlesParams,
+  ArticleControllerSearchArticleParams,
   ArticleResponseDto,
+  ArticleSearchResponseDto,
   ArticleSummaryResponseDto,
   CreateArticleDto,
   PaginatedArticleResponseSummaryDto,
@@ -303,6 +306,176 @@ export function useArticleControllerGetArticles<
 }
 
 /**
+ * 검색어를 포함하는 뉴스 제목을 검색합니다.
+ * @summary 뉴스 검색
+ */
+export const articleControllerSearchArticle = (
+  params: ArticleControllerSearchArticleParams,
+  options?: SecondParameter<typeof customInstance>,
+  signal?: AbortSignal,
+) => {
+  return customInstance<ArticleSearchResponseDto>(
+    { url: `/article/search`, method: "GET", params, signal },
+    options,
+  );
+};
+
+export const getArticleControllerSearchArticleQueryKey = (
+  params: ArticleControllerSearchArticleParams,
+) => {
+  return [`/article/search`, ...(params ? [params] : [])] as const;
+};
+
+export const getArticleControllerSearchArticleQueryOptions = <
+  TData = Awaited<ReturnType<typeof articleControllerSearchArticle>>,
+  TError = ErrorType<unknown>,
+>(
+  params: ArticleControllerSearchArticleParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof articleControllerSearchArticle>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof customInstance>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey =
+    queryOptions?.queryKey ?? getArticleControllerSearchArticleQueryKey(params);
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof articleControllerSearchArticle>>
+  > = ({ signal }) =>
+    articleControllerSearchArticle(params, requestOptions, signal);
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof articleControllerSearchArticle>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
+
+export type ArticleControllerSearchArticleQueryResult = NonNullable<
+  Awaited<ReturnType<typeof articleControllerSearchArticle>>
+>;
+export type ArticleControllerSearchArticleQueryError = ErrorType<unknown>;
+
+export function useArticleControllerSearchArticle<
+  TData = Awaited<ReturnType<typeof articleControllerSearchArticle>>,
+  TError = ErrorType<unknown>,
+>(
+  params: ArticleControllerSearchArticleParams,
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof articleControllerSearchArticle>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof articleControllerSearchArticle>>,
+          TError,
+          Awaited<ReturnType<typeof articleControllerSearchArticle>>
+        >,
+        "initialData"
+      >;
+    request?: SecondParameter<typeof customInstance>;
+  },
+  queryClient?: QueryClient,
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useArticleControllerSearchArticle<
+  TData = Awaited<ReturnType<typeof articleControllerSearchArticle>>,
+  TError = ErrorType<unknown>,
+>(
+  params: ArticleControllerSearchArticleParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof articleControllerSearchArticle>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof articleControllerSearchArticle>>,
+          TError,
+          Awaited<ReturnType<typeof articleControllerSearchArticle>>
+        >,
+        "initialData"
+      >;
+    request?: SecondParameter<typeof customInstance>;
+  },
+  queryClient?: QueryClient,
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useArticleControllerSearchArticle<
+  TData = Awaited<ReturnType<typeof articleControllerSearchArticle>>,
+  TError = ErrorType<unknown>,
+>(
+  params: ArticleControllerSearchArticleParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof articleControllerSearchArticle>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof customInstance>;
+  },
+  queryClient?: QueryClient,
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+/**
+ * @summary 뉴스 검색
+ */
+
+export function useArticleControllerSearchArticle<
+  TData = Awaited<ReturnType<typeof articleControllerSearchArticle>>,
+  TError = ErrorType<unknown>,
+>(
+  params: ArticleControllerSearchArticleParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof articleControllerSearchArticle>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof customInstance>;
+  },
+  queryClient?: QueryClient,
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions = getArticleControllerSearchArticleQueryOptions(
+    params,
+    options,
+  );
+
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+
+  query.queryKey = queryOptions.queryKey;
+
+  return query;
+}
+
+/**
  * 시스템에 등록된 모든 뉴스 카테고리를 조회합니다.
  * @summary 등록된 모든 카테고리 조회
  */
@@ -459,70 +632,48 @@ export function useArticleControllerGetCategories<
 }
 
 /**
- * 특정 카테고리의 뉴스를 페이지네이션과 함께 조회합니다.
- * @summary 지정 카테고리인 뉴스 조회
+ * 모든 카테고리에 대해 제일 최신 헤드라인을 조회합니다.
+ * @summary 모든 카테고리에 대해 제일 최신 헤드라인 조회
  */
 export const articleControllerFindArticleByCategory = (
-  category: string,
-  params?: ArticleControllerFindArticleByCategoryParams,
   options?: SecondParameter<typeof customInstance>,
   signal?: AbortSignal,
 ) => {
-  return customInstance<PaginatedArticleResponseSummaryDto>(
-    { url: `/article/category/${category}`, method: "GET", params, signal },
+  return customInstance<ArticleAllCategoryResponseDto>(
+    { url: `/article/category/all`, method: "GET", signal },
     options,
   );
 };
 
-export const getArticleControllerFindArticleByCategoryQueryKey = (
-  category: string,
-  params?: ArticleControllerFindArticleByCategoryParams,
-) => {
-  return [
-    `/article/category/${category}`,
-    ...(params ? [params] : []),
-  ] as const;
+export const getArticleControllerFindArticleByCategoryQueryKey = () => {
+  return [`/article/category/all`] as const;
 };
 
 export const getArticleControllerFindArticleByCategoryQueryOptions = <
   TData = Awaited<ReturnType<typeof articleControllerFindArticleByCategory>>,
   TError = ErrorType<unknown>,
->(
-  category: string,
-  params?: ArticleControllerFindArticleByCategoryParams,
-  options?: {
-    query?: Partial<
-      UseQueryOptions<
-        Awaited<ReturnType<typeof articleControllerFindArticleByCategory>>,
-        TError,
-        TData
-      >
-    >;
-    request?: SecondParameter<typeof customInstance>;
-  },
-) => {
+>(options?: {
+  query?: Partial<
+    UseQueryOptions<
+      Awaited<ReturnType<typeof articleControllerFindArticleByCategory>>,
+      TError,
+      TData
+    >
+  >;
+  request?: SecondParameter<typeof customInstance>;
+}) => {
   const { query: queryOptions, request: requestOptions } = options ?? {};
 
   const queryKey =
     queryOptions?.queryKey ??
-    getArticleControllerFindArticleByCategoryQueryKey(category, params);
+    getArticleControllerFindArticleByCategoryQueryKey();
 
   const queryFn: QueryFunction<
     Awaited<ReturnType<typeof articleControllerFindArticleByCategory>>
   > = ({ signal }) =>
-    articleControllerFindArticleByCategory(
-      category,
-      params,
-      requestOptions,
-      signal,
-    );
+    articleControllerFindArticleByCategory(requestOptions, signal);
 
-  return {
-    queryKey,
-    queryFn,
-    enabled: !!category,
-    ...queryOptions,
-  } as UseQueryOptions<
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
     Awaited<ReturnType<typeof articleControllerFindArticleByCategory>>,
     TError,
     TData
@@ -539,8 +690,6 @@ export function useArticleControllerFindArticleByCategory<
   TData = Awaited<ReturnType<typeof articleControllerFindArticleByCategory>>,
   TError = ErrorType<unknown>,
 >(
-  category: string,
-  params: undefined | ArticleControllerFindArticleByCategoryParams,
   options: {
     query: Partial<
       UseQueryOptions<
@@ -567,8 +716,6 @@ export function useArticleControllerFindArticleByCategory<
   TData = Awaited<ReturnType<typeof articleControllerFindArticleByCategory>>,
   TError = ErrorType<unknown>,
 >(
-  category: string,
-  params?: ArticleControllerFindArticleByCategoryParams,
   options?: {
     query?: Partial<
       UseQueryOptions<
@@ -595,8 +742,6 @@ export function useArticleControllerFindArticleByCategory<
   TData = Awaited<ReturnType<typeof articleControllerFindArticleByCategory>>,
   TError = ErrorType<unknown>,
 >(
-  category: string,
-  params?: ArticleControllerFindArticleByCategoryParams,
   options?: {
     query?: Partial<
       UseQueryOptions<
@@ -612,15 +757,13 @@ export function useArticleControllerFindArticleByCategory<
   queryKey: DataTag<QueryKey, TData, TError>;
 };
 /**
- * @summary 지정 카테고리인 뉴스 조회
+ * @summary 모든 카테고리에 대해 제일 최신 헤드라인 조회
  */
 
 export function useArticleControllerFindArticleByCategory<
   TData = Awaited<ReturnType<typeof articleControllerFindArticleByCategory>>,
   TError = ErrorType<unknown>,
 >(
-  category: string,
-  params?: ArticleControllerFindArticleByCategoryParams,
   options?: {
     query?: Partial<
       UseQueryOptions<
@@ -635,11 +778,8 @@ export function useArticleControllerFindArticleByCategory<
 ): UseQueryResult<TData, TError> & {
   queryKey: DataTag<QueryKey, TData, TError>;
 } {
-  const queryOptions = getArticleControllerFindArticleByCategoryQueryOptions(
-    category,
-    params,
-    options,
-  );
+  const queryOptions =
+    getArticleControllerFindArticleByCategoryQueryOptions(options);
 
   const query = useQuery(queryOptions, queryClient) as UseQueryResult<
     TData,
@@ -812,6 +952,165 @@ export function useArticleControllerGetArticle<
     uuid,
     options,
   );
+
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+
+  query.queryKey = queryOptions.queryKey;
+
+  return query;
+}
+
+/**
+ * @summary 전체 언론사에 대한 기사 조회
+ */
+export const articleControllerGetArticleByAllCompany = (
+  options?: SecondParameter<typeof customInstance>,
+  signal?: AbortSignal,
+) => {
+  return customInstance<ArticleAllPressResponseDto>(
+    { url: `/article/press/all`, method: "GET", signal },
+    options,
+  );
+};
+
+export const getArticleControllerGetArticleByAllCompanyQueryKey = () => {
+  return [`/article/press/all`] as const;
+};
+
+export const getArticleControllerGetArticleByAllCompanyQueryOptions = <
+  TData = Awaited<ReturnType<typeof articleControllerGetArticleByAllCompany>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: Partial<
+    UseQueryOptions<
+      Awaited<ReturnType<typeof articleControllerGetArticleByAllCompany>>,
+      TError,
+      TData
+    >
+  >;
+  request?: SecondParameter<typeof customInstance>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey =
+    queryOptions?.queryKey ??
+    getArticleControllerGetArticleByAllCompanyQueryKey();
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof articleControllerGetArticleByAllCompany>>
+  > = ({ signal }) =>
+    articleControllerGetArticleByAllCompany(requestOptions, signal);
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof articleControllerGetArticleByAllCompany>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
+
+export type ArticleControllerGetArticleByAllCompanyQueryResult = NonNullable<
+  Awaited<ReturnType<typeof articleControllerGetArticleByAllCompany>>
+>;
+export type ArticleControllerGetArticleByAllCompanyQueryError =
+  ErrorType<unknown>;
+
+export function useArticleControllerGetArticleByAllCompany<
+  TData = Awaited<ReturnType<typeof articleControllerGetArticleByAllCompany>>,
+  TError = ErrorType<unknown>,
+>(
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof articleControllerGetArticleByAllCompany>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof articleControllerGetArticleByAllCompany>>,
+          TError,
+          Awaited<ReturnType<typeof articleControllerGetArticleByAllCompany>>
+        >,
+        "initialData"
+      >;
+    request?: SecondParameter<typeof customInstance>;
+  },
+  queryClient?: QueryClient,
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useArticleControllerGetArticleByAllCompany<
+  TData = Awaited<ReturnType<typeof articleControllerGetArticleByAllCompany>>,
+  TError = ErrorType<unknown>,
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof articleControllerGetArticleByAllCompany>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof articleControllerGetArticleByAllCompany>>,
+          TError,
+          Awaited<ReturnType<typeof articleControllerGetArticleByAllCompany>>
+        >,
+        "initialData"
+      >;
+    request?: SecondParameter<typeof customInstance>;
+  },
+  queryClient?: QueryClient,
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useArticleControllerGetArticleByAllCompany<
+  TData = Awaited<ReturnType<typeof articleControllerGetArticleByAllCompany>>,
+  TError = ErrorType<unknown>,
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof articleControllerGetArticleByAllCompany>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof customInstance>;
+  },
+  queryClient?: QueryClient,
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+/**
+ * @summary 전체 언론사에 대한 기사 조회
+ */
+
+export function useArticleControllerGetArticleByAllCompany<
+  TData = Awaited<ReturnType<typeof articleControllerGetArticleByAllCompany>>,
+  TError = ErrorType<unknown>,
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof articleControllerGetArticleByAllCompany>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof customInstance>;
+  },
+  queryClient?: QueryClient,
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions =
+    getArticleControllerGetArticleByAllCompanyQueryOptions(options);
 
   const query = useQuery(queryOptions, queryClient) as UseQueryResult<
     TData,

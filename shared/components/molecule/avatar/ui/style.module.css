@@ -1,6 +1,7 @@
 .parentHeightContainer {
   border-radius: 0;
   height: 100%;
+  aspect-ratio: 1;
 }
 
 .small, .medium, .parentHeight {

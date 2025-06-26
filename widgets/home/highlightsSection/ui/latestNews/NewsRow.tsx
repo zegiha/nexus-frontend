@@ -15,7 +15,7 @@ export default function NewsRow({
   video
 }: articleEntity) {
   return (
-    <Link href={`/article/${id}`}>
+    <Link href={`/app/article/${id}`}>
       <Row className={style.newsRow} gap={12}>
         <Col gap={4}>
           <Typo.medium textOverflowLine={2}>

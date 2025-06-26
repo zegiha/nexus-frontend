@@ -17,6 +17,10 @@ export type ArticleControllerGetArticlesParams = {
    */
   category?: string;
   /**
+   * 조회할 회사명 배열
+   */
+  companies?: string[];
+  /**
    * 페이지 번호
    */
   page?: number;

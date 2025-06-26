@@ -10,4 +10,5 @@ export type CreateCompanyDto = {
   name: string;
   description: string;
   profileImageUrl: string;
+  signatureColor: string;
 };

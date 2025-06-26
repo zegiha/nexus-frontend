@@ -11,7 +11,7 @@ export default function HeadlineSection({
   const {
     data,
     status,
-  } = useHeadlineSection()
+  } = useHeadlineSection(activeCategory)
 
   return (
     <div className={style.section}>

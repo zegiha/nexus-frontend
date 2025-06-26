@@ -1,5 +1,6 @@
 "use client";
 
+import {HeaderLayout} from '@/shared/components/organism/header'
 import { useState, useEffect } from "react";
 import { useAuth } from "@/shared/contexts/AuthContext";
 import { useRouter } from "next/navigation";
@@ -9,7 +10,7 @@ import Subscription from "@/widgets/account/subscription/ui/Subscription";
 import styles from "./styles.module.css";
 
 export default function AccountPage() {
-  const { user, isAuthenticated, isLoading } = useAuth();
+  const { user, isAuthenticated } = useAuth();
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<"account" | "subscription">(
     "account"
@@ -17,46 +18,30 @@ export default function AccountPage() {
 
   // 로그인되지 않은 경우 리다이렉트
   useEffect(() => {
-    if (!isLoading && !isAuthenticated) {
+    if (!isAuthenticated) {
       router.push("/auth/login");
     }
-  }, [isAuthenticated, isLoading, router]);
-
-  // 로딩 중이거나 인증되지 않은 경우
-  if (isLoading) {
-    return (
-      <div className={styles.accountPage}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100vh",
-          }}
-        >
-          <div>로딩 중...</div>
-        </div>
-      </div>
-    );
-  }
+  }, [isAuthenticated, router]);
 
   if (!isAuthenticated || !user) {
     return null; // 리다이렉트 진행 중
   }
 
   return (
-    <div className={styles.accountPage}>
-      {/* 메인 콘텐츠 */}
-      <div className={styles.frameGroup}>
-        {/* 사이드바 */}
-        <AccountSidebar activeTab={activeTab} onTabChange={setActiveTab} />
+    <HeaderLayout>
+      <div className={styles.accountPage}>
+        {/* 메인 콘텐츠 */}
+        <div className={styles.frameGroup}>
+          {/* 사이드바 */}
+          <AccountSidebar activeTab={activeTab} onTabChange={setActiveTab} />
 
-        {/* 구분선 */}
-        <div className={styles.frameInner} />
+          {/* 구분선 */}
+          <div className={styles.frameInner} />
 
-        {/* 메인 콘텐츠 영역 */}
-        {activeTab === "account" ? <AccountInfo /> : <Subscription />}
+          {/* 메인 콘텐츠 영역 */}
+          {activeTab === "account" ? <AccountInfo /> : <Subscription />}
+        </div>
       </div>
-    </div>
+    </HeaderLayout>
   );
 }

@@ -3,7 +3,7 @@ import {Col, Row} from '@/shared/components/atom/flex'
 import {Icon} from '@/shared/components/atom/icon'
 import classNames from 'classnames'
 import {AnimatePresence} from 'motion/react'
-import {ChangeEvent, ReactNode, useRef, useState} from 'react'
+import {ChangeEvent, ReactNode, useEffect, useRef, useState} from 'react'
 import style from './style.module.css'
 
 interface ISearch {
@@ -13,7 +13,7 @@ interface ISearch {
   searchResult: Array<ReactNode> | null
   onFocus?: () => void
   onBlur?: () => void
-  onKeyPress?: (e: React.KeyboardEvent) => void
+  onEnterPress?: () => void
 }
 
 export default function Search({
@@ -23,7 +23,7 @@ export default function Search({
   searchResult,
   onFocus,
   onBlur,
-  onKeyPress,
+  onEnterPress
 }: ISearch) {
   const inputRef = useRef<HTMLInputElement>(null)
   const [isActive, setIsActive] = useState<boolean>(false)
@@ -61,12 +61,19 @@ export default function Search({
         <input
           ref={inputRef}
           type="search"
+          name='search'
+          autoComplete='off'
           className={style.input}
           value={value ?? ''}
           onChange={onChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
-          onKeyPress={onKeyPress}
+          onKeyPress={(e) => {
+            if(e.key === 'Enter') {
+              onEnterPress && onEnterPress()
+              inputRef.current?.blur()
+            }
+          }}
           placeholder={placeholder}
         />
       </Row>

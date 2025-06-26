@@ -2,7 +2,8 @@ import { defineConfig } from 'orval';
 
 export default defineConfig({
   petstore: {
-    input: 'https://nexus.backend.zegiha.work/swagger/json',
+    // input: 'https://nexus.backend.zegiha.work/swagger/json',
+    // input: 'http://localhost:4000/swagger/json',
     output: {
       mode: 'tags-split',
       baseUrl: process.env.NEXT_PUBLIC_BASE_URL,

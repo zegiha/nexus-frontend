@@ -18,6 +18,7 @@ export default function Avatar({
       className={classNames([
         size === 'parentHeight' && style.parentHeightContainer
       ])}
+      width={'auto'}
       alignItems={'center'}
       gap={getGap(size)}
     >

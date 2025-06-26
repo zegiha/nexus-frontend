@@ -15,5 +15,5 @@ export interface IBaseButton
   width?: TWidth
   disabled?: boolean
   round?: boolean
-  onClick: () => void
+  onClick?: () => void
 }

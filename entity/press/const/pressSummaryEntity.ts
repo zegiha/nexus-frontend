@@ -1,4 +1,4 @@
 export default interface pressSummaryEntity {
-  name: string
-  imgUrl: string
+  name: string;
+  imgUrl: string;
 }

@@ -21,6 +21,11 @@
   }
 }
 
+.headlineContainer:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .headlineContents {
   gap: 8px;
   @media(max-width: 400px) {
@@ -49,4 +54,9 @@
   padding: 16px;
   border-radius: 12px;
   background-color: var(--container-normal-light);
+}
+
+.articleContainer:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }

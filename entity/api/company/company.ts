@@ -21,7 +21,7 @@ import type {
   UseQueryResult,
 } from "@tanstack/react-query";
 
-import type { CreateCompanyDto } from "../../const";
+import type { CompanyResponseDto, CreateCompanyDto } from "../../const";
 
 import { customInstance } from "../../../shared/axios/lib/customInstance";
 import type {
@@ -39,7 +39,7 @@ export const companyControllerCreateCompany = (
   options?: SecondParameter<typeof customInstance>,
   signal?: AbortSignal,
 ) => {
-  return customInstance<void>(
+  return customInstance<CreateCompanyDto>(
     {
       url: `/company`,
       method: "POST",
@@ -132,7 +132,7 @@ export const companyControllerGetCompany = (
   options?: SecondParameter<typeof customInstance>,
   signal?: AbortSignal,
 ) => {
-  return customInstance<void>(
+  return customInstance<CompanyResponseDto>(
     { url: `/company/info/${name}`, method: "GET", signal },
     options,
   );
@@ -296,34 +296,34 @@ export function useCompanyControllerGetCompany<
 }
 
 /**
- * @summary 언론사 구독자 수 조회
+ * @summary 언론사 카테고리 조회
  */
-export const companyControllerGetSubscriberCount = (
+export const companyControllerGetCompanyCategories = (
   name: string,
   options?: SecondParameter<typeof customInstance>,
   signal?: AbortSignal,
 ) => {
-  return customInstance<void>(
-    { url: `/company/subscribers/count/${name}`, method: "GET", signal },
+  return customInstance<string[]>(
+    { url: `/company/categories/${name}`, method: "GET", signal },
     options,
   );
 };
 
-export const getCompanyControllerGetSubscriberCountQueryKey = (
+export const getCompanyControllerGetCompanyCategoriesQueryKey = (
   name: string,
 ) => {
-  return [`/company/subscribers/count/${name}`] as const;
+  return [`/company/categories/${name}`] as const;
 };
 
-export const getCompanyControllerGetSubscriberCountQueryOptions = <
-  TData = Awaited<ReturnType<typeof companyControllerGetSubscriberCount>>,
+export const getCompanyControllerGetCompanyCategoriesQueryOptions = <
+  TData = Awaited<ReturnType<typeof companyControllerGetCompanyCategories>>,
   TError = ErrorType<unknown>,
 >(
   name: string,
   options?: {
     query?: Partial<
       UseQueryOptions<
-        Awaited<ReturnType<typeof companyControllerGetSubscriberCount>>,
+        Awaited<ReturnType<typeof companyControllerGetCompanyCategories>>,
         TError,
         TData
       >
@@ -335,12 +335,12 @@ export const getCompanyControllerGetSubscriberCountQueryOptions = <
 
   const queryKey =
     queryOptions?.queryKey ??
-    getCompanyControllerGetSubscriberCountQueryKey(name);
+    getCompanyControllerGetCompanyCategoriesQueryKey(name);
 
   const queryFn: QueryFunction<
-    Awaited<ReturnType<typeof companyControllerGetSubscriberCount>>
+    Awaited<ReturnType<typeof companyControllerGetCompanyCategories>>
   > = ({ signal }) =>
-    companyControllerGetSubscriberCount(name, requestOptions, signal);
+    companyControllerGetCompanyCategories(name, requestOptions, signal);
 
   return {
     queryKey,
@@ -348,35 +348,36 @@ export const getCompanyControllerGetSubscriberCountQueryOptions = <
     enabled: !!name,
     ...queryOptions,
   } as UseQueryOptions<
-    Awaited<ReturnType<typeof companyControllerGetSubscriberCount>>,
+    Awaited<ReturnType<typeof companyControllerGetCompanyCategories>>,
     TError,
     TData
   > & { queryKey: DataTag<QueryKey, TData, TError> };
 };
 
-export type CompanyControllerGetSubscriberCountQueryResult = NonNullable<
-  Awaited<ReturnType<typeof companyControllerGetSubscriberCount>>
+export type CompanyControllerGetCompanyCategoriesQueryResult = NonNullable<
+  Awaited<ReturnType<typeof companyControllerGetCompanyCategories>>
 >;
-export type CompanyControllerGetSubscriberCountQueryError = ErrorType<unknown>;
+export type CompanyControllerGetCompanyCategoriesQueryError =
+  ErrorType<unknown>;
 
-export function useCompanyControllerGetSubscriberCount<
-  TData = Awaited<ReturnType<typeof companyControllerGetSubscriberCount>>,
+export function useCompanyControllerGetCompanyCategories<
+  TData = Awaited<ReturnType<typeof companyControllerGetCompanyCategories>>,
   TError = ErrorType<unknown>,
 >(
   name: string,
   options: {
     query: Partial<
       UseQueryOptions<
-        Awaited<ReturnType<typeof companyControllerGetSubscriberCount>>,
+        Awaited<ReturnType<typeof companyControllerGetCompanyCategories>>,
         TError,
         TData
       >
     > &
       Pick<
         DefinedInitialDataOptions<
-          Awaited<ReturnType<typeof companyControllerGetSubscriberCount>>,
+          Awaited<ReturnType<typeof companyControllerGetCompanyCategories>>,
           TError,
-          Awaited<ReturnType<typeof companyControllerGetSubscriberCount>>
+          Awaited<ReturnType<typeof companyControllerGetCompanyCategories>>
         >,
         "initialData"
       >;
@@ -386,24 +387,24 @@ export function useCompanyControllerGetSubscriberCount<
 ): DefinedUseQueryResult<TData, TError> & {
   queryKey: DataTag<QueryKey, TData, TError>;
 };
-export function useCompanyControllerGetSubscriberCount<
-  TData = Awaited<ReturnType<typeof companyControllerGetSubscriberCount>>,
+export function useCompanyControllerGetCompanyCategories<
+  TData = Awaited<ReturnType<typeof companyControllerGetCompanyCategories>>,
   TError = ErrorType<unknown>,
 >(
   name: string,
   options?: {
     query?: Partial<
       UseQueryOptions<
-        Awaited<ReturnType<typeof companyControllerGetSubscriberCount>>,
+        Awaited<ReturnType<typeof companyControllerGetCompanyCategories>>,
         TError,
         TData
       >
     > &
       Pick<
         UndefinedInitialDataOptions<
-          Awaited<ReturnType<typeof companyControllerGetSubscriberCount>>,
+          Awaited<ReturnType<typeof companyControllerGetCompanyCategories>>,
           TError,
-          Awaited<ReturnType<typeof companyControllerGetSubscriberCount>>
+          Awaited<ReturnType<typeof companyControllerGetCompanyCategories>>
         >,
         "initialData"
       >;
@@ -413,15 +414,15 @@ export function useCompanyControllerGetSubscriberCount<
 ): UseQueryResult<TData, TError> & {
   queryKey: DataTag<QueryKey, TData, TError>;
 };
-export function useCompanyControllerGetSubscriberCount<
-  TData = Awaited<ReturnType<typeof companyControllerGetSubscriberCount>>,
+export function useCompanyControllerGetCompanyCategories<
+  TData = Awaited<ReturnType<typeof companyControllerGetCompanyCategories>>,
   TError = ErrorType<unknown>,
 >(
   name: string,
   options?: {
     query?: Partial<
       UseQueryOptions<
-        Awaited<ReturnType<typeof companyControllerGetSubscriberCount>>,
+        Awaited<ReturnType<typeof companyControllerGetCompanyCategories>>,
         TError,
         TData
       >
@@ -433,18 +434,18 @@ export function useCompanyControllerGetSubscriberCount<
   queryKey: DataTag<QueryKey, TData, TError>;
 };
 /**
- * @summary 언론사 구독자 수 조회
+ * @summary 언론사 카테고리 조회
  */
 
-export function useCompanyControllerGetSubscriberCount<
-  TData = Awaited<ReturnType<typeof companyControllerGetSubscriberCount>>,
+export function useCompanyControllerGetCompanyCategories<
+  TData = Awaited<ReturnType<typeof companyControllerGetCompanyCategories>>,
   TError = ErrorType<unknown>,
 >(
   name: string,
   options?: {
     query?: Partial<
       UseQueryOptions<
-        Awaited<ReturnType<typeof companyControllerGetSubscriberCount>>,
+        Awaited<ReturnType<typeof companyControllerGetCompanyCategories>>,
         TError,
         TData
       >
@@ -455,7 +456,7 @@ export function useCompanyControllerGetSubscriberCount<
 ): UseQueryResult<TData, TError> & {
   queryKey: DataTag<QueryKey, TData, TError>;
 } {
-  const queryOptions = getCompanyControllerGetSubscriberCountQueryOptions(
+  const queryOptions = getCompanyControllerGetCompanyCategoriesQueryOptions(
     name,
     options,
   );

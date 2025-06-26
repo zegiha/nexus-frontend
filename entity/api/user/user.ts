@@ -5,18 +5,27 @@
  * The news viewer service, Nexus API Description
  * OpenAPI spec version: 0.1.0
  */
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import type {
+  DataTag,
+  DefinedInitialDataOptions,
+  DefinedUseQueryResult,
   MutationFunction,
   QueryClient,
+  QueryFunction,
+  QueryKey,
+  UndefinedInitialDataOptions,
   UseMutationOptions,
   UseMutationResult,
+  UseQueryOptions,
+  UseQueryResult,
 } from "@tanstack/react-query";
 
 import type {
   ChangeEmailDto,
   ChangePasswordDto,
   SubscribeCompanyDto,
+  SubscribedCompaniesResponseDto,
 } from "../../const";
 
 import { customInstance } from "../../../shared/axios/lib/customInstance";
@@ -28,13 +37,167 @@ import type {
 type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 
 /**
+ * @summary 이메일 조회
+ */
+export const userControllerMyEmail = (
+  options?: SecondParameter<typeof customInstance>,
+  signal?: AbortSignal,
+) => {
+  return customInstance<string>(
+    { url: `/user/my/email`, method: "GET", signal },
+    options,
+  );
+};
+
+export const getUserControllerMyEmailQueryKey = () => {
+  return [`/user/my/email`] as const;
+};
+
+export const getUserControllerMyEmailQueryOptions = <
+  TData = Awaited<ReturnType<typeof userControllerMyEmail>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: Partial<
+    UseQueryOptions<
+      Awaited<ReturnType<typeof userControllerMyEmail>>,
+      TError,
+      TData
+    >
+  >;
+  request?: SecondParameter<typeof customInstance>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getUserControllerMyEmailQueryKey();
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof userControllerMyEmail>>
+  > = ({ signal }) => userControllerMyEmail(requestOptions, signal);
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof userControllerMyEmail>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
+
+export type UserControllerMyEmailQueryResult = NonNullable<
+  Awaited<ReturnType<typeof userControllerMyEmail>>
+>;
+export type UserControllerMyEmailQueryError = ErrorType<unknown>;
+
+export function useUserControllerMyEmail<
+  TData = Awaited<ReturnType<typeof userControllerMyEmail>>,
+  TError = ErrorType<unknown>,
+>(
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof userControllerMyEmail>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof userControllerMyEmail>>,
+          TError,
+          Awaited<ReturnType<typeof userControllerMyEmail>>
+        >,
+        "initialData"
+      >;
+    request?: SecondParameter<typeof customInstance>;
+  },
+  queryClient?: QueryClient,
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useUserControllerMyEmail<
+  TData = Awaited<ReturnType<typeof userControllerMyEmail>>,
+  TError = ErrorType<unknown>,
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof userControllerMyEmail>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof userControllerMyEmail>>,
+          TError,
+          Awaited<ReturnType<typeof userControllerMyEmail>>
+        >,
+        "initialData"
+      >;
+    request?: SecondParameter<typeof customInstance>;
+  },
+  queryClient?: QueryClient,
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useUserControllerMyEmail<
+  TData = Awaited<ReturnType<typeof userControllerMyEmail>>,
+  TError = ErrorType<unknown>,
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof userControllerMyEmail>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof customInstance>;
+  },
+  queryClient?: QueryClient,
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+/**
+ * @summary 이메일 조회
+ */
+
+export function useUserControllerMyEmail<
+  TData = Awaited<ReturnType<typeof userControllerMyEmail>>,
+  TError = ErrorType<unknown>,
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof userControllerMyEmail>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof customInstance>;
+  },
+  queryClient?: QueryClient,
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions = getUserControllerMyEmailQueryOptions(options);
+
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+
+  query.queryKey = queryOptions.queryKey;
+
+  return query;
+}
+
+/**
  * @summary 이메일 변경
  */
 export const userControllerChangeEmail = (
   changeEmailDto: BodyType<ChangeEmailDto>,
   options?: SecondParameter<typeof customInstance>,
 ) => {
-  return customInstance<void>(
+  return customInstance<ChangeEmailDto>(
     {
       url: `/user/change/email`,
       method: "PATCH",
@@ -123,7 +286,7 @@ export const userControllerChangePassword = (
   changePasswordDto: BodyType<ChangePasswordDto>,
   options?: SecondParameter<typeof customInstance>,
 ) => {
-  return customInstance<void>(
+  return customInstance<ChangePasswordDto>(
     {
       url: `/user/change/password`,
       method: "PATCH",
@@ -214,7 +377,7 @@ export const userControllerSubscribe = (
   subscribeCompanyDto: BodyType<SubscribeCompanyDto>,
   options?: SecondParameter<typeof customInstance>,
 ) => {
-  return customInstance<void>(
+  return customInstance<SubscribeCompanyDto>(
     {
       url: `/user/subscribe`,
       method: "PATCH",
@@ -303,7 +466,7 @@ export const userControllerUnsubscribeCompany = (
   subscribeCompanyDto: BodyType<SubscribeCompanyDto>,
   options?: SecondParameter<typeof customInstance>,
 ) => {
-  return customInstance<void>(
+  return customInstance<SubscribeCompanyDto>(
     {
       url: `/user/unsubscribe`,
       method: "PATCH",
@@ -393,7 +556,7 @@ export const useUserControllerUnsubscribeCompany = <
 export const userControllerDeleteAccount = (
   options?: SecondParameter<typeof customInstance>,
 ) => {
-  return customInstance<void>(
+  return customInstance<string>(
     { url: `/user/delete`, method: "DELETE" },
     options,
   );
@@ -469,3 +632,159 @@ export const useUserControllerDeleteAccount = <
 
   return useMutation(mutationOptions, queryClient);
 };
+/**
+ * @summary 구독한 언론사 목록 조회
+ */
+export const userControllerGetSubscribedCompanies = (
+  options?: SecondParameter<typeof customInstance>,
+  signal?: AbortSignal,
+) => {
+  return customInstance<SubscribedCompaniesResponseDto>(
+    { url: `/user/subscribe/list`, method: "GET", signal },
+    options,
+  );
+};
+
+export const getUserControllerGetSubscribedCompaniesQueryKey = () => {
+  return [`/user/subscribe/list`] as const;
+};
+
+export const getUserControllerGetSubscribedCompaniesQueryOptions = <
+  TData = Awaited<ReturnType<typeof userControllerGetSubscribedCompanies>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: Partial<
+    UseQueryOptions<
+      Awaited<ReturnType<typeof userControllerGetSubscribedCompanies>>,
+      TError,
+      TData
+    >
+  >;
+  request?: SecondParameter<typeof customInstance>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey =
+    queryOptions?.queryKey ?? getUserControllerGetSubscribedCompaniesQueryKey();
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof userControllerGetSubscribedCompanies>>
+  > = ({ signal }) =>
+    userControllerGetSubscribedCompanies(requestOptions, signal);
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof userControllerGetSubscribedCompanies>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
+
+export type UserControllerGetSubscribedCompaniesQueryResult = NonNullable<
+  Awaited<ReturnType<typeof userControllerGetSubscribedCompanies>>
+>;
+export type UserControllerGetSubscribedCompaniesQueryError = ErrorType<unknown>;
+
+export function useUserControllerGetSubscribedCompanies<
+  TData = Awaited<ReturnType<typeof userControllerGetSubscribedCompanies>>,
+  TError = ErrorType<unknown>,
+>(
+  options: {
+    query: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof userControllerGetSubscribedCompanies>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof userControllerGetSubscribedCompanies>>,
+          TError,
+          Awaited<ReturnType<typeof userControllerGetSubscribedCompanies>>
+        >,
+        "initialData"
+      >;
+    request?: SecondParameter<typeof customInstance>;
+  },
+  queryClient?: QueryClient,
+): DefinedUseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useUserControllerGetSubscribedCompanies<
+  TData = Awaited<ReturnType<typeof userControllerGetSubscribedCompanies>>,
+  TError = ErrorType<unknown>,
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof userControllerGetSubscribedCompanies>>,
+        TError,
+        TData
+      >
+    > &
+      Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof userControllerGetSubscribedCompanies>>,
+          TError,
+          Awaited<ReturnType<typeof userControllerGetSubscribedCompanies>>
+        >,
+        "initialData"
+      >;
+    request?: SecondParameter<typeof customInstance>;
+  },
+  queryClient?: QueryClient,
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+export function useUserControllerGetSubscribedCompanies<
+  TData = Awaited<ReturnType<typeof userControllerGetSubscribedCompanies>>,
+  TError = ErrorType<unknown>,
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof userControllerGetSubscribedCompanies>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof customInstance>;
+  },
+  queryClient?: QueryClient,
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+};
+/**
+ * @summary 구독한 언론사 목록 조회
+ */
+
+export function useUserControllerGetSubscribedCompanies<
+  TData = Awaited<ReturnType<typeof userControllerGetSubscribedCompanies>>,
+  TError = ErrorType<unknown>,
+>(
+  options?: {
+    query?: Partial<
+      UseQueryOptions<
+        Awaited<ReturnType<typeof userControllerGetSubscribedCompanies>>,
+        TError,
+        TData
+      >
+    >;
+    request?: SecondParameter<typeof customInstance>;
+  },
+  queryClient?: QueryClient,
+): UseQueryResult<TData, TError> & {
+  queryKey: DataTag<QueryKey, TData, TError>;
+} {
+  const queryOptions =
+    getUserControllerGetSubscribedCompaniesQueryOptions(options);
+
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<
+    TData,
+    TError
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+
+  query.queryKey = queryOptions.queryKey;
+
+  return query;
+}

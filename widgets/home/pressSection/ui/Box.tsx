@@ -16,7 +16,7 @@ export default function Box({
 
   return (
     <Col className={style.boxContainer} gap={24}>
-      <Link href={`/press/${encodeURIComponent(press.name)}`}>
+      <Link href={`/app/press/${encodeURIComponent(press.name)}`}>
         <Avatar
           size={'small'}
           name={press.name}
@@ -26,17 +26,12 @@ export default function Box({
       <Col gap={12}>
         <HeadlineProvider headlines={headlines}/>
         <Col>
-          {articles.slice(0, Math.min(articles.length, 2)).map((v, i) => (
+          {articles.slice(0, 3).map((v, i) => (
             <React.Fragment key={i}>
-              <Article
-                {...v}
-              />
-              <Divider/>
+              <Article {...v} />
+              {i < Math.min(articles.length, 3) - 1 && <Divider />}
             </React.Fragment>
           ))}
-          <Article
-            {...articles[Math.min(articles.length, 2)]}
-          />
         </Col>
       </Col>
     </Col>

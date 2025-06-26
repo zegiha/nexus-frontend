@@ -1,5 +1,5 @@
-import Header from "./ui/Header";
+import HeaderLayout from '@/shared/components/organism/header/ui/HeaderLayout'
 
 export {
-    Header
+    HeaderLayout,
 }

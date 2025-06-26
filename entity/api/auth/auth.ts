@@ -24,6 +24,7 @@ import type {
 import type {
   EmailVerifyDto,
   EmailVerifyRequestDto,
+  RefreshResponseDto,
   SignInDto,
   SignUpDto,
 } from "../../const";
@@ -44,7 +45,7 @@ export const authControllerEmailVerifyRequest = (
   options?: SecondParameter<typeof customInstance>,
   signal?: AbortSignal,
 ) => {
-  return customInstance<void>(
+  return customInstance<EmailVerifyRequestDto>(
     {
       url: `/auth/email/verify/request`,
       method: "POST",
@@ -137,7 +138,7 @@ export const authControllerEmailVerify = (
   options?: SecondParameter<typeof customInstance>,
   signal?: AbortSignal,
 ) => {
-  return customInstance<void>(
+  return customInstance<EmailVerifyDto>(
     {
       url: `/auth/email/verify`,
       method: "POST",
@@ -228,7 +229,7 @@ export const authControllerSignUp = (
   options?: SecondParameter<typeof customInstance>,
   signal?: AbortSignal,
 ) => {
-  return customInstance<void>(
+  return customInstance<SignUpDto>(
     {
       url: `/auth/sign/up`,
       method: "POST",
@@ -319,7 +320,7 @@ export const authControllerSignIn = (
   options?: SecondParameter<typeof customInstance>,
   signal?: AbortSignal,
 ) => {
-  return customInstance<void>(
+  return customInstance<SignInDto>(
     {
       url: `/auth/sign/in`,
       method: "POST",
@@ -406,7 +407,7 @@ export const authControllerRefresh = (
   options?: SecondParameter<typeof customInstance>,
   signal?: AbortSignal,
 ) => {
-  return customInstance<void>(
+  return customInstance<RefreshResponseDto>(
     { url: `/auth/refresh`, method: "GET", signal },
     options,
   );

@@ -7,6 +7,7 @@
  */
 import type { Subject } from "./subject";
 import type { Description } from "./description";
+import type { Footnote } from "./footnote";
 import type { List } from "./list";
 import type { Link } from "./link";
 import type { Scroll } from "./scroll";
@@ -15,6 +16,7 @@ import type { MediaContent } from "./mediaContent";
 export type CreateArticleDtoContentsItem =
   | Subject
   | Description
+  | Footnote
   | List
   | Link
   | Scroll

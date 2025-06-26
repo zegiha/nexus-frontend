@@ -1,4 +1,4 @@
-import LoginPage from '@/widgets/auth/loginPage'
+import LoginPage from '../../../widgets/loginPage'
 
 export default function Login() {
   return <LoginPage />

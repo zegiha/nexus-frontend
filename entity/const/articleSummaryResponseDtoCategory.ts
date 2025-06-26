@@ -10,6 +10,4 @@
  * 뉴스 카테고리
  * @nullable
  */
-export type ArticleSummaryResponseDtoCategory = {
-  [key: string]: unknown;
-} | null;
+export type ArticleSummaryResponseDtoCategory = string | null;

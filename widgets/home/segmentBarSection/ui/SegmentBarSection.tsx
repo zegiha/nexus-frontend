@@ -5,6 +5,7 @@ import {SegmentBar} from '@/shared/components/organism/segmentBar'
 import categories from '@/widgets/home/categorySection/const/categories'
 import CategorySection from '@/widgets/home/categorySection/ui/CategorySection'
 import PressSection from '@/widgets/home/pressSection/ui/PressSection'
+import useCategories from '@/widgets/home/segmentBarSection/model/useCategories'
 import classNames from 'classnames'
 import {AnimatePresence} from 'motion/react'
 import {useState} from 'react'
@@ -12,7 +13,9 @@ import style from './style.module.css'
 
 export default function() {
   const [active, setActive] = useState<number>(0)
-  const segments = ['언론사별', ...categories]
+  const {
+    data,
+  } = useCategories()
 
   return (
     <Col className={classNames(
@@ -21,14 +24,16 @@ export default function() {
         style.whenPressSection :
         style.whenCategorySection
     )}>
-      <SegmentBar segments={segments} active={active} setActive={setActive} />
+      <SegmentBar segments={data ? data : ['언론사별']} active={active} setActive={setActive} />
       <AnimatePresence mode={'wait'}>
         {active === 0 ?
           <PressSection key={'press'}/>:
-          <CategorySection
-            key={`category-${segments[active]}`}
-            activeCategory={segments[active]}
-          />
+          data && (
+            <CategorySection
+              key={`category-${data[active]}`}
+              activeCategory={data[active]}
+            />
+          )
         }
       </AnimatePresence>
     </Col>

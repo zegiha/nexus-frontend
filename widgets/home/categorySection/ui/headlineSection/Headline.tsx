@@ -1,16 +1,20 @@
 import {articleWithMediaEntity} from '@/prev_entity/article'
 import {Col} from '@/shared/components/atom/flex'
 import {Typo} from '@/shared/components/atom/typo'
+import {useRouter} from 'next/navigation'
 import style from '../style.module.css'
 import Image from 'next/image'
 
 export default function Headline({
+  id,
   title,
   contents,
   media
 }: articleWithMediaEntity) {
+  const router = useRouter()
+
   return (
-    <Col className={style.headlineContainer}>
+    <Col className={style.headlineContainer} onClick={() => router.push(`/article/${id}`)}>
       {media.type === 'img' ? (
         <div className={style.mediaWrapper}>
           <Image

@@ -1,0 +1,42 @@
+.container {
+  padding: 240px 24px;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 360px;
+}
+
+.numberBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 52px;
+  height: 64px;
+  background-color: var(--component-fill-alternative-light);
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px var(--line-border-light);
+  transition: all var(--transition-duration-normal) var(--transition-cubic-bezier);
+}
+
+.numberBoxActive {
+  box-shadow: 0 0 0 1px var(--brand-normal-light);
+}
+
+.numberBoxError {
+  background-color: var(--status-translucent-negative-light);
+  box-shadow: 0 0 0 1px var(--status-negative-light);
+}
+
+.numberBoxInputContainer {
+  position: relative;
+}
+
+.numberBoxInput {
+  position: absolute;
+  inset: 0;
+  opacity: 0;         /* 투명하게 */
+  caret-color: transparent; /* 커서도 안보이게 */
+  color: transparent;  /* 입력한 텍스트도 안보이게 */
+  cursor: pointer;
+}

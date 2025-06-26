@@ -26,11 +26,11 @@ export default function TextInput({
     >
       <Col gap={4}>
         <Row justifyContent={'space-between'} alignItems={'center'}>
-          <Typo.small color={'strong'}>
+          <Typo.small width={'auto'} color={'alternative'}>
             {labelContents}
           </Typo.small>
           {isNecessary &&
-            <Typo.small color={'negative'}>
+            <Typo.small width={'auto'} color={'negative'}>
               필수*
             </Typo.small>
           }

@@ -1,4 +1,4 @@
-import RegisterPage from '@/widgets/auth/registerPage'
+import RegisterPage from '../../../widgets/registerPage'
 
 export default function Register() {
   return <RegisterPage />

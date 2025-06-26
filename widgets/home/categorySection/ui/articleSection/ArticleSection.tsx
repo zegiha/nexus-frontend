@@ -17,7 +17,7 @@ export default function ArticleSection({
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-  } = useArticleSection()
+  } = useArticleSection(activeCategory)
 
   const observerRef = useRef<IntersectionObserver | null>(null)
   const loadMoreRef = useRef<HTMLDivElement | null>(null)

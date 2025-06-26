@@ -1,12 +1,10 @@
 import { TanstackQueryProvider } from "@/shared/components/atom/TanstackQueryProvider";
 import { AuthProvider } from "@/shared/contexts/AuthContext";
-import AuthDebugger from "@/shared/components/debug/AuthDebugger";
 import type { Metadata } from "next";
 import "./globals.css";
 import "swiper/css";
 import localFont from "next/font/local";
 import { ReactNode } from "react";
-import { Header } from "@/shared/components/organism/header";
 
 const Pretendard = localFont({
   src: "../public/font/PretendardVariable.woff2",
@@ -26,13 +24,9 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={`${Pretendard.className}`}>
-        {" "}
         <TanstackQueryProvider>
           <AuthProvider>
-            <AuthDebugger />
-            <Header />
-            <main style={{ paddingTop: "0px" }}>{children}</main>
-            <div id={""} />
+            <main>{children}</main>
           </AuthProvider>
         </TanstackQueryProvider>
       </body>

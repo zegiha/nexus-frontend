@@ -94,7 +94,7 @@ export default function ArticleDetailPage() {
       {/* 헤더 */}
       <div className={styles.header}>
         <div className={styles.nexusParent}>
-          <Link href="/">
+          <Link href="/public">
             <svg width="58" height="15" viewBox="0 0 58 15" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path fillRule="evenodd" clipRule="evenodd" d="M12.0814 10.589V0.538086H9.46206V10.589H12.0814Z" fill="#0A0A0A"/>
               <path d="M9.72602 15.2388H12.0814V10.589H9.46206H9.31992L2.39597 0.538086H0V15.2388H2.63963V5.18789H2.76146L9.72602 15.2388Z" fill="#2F89FA"/>

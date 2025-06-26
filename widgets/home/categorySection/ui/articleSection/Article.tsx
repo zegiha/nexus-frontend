@@ -1,18 +1,26 @@
-import {articleWithMediaEntity} from '@/prev_entity/article'
+import {articleEntity, articleWithMediaEntity} from '@/prev_entity/article'
 import {Col, Row} from '@/shared/components/atom/flex'
 import {Typo} from '@/shared/components/atom/typo'
 import {formatDateWithDot} from '@/shared/helper'
 import Image from 'next/image'
+import {useRouter} from 'next/navigation'
 import style from '../style.module.css'
 
 export default function Article({
+  id,
   title,
   contents,
-  media,
+  img,
+  video,
   createdAt,
-}: articleWithMediaEntity) {
+}: articleEntity) {
+  const router = useRouter()
   return (
-    <Row gap={12}>
+    <Row
+      className={style.articleContainer}
+      gap={12}
+      onClick={() => router.push(`/article/${id}`)}
+    >
       <Typo.small width={64} color={'alternative'}>
         {formatDateWithDot(createdAt)}
       </Typo.small>
@@ -28,18 +36,19 @@ export default function Article({
           {contents}
         </Typo.medium>
       </Col>
-      {media.type === 'img' ? (
+      {img && (
         <div className={style.articleMediaWrapper}>
           <Image
-            src={media.url}
-            alt={media.alt ?? '기사 사진'}
+            src={img.url}
+            alt={img.alt ?? '기사 사진'}
             fill
           />
         </div>
-      ):(
+      )}
+      {video && (
         <video
           className={style.articleMediaWrapper}
-          src={media.url}
+          src={video.url}
         />
       )}
     </Row>

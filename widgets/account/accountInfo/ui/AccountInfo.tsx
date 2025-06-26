@@ -10,13 +10,14 @@ import {
 import styles from "./styles.module.css";
 
 export default function AccountInfo() {
-  const { user, logout } = useAuth();
   const [showEmailModal, setShowEmailModal] = useState(false);
   const [showPasswordModal, setShowPasswordModal] = useState(false);
   const [newEmail, setNewEmail] = useState("");
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const {logout, user} = useAuth();
 
   const changeEmailMutation = useChangeEmail();
   const changePasswordMutation = useChangePassword();

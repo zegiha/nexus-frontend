@@ -1,6 +1,9 @@
 'use client'
 
-import {getArticlesWithMediaEntity} from '@/prev_entity/article'
+import {articleControllerGetArticles} from '@/entity/api/article/article'
+import {PaginatedArticleResponseSummaryDto} from '@/entity/const'
+import {articleEntity, getArticlesWithMediaEntity} from '@/prev_entity/article'
+import {mediaToArticleVideoOrImage} from '@/shared/helper'
 import {useInfiniteQuery} from '@tanstack/react-query'
 import { useCallback, useMemo } from 'react'
 
@@ -31,58 +34,52 @@ const newsTitles = [
 // 언론사 목록
 const pressList = ['SBS', '조선일보', '중앙일보', '동아일보', '한겨레', '경향신문', 'YTN', 'MBC', 'KBS', 'JTBC']
 
-export default function useArticleSection() {
-  const generateNewsData = useCallback((page: number) => {
-    return Array.from({length: 20}, (_, index) => {
-      const totalIndex = page * 20 + index
-      return {
-        id: `news-${totalIndex}`,
-        title: newsTitles[totalIndex % newsTitles.length],
-        contents: `${pressList[totalIndex % pressList.length]}의 주요 뉴스입니다. 정확하고 신속한 정보 전달을 위해 노력하고 있습니다.`,
-        category: ['정치', '경제', '사회', '국제', '문화'][totalIndex % 5],
-        press: {
-          name: pressList[totalIndex % pressList.length],
-          imgUrl: '/images/press-logo-placeholder.png'
-        },
-        img: totalIndex % 3 === 0 ? {
-          url: '/images/news-placeholder.jpg',
-          alt: '뉴스 이미지'
-        } : undefined,
-        video: totalIndex % 7 === 0 ? {
-          url: '/videos/news-video-placeholder.mp4'
-        } : undefined,
-        createdAt: new Date(Date.now() - totalIndex * 3600000)
-      }
-    })
-  }, [])
+export default function useArticleSection(category: string) {
+  const queryRes = useInfiniteQuery<
+    PaginatedArticleResponseSummaryDto,
+    Error,
+    Array<articleEntity>
+  >({
+    queryKey: [`categorySectionArticles-${category}`],
+    queryFn: async ({pageParam}) => {
+      if(typeof pageParam !== 'number')
+        throw new Error('pageParam is not number')
+      return await articleControllerGetArticles({
+        category,
+        page: pageParam
+      })
+    },
+    getNextPageParam: (lastPage, _) => {
+      if(lastPage.totalPages === lastPage.page)
+        return undefined
+      return lastPage.page + 1
+    },
+    initialPageParam: 1,
+    select: v => {
+      const res: Array<articleEntity> = []
 
-  const queryRes = useInfiniteQuery({
-    queryKey: ['categorySectionArticles'],
-    queryFn: async ({ pageParam = 0 }) => {
-      try {
-        // 실제 API 호출 시도
-        const res = await getArticlesWithMediaEntity()
-        return res
-      } catch (error) {
-        console.log('뉴스 API 실패, 생성된 뉴스 데이터 사용:', error)
-        // API 실패시 생성된 뉴스 데이터 반환
-        return generateNewsData(pageParam)
-      }
-    },
-    getNextPageParam: (lastPage, pages) => {
-      // 무한 스크롤을 위해 다음 페이지 번호 반환
-      return pages.length
-    },
-    initialPageParam: 0,
+      v.pages.forEach(v => {
+        v.items.forEach(v => {
+          res.push({
+            id: v.uuid,
+            title: v.title,
+            contents: v.contents,
+            category: v.category ?? undefined,
+            press: {
+              name: v.company.name,
+              imgUrl: v.company.profileImageUrl
+            },
+            createdAt: new Date(v.createAt),
+            ...mediaToArticleVideoOrImage(v.media)
+          })
+        })
+      })
+
+      return res
+    }
   })
-
-  // 모든 페이지의 데이터를 하나의 배열로 합치기
-  const allData = useMemo(() => {
-    return queryRes.data?.pages.flat() || []
-  }, [queryRes.data])
 
   return {
     ...queryRes,
-    data: allData,
   }
 }
