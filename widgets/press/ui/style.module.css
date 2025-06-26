@@ -7,3 +7,33 @@
 .infoTextWrapper {
   padding: 8px 0;
 }
+
+.segmentSection {
+  position: relative;
+}
+
+.articleBox {
+  padding: 24px;
+  border-radius: 8px;
+  background-color: var(--container-alternative-light);
+}
+
+.articleGrid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  @media(max-width: 720px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.articleContainer, .articleContainerSkeleton {
+  padding: 8px;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.articleContainerSkeleton {
+  background-color: var(--background-alternative-light);
+}

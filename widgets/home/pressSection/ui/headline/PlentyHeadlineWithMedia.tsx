@@ -18,7 +18,7 @@ export default function PlentyHeadlineWithMedia({
       className={style.headlineContainer}
       width={'50%'}
       gap={8}
-      onClick={() => {router.replace(`/article/${id}`)}}
+      onClick={() => {router.push(`/article/${id}`)}}
     >
       {img && (
         <div className={style.plentyHeadlineMediaWrapper}>

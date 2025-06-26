@@ -12,4 +12,5 @@ export type CompanyResponseDto = {
   name: string;
   description: string;
   subscribers: number;
+  signatureColor: string;
 };

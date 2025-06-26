@@ -8,6 +8,7 @@ interface IFlex {
   alignItems?: 'start' | 'center' | 'end'
   gap?: number
 
+  id?: string
   ref?: Ref<HTMLDivElement>
   children?: ReactNode
 

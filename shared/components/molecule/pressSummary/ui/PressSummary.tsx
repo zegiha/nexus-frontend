@@ -12,7 +12,7 @@ interface PressSummaryProps {
 
 export default function PressSummary({ press }: PressSummaryProps) {
   return (
-    <Link href={`/app/press/${encodeURIComponent(press.name)}`} className={style.pressLink}>
+    <Link href={`/press/${encodeURIComponent(press.name)}`} className={style.pressLink}>
       <Row className={style.pressContainer} gap={8}>
         <Avatar 
           size={'small'} 

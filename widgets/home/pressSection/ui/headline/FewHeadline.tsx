@@ -18,7 +18,7 @@ export default function FewHeadline({
     <Row
       className={style.headlineContainer}
       gap={8}
-      onClick={() => {router.replace(`/article/${id}`)}}
+      onClick={() => {router.push(`/article/${id}`)}}
     >
       <Col gap={4}>
         <Typo.medium textOverflowLine={2}>

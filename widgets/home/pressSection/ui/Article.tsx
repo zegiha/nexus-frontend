@@ -13,7 +13,7 @@ export default function Article({
   const router = useRouter()
 
   return (
-    <Row className={style.articleContainer} onClick={() => router.replace(`/article/${id}`)}>
+    <Row className={style.articleContainer} onClick={() => router.push(`/article/${id}`)}>
       <Typo.medium>{title}</Typo.medium>
     </Row>
   )

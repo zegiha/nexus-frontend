@@ -15,7 +15,7 @@ export default function PlentyHeadlineWithoutMedia({
     <Col
       className={style.headlineContainer}
       gap={8}
-      onClick={() => {router.replace(`/article/${id}`)}}
+      onClick={() => {router.push(`/article/${id}`)}}
     >
       <Typo.medium textOverflowLine={3}>
         {title}

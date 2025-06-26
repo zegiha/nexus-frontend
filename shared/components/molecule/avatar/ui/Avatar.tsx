@@ -5,6 +5,8 @@ import {Typo} from '@/shared/components/atom/typo'
 import classNames from 'classnames'
 import style from './style.module.css'
 import Image from 'next/image'
+import { Ref, useEffect, useRef } from 'react'
+import { Skeleton } from '@/shared/components/atom/skeleton'
 
 export default function Avatar({
   size,
@@ -12,17 +14,66 @@ export default function Avatar({
   nameColor,
   imageUrl,
 }: IAvatar) {
+  const image = useRef<HTMLDivElement | null>(null)
 
+  useEffect(() => {
+    if(size !== 'parentHeight' || !image.current)
+      return
+    
+    const updateWidth = () => {
+      const currentHeight = image.current!.offsetHeight
+      image.current!.style.width = `${currentHeight}px`
+    }
+
+    updateWidth()
+
+    const resizeObserver = new ResizeObserver(() => {
+      updateWidth()
+    })
+
+    resizeObserver.observe(image.current)
+
+    return () => {
+      resizeObserver.disconnect()
+    }
+  }, [size])
+
+  if(size === 'parentHeight') {
+    return (
+      <AvatarImage ref={image} size={size} imageUrl={imageUrl}/>
+    )
+  } else {
+    return (
+      <Row
+        width={'auto'}
+        alignItems={'center'}
+        gap={getGap(size)}
+      >
+        <AvatarImage size={size} imageUrl={imageUrl}/>
+        {name && (
+          <Typo.medium color={nameColor}>
+            {name}
+          </Typo.medium>
+        )}
+      </Row>
+    )
+  }
+}
+
+function AvatarImage({
+  ref,
+  size,
+  imageUrl
+}: {
+  ref?: Ref<HTMLDivElement | null>
+  size: IAvatar['size']
+  imageUrl: IAvatar['imageUrl']
+}) {
   return (
-    <Row
-      className={classNames([
-        size === 'parentHeight' && style.parentHeightContainer
-      ])}
-      width={'auto'}
-      alignItems={'center'}
-      gap={getGap(size)}
-    >
-      <div className={style[size]}>
+    <div ref={ref} className={style[size]}>
+      {imageUrl === '' ? (
+        <Skeleton width='100%' height='100%'/>
+      ):(
         <Image
           src={imageUrl}
           alt={'프로필 이미지'}
@@ -31,12 +82,7 @@ export default function Avatar({
           priority={true}
           fetchPriority={'low'}
         />
-      </div>
-      {name && (
-        <Typo.medium color={nameColor}>
-          {name}
-        </Typo.medium>
       )}
-    </Row>
+    </div>
   )
 }

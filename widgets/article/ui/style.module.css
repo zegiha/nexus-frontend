@@ -1,0 +1,35 @@
+.firstContents {
+  margin-top: 0;
+}
+
+.subject {
+  padding-top: 32px;
+  padding-bottom: 8px;
+}
+
+.footnote {
+  padding-top: 8px;
+  font-style: italic;
+}
+
+.listContainer {
+  padding: 12px 12px 0 12px;
+}
+
+.media {
+  padding-top: 32px;
+}
+
+.mediaWrapper {
+  position: relative;
+  aspect-ratio: 16/9;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--label-normal-light);
+  border-radius: 3px;
+}

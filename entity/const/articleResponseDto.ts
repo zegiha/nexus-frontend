@@ -5,6 +5,7 @@
  * The news viewer service, Nexus API Description
  * OpenAPI spec version: 0.1.0
  */
+import { IContentsSection } from "@/widgets/article/const/props";
 import type { CompanySummaryResponseDto } from "./companySummaryResponseDto";
 
 export type ArticleResponseDto = {
@@ -13,7 +14,7 @@ export type ArticleResponseDto = {
   /** 뉴스 제목 */
   title: string;
   /** 뉴스 내용 */
-  contents: string[];
+  contents: IContentsSection['contents'];
   /** 생성일 */
   createAt: string;
   originalUrl: string;

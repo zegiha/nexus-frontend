@@ -9,6 +9,7 @@ export default function Flex({
   justifyContent,
   alignItems,
   gap,
+  id,
   ref,
   children,
   className,
@@ -30,6 +31,7 @@ export default function Flex({
 
   if(motionProps === undefined)
     return <div
+      id={id}
       ref={ref}
       className={className}
       style={style}
@@ -40,6 +42,7 @@ export default function Flex({
   else {
     if(typeof motionProps === 'boolean') motionProps = {}
     return <motion.div
+      id={id}
       ref={ref}
       className={className}
       style={style}

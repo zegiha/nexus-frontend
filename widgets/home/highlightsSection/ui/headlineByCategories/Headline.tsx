@@ -41,7 +41,7 @@ export default function Headline({
       </div>
 
       <Row className={style.visualPadding}>
-        <Link href={`/app/press/${encodeURIComponent(press.name)}`}>
+        <Link href={`/press/${encodeURIComponent(press.name)}`}>
           <Avatar
             size={'medium'}
             imageUrl={press.imgUrl}

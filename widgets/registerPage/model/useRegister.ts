@@ -7,7 +7,7 @@ export default function useRegister() {
 
   useEffect(() => {
     if(step > 3)
-      router.push("/auth/login")
+      router.replace("/auth/login")
   }, [step]);
 
   const [email, setEmail] = useState<string>('');

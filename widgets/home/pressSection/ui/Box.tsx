@@ -16,7 +16,7 @@ export default function Box({
 
   return (
     <Col className={style.boxContainer} gap={24}>
-      <Link href={`/app/press/${encodeURIComponent(press.name)}`}>
+      <Link href={`/press/${encodeURIComponent(press.name)}`}>
         <Avatar
           size={'small'}
           name={press.name}

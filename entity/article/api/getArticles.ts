@@ -1,4 +1,4 @@
-import {articleEntity} from '@/prev_entity/article'
+import { articleEntity } from "@/prev_entity/article";
 import { apiClient } from "@/shared/api/client";
 
 export interface ArticleResponse {

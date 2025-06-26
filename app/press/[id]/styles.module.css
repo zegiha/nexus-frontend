@@ -1,5 +1,7 @@
 .container {
   padding: 24px;
+  background-color: var(--background-alternative-light);
+  min-height: calc(100vh - 80px);
 }
 
 .wrapper {

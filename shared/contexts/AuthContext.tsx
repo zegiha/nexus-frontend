@@ -1,14 +1,16 @@
 "use client";
 
+import { authControllerRefresh } from '@/entity/api/auth/auth';
+import { userControllerMyEmail } from '@/entity/api/user/user';
 import {SignInDto} from '@/entity/const'
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 
 interface AuthContextType {
   isAuthenticated: boolean
   login: (data: SignInDto) => void
   logout: () => void
-  user: SignInDto | undefined,
+  user: Omit<SignInDto, 'password'> | undefined,
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -25,7 +27,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-  const [user, setUser] = useState<SignInDto | undefined>();
+  const [user, setUser] = useState<Omit<SignInDto, 'password'> | undefined>();
 
   const login = (data: SignInDto) => {
 
@@ -43,6 +45,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     login, logout,
     user,
   };
+
+  useEffect(() => {
+    const handleRefreshAndLoginCheck = async () => {
+      try {
+        await authControllerRefresh()
+        const newUser = await userControllerMyEmail()
+        setUser({email: newUser})
+        setIsAuthenticated(true)
+      } catch(e) {
+        console.error(e)
+      }
+    }
+    handleRefreshAndLoginCheck()
+  }, [])
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

@@ -1,14 +1,9 @@
-.parentHeightContainer {
-  border-radius: 0;
-  height: 100%;
-  aspect-ratio: 1;
-}
-
 .small, .medium, .parentHeight {
   flex-shrink: 0;
   border-radius: 128px;
   position: relative;
   overflow: hidden;
+  background-color: var(--container-normal-light);
 }
 
 .small {
@@ -22,6 +17,5 @@
 }
 
 .parentHeight {
-  aspect-ratio: 1;
-  height: 100%;
+  height: inherit;
 }

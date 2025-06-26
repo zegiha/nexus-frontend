@@ -1,0 +1,11 @@
+.container {
+  padding: 128px 24px;
+}
+
+.wrapper {
+  max-width: 720px;
+}
+
+.avatar {
+  cursor: pointer;
+}
