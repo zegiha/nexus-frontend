@@ -15,7 +15,7 @@ export default function HeadlineSection({
 
   return (
     <div className={style.section}>
-      {status === 'success' && (<Headline {...data[0]}/>)}
+      {status === 'success' && data.length > 0 && (<Headline {...data[0]}/>)}
       {status === 'pending' && (<HeadlineSkeleton/>)}
       <div className={style.smallHeadlineSection}>
         {status === 'success' && data.slice(1, 5).map((v, i) => (
