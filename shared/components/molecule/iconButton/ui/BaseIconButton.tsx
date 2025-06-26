@@ -16,6 +16,7 @@ export default function BaseIconButton({
 }: IBaseIconButton) {
 
   return <Interaction.button
+    type='button'
     className={classNames(
       [
         style[type],
