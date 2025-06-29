@@ -1,17 +1,20 @@
+import { TanstackQueryProvider } from "@/shared/components/atom/TanstackQueryProvider";
+import { AuthProvider } from "@/shared/contexts/AuthContext";
 import type { Metadata } from "next";
 import "./globals.css";
-import localFont from 'next/font/local'
-import {ReactNode} from 'react'
+import "swiper/css";
+import localFont from "next/font/local";
+import { ReactNode } from "react";
 
 const Pretendard = localFont({
-  src: '../public/font/PretendardVariable.woff2',
-  display: 'swap'
-})
+  src: "../public/font/PretendardVariable.woff2",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Nexus",
   description: "요즘 뉴스보는 제일 좋은 방법",
-}
+};
 
 export default function RootLayout({
   children,
@@ -19,10 +22,14 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ko">
       <body className={`${Pretendard.className}`}>
-        {children}
+        <TanstackQueryProvider>
+          <AuthProvider>
+            <main>{children}</main>
+          </AuthProvider>
+        </TanstackQueryProvider>
       </body>
     </html>
-  )
+  );
 }

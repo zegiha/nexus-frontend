@@ -1,0 +1,57 @@
+.overflowLine1, .overflowLine2, .overflowLine3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.overflowLine1 {-webkit-line-clamp: 1;}
+.overflowLine2 {-webkit-line-clamp: 2;}
+.overflowLine3 {-webkit-line-clamp: 3;}
+
+.noWrap {
+  white-space: nowrap;
+  word-break: keep-all;
+}
+
+.accent {
+  font-weight: var(--accent-weight);
+}
+
+.normal {
+  font-weight: var(--normal-weight);
+}
+
+.xxxlarge {
+  font-size: var(--xxxlarge-accent-font-size);
+  line-height: var(--xxxlarge-accent-line-height);
+}
+
+.xxlarge {
+  font-size: var(--xxlarge-accent-font-size);
+  line-height: var(--xxlarge-accent-line-height);
+}
+
+.xlarge {
+  font-size: var(--xlarge-font-size);
+  line-height: var(--xlarge-line-height);
+}
+
+.large {
+  font-size: var(--large-font-size);
+  line-height: var(--large-line-height);
+}
+
+.medium {
+  font-size: var(--medium-font-size);
+  line-height: var(--medium-line-height);
+}
+
+.small {
+  font-size: var(--small-font-size);
+  line-height: var(--small-line-height);
+}
+
+.xsmall {
+  font-size: var(--xsmall-font-size);
+  line-height: var(--xsmall-line-height);
+}

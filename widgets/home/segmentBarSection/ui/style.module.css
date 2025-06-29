@@ -1,0 +1,7 @@
+.container {
+  position: relative;
+  transition: background-color var(--transition-duration-fast) var(--transition-cubic-bezier);
+}
+
+.whenPressSection {background-color: var(--background-alternative-light);}
+.whenCategorySection {background-color: var(--background-normal-light);}

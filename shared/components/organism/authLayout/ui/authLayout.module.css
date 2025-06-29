@@ -1,0 +1,105 @@
+.container {
+  width: 100%;
+  min-height: 100vh; /* 다시 전체 화면 높이로 */
+  background-color: var(--background-normal-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.backButtonContainer {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 10;
+  padding: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  transition: all var(--transition-duration-fast) var(--transition-cubic-bezier);
+  cursor: pointer;
+}
+
+.backButtonContainer:hover {
+  background-color: rgba(255, 255, 255, 1);
+  transform: translateX(-3px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.backButtonContainer:active {
+  transform: translateX(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.formContainer {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: 32px;
+  padding: 40px 32px;
+  box-sizing: border-box;
+  background-color: var(--background-normal-light);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+  align-self: center;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 700;
+  color: var(--label-strong-light);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.content {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 24px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 480px) {
+  .container {
+    padding: 16px;
+  }
+  
+  .backButtonContainer {
+    top: 16px;
+    left: 16px;
+  }
+  
+  .formContainer {
+    max-width: 100%;
+    padding: 24px 20px;
+    gap: 24px;
+  }
+  
+  .title {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .formContainer {
+    max-width: 380px;
+    padding: 32px 28px;
+  }
+}

@@ -1,0 +1,27 @@
+.interaction {
+  position: relative;
+  cursor: pointer;
+}
+
+.interaction:before {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  transition: all var(--transition-duration-fast) var(--transition-cubic-bezier);
+  content: "";
+  z-index: 1;
+}
+
+.interaction:hover:before {
+  background-color: rgba(var(--gray-50-rgb), 0.16);
+}
+
+.interaction:active:before {
+  transition-duration: 0s;
+  background-color: rgba(var(--gray-50-rgb), 0.32);
+}
+
+.interactionDisabled {
+  cursor: not-allowed;
+  opacity: 0.64;
+}

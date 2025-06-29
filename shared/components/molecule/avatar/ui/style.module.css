@@ -1,0 +1,21 @@
+.small, .medium, .parentHeight {
+  flex-shrink: 0;
+  border-radius: 128px;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--container-normal-light);
+}
+
+.small {
+  width: 24px;
+  height: 24px;
+}
+
+.medium {
+  width: 32px;
+  height: 32px;
+}
+
+.parentHeight {
+  height: inherit;
+}

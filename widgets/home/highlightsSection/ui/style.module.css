@@ -1,0 +1,11 @@
+.section {
+  padding: 24px;
+  padding-top: 16px; /* 헤더와의 간격 조정 */
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  grid-gap: 24px;
+  background-color: var(--background-normal-light);
+  @media(max-width: 720px) {
+    grid-template-columns: 1fr;
+  }
+}

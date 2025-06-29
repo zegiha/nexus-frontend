@@ -1,0 +1,92 @@
+.container {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+
+.codeInputs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.codeInput {
+  width: 60px;
+  height: 68px;
+  border-radius: 12px;
+  background-color: var(--background-normal-light);
+  border: 2px solid var(--line-border-light);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  transition: all var(--transition-duration-fast) var(--transition-cubic-bezier);
+}
+
+.codeInput.filled {
+  background-color: var(--component-fill-alternative-light);
+  border-color: var(--brand-normal-light);
+}
+
+.codeInput.error {
+  background-color: var(--status-translucent-negative-light);
+  border-color: var(--status-negative-light);
+}
+
+.codeInput:focus-within {
+  border-color: var(--brand-normal-light);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  text-align: center;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  color: var(--label-strong-light);
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.message {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--label-alternative-light);
+  text-align: center;
+  margin-top: 8px;
+}
+
+.message.error {
+  color: var(--status-negative-light);
+  font-weight: 500;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 480px) {
+  .codeInputs {
+    gap: 8px;
+  }
+  
+  .codeInput {
+    width: 48px;
+    height: 56px;
+  }
+  
+  .input {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}

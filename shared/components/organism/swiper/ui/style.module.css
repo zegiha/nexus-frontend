@@ -1,0 +1,21 @@
+.swiperContainer {
+  position: relative;
+}
+.swiper {
+  width: 100%;
+}
+
+.elevatedNextArrow, .elevatedPrevArrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+}
+
+.elevatedPrevArrow {
+  left: 0;
+  transform: translate(-75%, -50%);
+}
+.elevatedNextArrow {
+  right: 0;
+  transform: translate(75%, -50%);
+}

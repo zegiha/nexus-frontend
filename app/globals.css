@@ -1,6 +1,9 @@
 @import '@material-symbols/font-300';
 
 :root {
+  /* Layout Variables */
+  --header-height: 80px;
+  
   /* Base Colors */
   --white: #ffffff;
   --black: #0a0a0a;
@@ -122,6 +125,9 @@
   --status-translucent-negative-dark: rgba(var(--tint-red-rgb), 0.18);
   --status-translucent-cautionary-light: rgba(var(--tint-yellow-rgb), 0.18);
   --status-translucent-cautionary-dark: rgba(var(--tint-yellow-rgb), 0.18);
+
+  --interaction-hover: rgba(var(--gray-50-rgb), 0.16);
+  --interaction-active: rgba(var(--gray-50-rgb), 0.32);
 }
 
 
@@ -189,6 +195,18 @@
   --xsmall-font-weight: var(--normal-weight);
 }
 
+:root {
+  --transition-cubic-bezier: cubic-bezier(.16,0,.36,1);
+  --transition-duration-fast: .2s;
+  --transition-duration-normal: .32s;
+  --transition-duration-slow: .52s;
+}
+
+:root {
+  --media-medium: 720px;
+  --media-small: 480px;
+}
+
 * {
   font-family: var(--default-font), sans-serif;
   box-sizing: border-box;
@@ -209,4 +227,32 @@ button {
   flex: 0;
   outline: none;
   border: none;
+}
+
+input::-ms-clear,
+input::-ms-reveal{
+  display:none;width:0;height:0;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration{
+  display:none;
+}
+
+img {
+  object-fit: cover;
+}
+
+/* Main Content Layout */
+main {
+  /* 헤더가 sticky로 되어 있어서 실제로는 패딩이 필요하지 않음 */
+  /* 하지만 콘텐츠가 헤더 바로 아래부터 시작되도록 보장 */
+  position: relative;
+  z-index: 1;
+}
+
+/* Auth 페이지 전용 스타일 */
+.auth-page {
+  min-height: calc(100vh - var(--header-height));
 }

@@ -1,0 +1,30 @@
+.headlinesByCategoriesContainer {
+  height: max-content;
+  min-width: 0;
+}
+
+.headlineContainer {
+  padding: 12px;
+  border-radius: 16px;
+  background-color: var(--component-fill-alternative-light);
+}
+
+.articleClickable {
+  cursor: pointer;
+}
+
+.articleClickable:hover .titleWrapper {
+  text-decoration: underline;
+}
+
+.visualPadding {
+  padding: 0 12px;
+}
+
+.headlineImgWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 12px;
+  overflow: hidden;
+}

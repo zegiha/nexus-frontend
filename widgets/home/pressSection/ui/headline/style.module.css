@@ -1,0 +1,28 @@
+.headlineContainer {
+  cursor: pointer;
+}
+.headlineContainer:hover,
+.headlineContainer:active {
+  text-decoration: underline;
+}
+
+.fewHeadline:hover, .fewHeadline:active {
+  text-decoration: underline;
+}
+
+.fewHeadlineMediaWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 133px;
+  border-radius: 4px;
+  aspect-ratio: 133/80;
+  overflow-y: hidden;
+}
+
+.plentyHeadlineMediaWrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 8px;
+  aspect-ratio: 1;
+  overflow-y: hidden;
+}

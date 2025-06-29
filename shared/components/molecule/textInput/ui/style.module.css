@@ -1,0 +1,56 @@
+.label {
+  width: 100%;
+  color: var(--label-normal-light);
+  font-size: var(--small-font-size);
+  font-weight: var(--small-font-weight);
+  line-height: var(--small-line-height);
+  cursor: pointer;
+  margin-bottom: 4px;
+}
+
+.textInput {
+  position: relative;
+  width: 100%;
+  height: 48px;
+  padding: 10px 12px;
+  box-shadow: inset 0 0 0 1px var(--line-border-light);
+  border-radius: 4px;
+
+  color: var(--label-normal-light);
+
+  background: var(--background-normal-light);
+  border: none;
+  outline: none;
+
+  transition: all var(--transition-duration-fast) var(--transition-cubic-bezier);
+}
+
+.textInput::placeholder, .textInput {
+  font-size: var(--medium-font-size);
+  font-weight: var(--medium-font-weight);
+  line-height: var(--medium-line-height);
+}
+.textInput::placeholder {color: var(--label-alternative-light)}
+
+.textInput:focus, .error:focus {
+  box-shadow: inset 0 0 0 1px var(--brand-normal-light);
+  background: transparent;
+}
+
+.error {
+  transition: all var(--transition-duration-fast) var(--transition-cubic-bezier);
+  box-shadow: inset 0 0 0 1px var(--status-negative-light);
+  background-color: var(--status-translucent-negative-light);
+}
+
+.inputWrapper {
+  width: 100%;
+  position: relative;
+}
+
+.passwordVisibilityButton {
+  position: absolute;
+  top: 50%;
+  right: 4px;
+  transform: translateY(-50%);
+}

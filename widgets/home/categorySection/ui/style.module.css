@@ -1,0 +1,62 @@
+.section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 24px;
+  padding: 24px;
+  @media(max-width: 720px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.smallHeadlineSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 24px;
+}
+
+.headlineContainer {
+  gap: 16px;
+  @media(max-width: 400px) {
+    gap: 8px;
+  }
+}
+
+.headlineContainer:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.headlineContents {
+  gap: 8px;
+  @media(max-width: 400px) {
+    gap: 4px;
+  }
+}
+
+.mediaWrapper, .articleMediaWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 12px;
+  overflow: hidden;
+  @media(max-width: 480px) {
+    aspect-ratio: 3/2;
+    border-radius: 8px;
+  }
+}
+
+.articleMediaWrapper {
+  aspect-ratio: 3/2;
+  border-radius: 8px;
+}
+
+.skeleton {
+  padding: 16px;
+  border-radius: 12px;
+  background-color: var(--container-normal-light);
+}
+
+.articleContainer:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}

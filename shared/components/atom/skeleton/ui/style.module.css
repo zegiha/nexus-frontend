@@ -1,0 +1,13 @@
+.skeleton {
+  flex-shrink: 0;
+  background-image: linear-gradient(115deg, var(--component-fill-normal-light) 30%, var(--component-fill-alternative-light) 38%, var(--component-fill-alternative-light) 40%, var(--component-fill-normal-light) 48%);
+  background-position: 100% 0;
+  background-size: 200% 100%;
+  animation: load 1.6s var(--transition-cubic-bezier) infinite;
+}
+
+@keyframes load {
+  100% {
+    background-position: -100% 0;
+  }
+}
