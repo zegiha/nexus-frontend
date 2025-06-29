@@ -7,7 +7,6 @@ import EmailVerify from '@/widgets/registerPage/ui/EmailVerify'
 import IdAndPassword from '@/widgets/registerPage/ui/IdAndPassword'
 import style from '@/widgets/registerPage/ui/registerPage.module.css'
 import {AnimatePresence} from 'motion/react'
-import {Fragment} from 'react'
 
 export default function RegisterPage() {
   const {

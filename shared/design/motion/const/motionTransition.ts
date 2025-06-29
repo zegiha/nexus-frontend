@@ -1,5 +1,5 @@
-import {transition} from '@/shared/design/motion'
 import {Transition} from 'motion'
+import transition from '@/shared/design/motion/const/transition'
 
 const motionTransition: {[K in 'slow' | 'normal' | 'fast']: Transition} = {
   slow: {

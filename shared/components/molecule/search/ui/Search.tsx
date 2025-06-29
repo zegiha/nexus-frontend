@@ -1,9 +1,11 @@
+'use client'
+
 import {motionTransition} from '@/shared/design/motion'
 import {Col, Row} from '@/shared/components/atom/flex'
 import {Icon} from '@/shared/components/atom/icon'
 import classNames from 'classnames'
 import {AnimatePresence} from 'motion/react'
-import {ChangeEvent, ReactNode, useEffect, useRef, useState} from 'react'
+import {ChangeEvent, ReactNode, useRef, useState} from 'react'
 import style from './style.module.css'
 
 interface ISearch {
