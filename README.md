@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NEXUS
 
-## Getting Started
+![](https://private-user-images.githubusercontent.com/118225985/467884349-246b1f2f-a87b-4885-8c67-2a224a44b90b.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTI4MTg5NzcsIm5iZiI6MTc1MjgxODY3NywicGF0aCI6Ii8xMTgyMjU5ODUvNDY3ODg0MzQ5LTI0NmIxZjJmLWE4N2ItNDg4NS04YzY3LTJhMjI0YTQ0YjkwYi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNzE4JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDcxOFQwNjA0MzdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04YzFkNzU0MDFhZGIyNjM3YTI0MDQ1MGRkY2NhOTBjZWRjYWZjNThkZDM3YTRmNDc0NTY0Yzc0Yzc4M2U3MzJlJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.EsVgS9Qe97gw6kv90lBQBDxtyp0EmrnBMXNbuxc6lTY)
 
-First, run the development server:
+뉴스 기사 가독성 향상 서비스
 
+Axios 뉴스레터를 참고하여 뉴스 기사를 읽기 쉽게 재구성해 사용자에게 더 잘 전달하는 뉴스 서비스입니다.
+
+## 설치 및 실행
+
+### 설치
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 개발 서버 실행
+```bash
+pnpm dev
+```
+개발 모드로 실행하며, http://localhost:3000에서 확인할 수 있습니다.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 빌드
+```bash
+pnpm build
+```
+프로덕션용 빌드 파일을 `.next` 폴더에 생성합니다.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 프로덕션 서버 실행
+```bash
+pnpm start
+```
 
-## Learn More
+## 주요 기능
 
-To learn more about Next.js, take a look at the following resources:
+- 뉴스 기사 내용을 LLM으로 가독성 높게 재구성
+- 카테고리별 뉴스 분류 및 조회
+- 언론사별 뉴스 구독 및 관리
+- 사용자 계정 관리 및 알림 기능
+- 반응형 웹 디자인
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 기술 스택
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Framework**: Next.js 15
+- **Language**: TypeScript
+- **Styling**: CSS Modules
+- **State Management**: TanStack Query
+- **HTTP Client**: Axios
+- **UI Library**: Motion (Framer Motion)
+- **Package Manager**: pnpm
